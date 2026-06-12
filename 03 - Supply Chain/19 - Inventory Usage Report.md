@@ -3,53 +3,96 @@ nomor: 19
 kategori: Supply Chain
 pic: SCM & Store Leader
 frekuensi: Harian (dicatat saat tutup)
-waktu_pengerjaan: 10 menit
+waktu_pengerjaan: 10–15 menit
 status: Draft
-versi: 1.0
-terakhir_diperbarui: 2026-06-12
+versi: 2.0
+terakhir_diperbarui: 2026-06-13
 ---
 
 # Inventory Usage Report
 
-## Tujuan
-Mencatat pemakaian stok harian — sebagai dasar untuk menentukan jumlah order berikutnya dan mendeteksi kehilangan yang tidak wajar.
+> Dokumen terkait: [[21 - Waste Analysis Report]] · [[22 - Next Day Preparation List]] · [[24 - Blok M Ponpin Integration SOP]]
 
-## Kapan Digunakan
-Setiap akhir hari operasional, oleh Store Leader atau crew piket.
+## Tujuan
+Mencatat pemakaian stok harian dan membandingkan dengan pemakaian teoritis berdasarkan jumlah penjualan — mendeteksi selisih yang bisa mengindikasikan over-portioning, waste tersembunyi, atau kehilangan.
 
 ---
 
 ## Form Harian
 
-**Tanggal:** __________ | **Outlet:** __________ | **Dicatat oleh:** __________
+**Tanggal:** __________ | **Outlet:** __________ | **Total Struk Hari Ini:** __________ | **Dicatat oleh:** __________
 
-| Produk | Stok Awal Hari Ini | Penerimaan Hari Ini | Total Tersedia | Terpakai | Waste | Stok Akhir | Reorder? |
-|--------|-------------------|---------------------|----------------|----------|-------|------------|----------|
-| Patty Medium | | | | | | | Ya / Tidak |
-| Patty Small | | | | | | | Ya / Tidak |
-| Sosis Elprimo | | | | | | | Ya / Tidak |
-| Odading / Roti | | | | | | | Ya / Tidak |
-| Bun Medium | | | | | | | Ya / Tidak |
-| Bun Small | | | | | | | Ya / Tidak |
-| Kol putih (gram) | | | | | | | Ya / Tidak |
-| Tomat (gram) | | | | | | | Ya / Tidak |
-| Timun Kyuri (gram) | | | | | | | Ya / Tidak |
-| Mayo (gram) | | | | | | | Ya / Tidak |
-| BBQ Sauce (gram) | | | | | | | Ya / Tidak |
-| Bahan Punten | | | | | | | Ya / Tidak |
-| Box makanan | | | | | | | Ya / Tidak |
-| Cup + Cup Seal | | | | | | | Ya / Tidak |
+| Produk | Stok Awal | Terima | Total Tersedia | Terpakai Aktual | Waste | Stok Akhir | Teoritis* | Variansi | Status |
+|--------|-----------|--------|----------------|-----------------|-------|------------|-----------|---------|--------|
+| Patty Reguler | | | | | | | | | |
+| Patty Medium | | | | | | | | | |
+| Sosis | | | | | | | | | |
+| Odading / Bun Reguler | | | | | | | | | |
+| Bun Medium | | | | | | | | | |
+| Nugget Chicken | | | | | | | | | |
+| Lettuce (gram) | | | | | | | | | |
+| Kyuri / Timun (pcs) | | | | | | | | | |
+| Tomat (pcs) | | | | | | | | | |
+| Mayo (gram) | | | | | | | | | |
+| BBQ Sauce (gram) | | | | | | | | | |
+| Bahan Punten | | | | | | | | | |
+| Box makanan | | | | | | | | | |
+| Cup + Cup Seal | | | | | | | | | |
 
 ---
 
-## Rumus Sederhana
+## Cara Hitung Kolom Teoritis & Variansi
+
+**Teoritis** = jumlah yang seharusnya terpakai berdasarkan struk penjualan × gramasi standar
+
+### Referensi Gramasi per Produk (dari [[13 - Standard Recipe Book]])
+
+| Bahan | Per Porsi | Produk yang Pakai |
+|-------|-----------|------------------|
+| Patty Reguler | 1 pcs | Noel Burger, Odadog Paus Jumbo |
+| Patty Medium | 1 pcs | Liam Burger |
+| Sosis | 1 pcs | Odading Rudal Iran |
+| Nugget | 2 pcs | Odadog Chicken Jumbo |
+| Odading/Bun | 1 pcs | sesuai produk |
+| Lettuce | 20 gr | semua produk |
+| Kyuri/Timun | 2 pcs | semua produk |
+| Tomat | 2 pcs | semua produk |
+| Mayo | 60 gr | semua produk |
+| BBQ Sauce | 20 gr | semua produk |
+
+**Contoh hitung:**
+- Hari ini terjual: 200 Liam Burger
+- Teoritis Patty Medium = 200 × 1 pcs = **200 pcs**
+- Aktual terpakai = 215 pcs
+- **Variansi = 215 − 200 = +15 pcs (over)**
+
+**Rumus:**
+```
+Variansi = Terpakai Aktual − Teoritis
+Variansi % = (Variansi ÷ Teoritis) × 100%
+```
+
+---
+
+## Threshold Variansi
+
+| Variansi % | Status | Tindakan |
+|-----------|--------|---------|
+| ≤ 5% | ✅ Normal | Tidak ada tindakan |
+| 6–15% | ⚠️ Perhatikan | Cek porsi, cek waste — catat keterangan |
+| > 15% | ❌ Investigasi | Leader wajib lapor Manager hari ini — cek penyebab |
+
+> Variansi negatif (terpakai lebih sedikit dari teoritis) juga perlu dicek — bisa berarti porsi kurang atau ada transaksi yang tidak tercatat.
+
+---
+
+## Rumus Stok
 
 ```
-Stok Awal + Penerimaan = Total Tersedia
-Total Tersedia - Stok Akhir = Terpakai + Waste
+Stok Awal + Terima = Total Tersedia
+Total Tersedia − Stok Akhir = Terpakai Aktual + Waste
+Terpakai Aktual = (Total Tersedia − Stok Akhir) − Waste
 ```
-
-Jika **Terpakai + Waste** jauh melebihi jumlah produk yang terjual → ada yang perlu diinvestigasi (over-portioning, waste tersembunyi, atau kehilangan).
 
 ---
 
@@ -57,14 +100,15 @@ Jika **Terpakai + Waste** jauh melebihi jumlah produk yang terjual → ada yang 
 
 | Produk | Reorder Level | Keterangan |
 |--------|--------------|------------|
-| Patty Medium | < 30 pcs | Pesan jika di bawah ini |
-| Patty Small | < 20 pcs | |
+| Patty Reguler | < 30 pcs | Pesan jika di bawah ini |
+| Patty Medium | < 30 pcs | |
 | Sosis | < 20 pcs | |
-| Odading | < 20 pcs | Tergantung jadwal CPNB |
-| Bun (Medium / Small) | < 20 pcs masing-masing | |
-| Sayuran segar | < 500 gram | Beli tiap 2–3 hari |
+| Odading / Bun | < 20 pcs | Tergantung jadwal CPNB |
+| Nugget | < 20 pcs | |
+| Lettuce | < 2 box | |
+| Kyuri | < 1 box | |
 
-> Reorder level ini adalah baseline awal — sesuaikan dengan rata-rata penjualan harian outlet masing-masing.
+> Sesuaikan reorder level dengan rata-rata penjualan aktual outlet masing-masing.
 
 ---
 
@@ -74,11 +118,15 @@ Setiap hari tutup:
 1. Foto form yang sudah terisi
 2. Kirim ke WhatsApp group SCM + Store Leader
 3. Tandai baris yang "Reorder: Ya" dengan pesan: *"Minta restock: [nama item] [jumlah]"*
+4. Jika ada variansi > 15%, tandai dengan: *"⚠️ Variansi tinggi: [item] — perlu cek"*
 
 ---
 
 ## Standar Kelulusan
-Form terisi setiap hari tanpa ada kolom kosong yang seharusnya diisi.
+Form terisi setiap hari. Kolom Teoritis dan Variansi dihitung. Variansi > 15% dilaporkan ke Manager.
+
+---
 
 ## Catatan / Versi
 - v1.0 (2026-06-12): Draft awal — fundamental multi-outlet
+- v2.0 (2026-06-13): Tambah kolom Teoritis + Variansi + threshold investigasi variansi
