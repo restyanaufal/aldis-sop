@@ -4,148 +4,316 @@ kategori: Dapur & Produk
 pic: Bisnis Development
 frekuensi: Referensi tetap — digunakan setiap produksi
 waktu_pengerjaan: Referensi (bukan checklist berkala)
-status: Draft
-versi: 1.0
-terakhir_diperbarui: 2026-06-12
+status: Aktif
+versi: 2.0
+terakhir_diperbarui: 2026-06-13
 ---
 
-# Standard Recipe Book
+# Tabel Standarisasi Produk — Aldis Hotdog
 
-## Tujuan
-Menjadi acuan tunggal untuk semua resep produk Aldis — memastikan rasa, porsi, dan tampilan konsisten di setiap outlet dan setiap crew.
+> Dokumen induk: [[SOP-OPS-03 - Operasional Dapur]]
 
-## Kapan Digunakan
-- Saat crew baru ditraining
-- Saat ada perubahan bahan / supplier
-- Sebagai referensi harian untuk standarisasi porsi
+Menjamin setiap produk memiliki kualitas konsisten, tampilan menarik, rasa premium, dan sesuai standar operasional outlet di semua gerai.
 
 ---
 
-## Produk 1 — Odadog Rudal Iran
+## Panduan Baca
 
-**Harga jual: Rp 29.000**
-
-| # | Bahan | Porsi/pcs | Catatan |
-|---|-------|-----------|---------|
-| 1 | Sosis (Elprimo atau setara) | 1 pcs | Dipanggang/goreng sampai matang |
-| 2 | Roti Odading | 1 pcs | Dari CPNB — segar, tidak lembab |
-| 3 | Timun Kyuri (iris tipis) | 10 g | Atau kol putih iris tipis jika substitusi |
-| 4 | Kol putih (iris tipis) | 25 g | Pengganti head lettuce |
-| 5 | Tomat (iris) | 15 g | Buang biji jika terlalu berair |
-| 6 | Mayonnaise (Kewpie mix) | 30 g | Ukur dengan sendok / timbangan |
-| 7 | BBQ Sauce | 30 g | Ukur dengan sendok / timbangan |
-| 8 | Saos Tomat | 1 sachet | |
-| 9 | Saos Sambal | 1 sachet | |
-| 10 | Kemasan (box + plastik) | 1 set | |
-
-**Cara Perakitan:**
-1. Belah roti odading — jangan putus sepenuhnya
-2. Taruh sosis yang sudah matang di tengah
-3. Susun sayuran: kol → tomat → timun
-4. Tambahkan mayo dan BBQ sauce sesuai porsi
-5. Sertakan sachet saos tomat + sambal di dalam kemasan
-6. Masukkan ke box, bungkus plastik
+Setiap produk mencakup 6 aspek wajib:
+1. **Komposisi** — bahan dan gramasi resmi
+2. **Standar Visual** — tampilan saat disajikan
+3. **Standar Quality** — kondisi bahan yang diterima/digunakan
+4. **Standar Kebersihan** — kondisi area dan alat
+5. **Don't / Larangan** — hal yang tidak boleh dilakukan
+6. **Quality Control** — checklist sebelum produk diserahkan ke customer
 
 ---
 
-## Produk 2 — Odadog Paus Jumbo
+## 1. Odading Rudal Iran
 
-**Harga jual: Rp 29.000**
+### Komposisi
 
-| # | Bahan | Porsi/pcs | Catatan |
-|---|-------|-----------|---------|
-| 1 | Beef Patty Medium (100g) | 1 pcs | Par-cook dari CPNB — finish cook 75°C |
-| 2 | Roti Odading | 1 pcs | Dari CPNB |
-| 3 | Timun Kyuri (iris tipis) | 10 g | |
-| 4 | Kol putih (iris tipis) | 25 g | |
-| 5 | Tomat (iris) | 15 g | |
-| 6 | Mayonnaise (Kewpie mix) | 30 g | |
-| 7 | BBQ Sauce | 30 g | |
-| 8 | Saos Tomat | 1 sachet | |
-| 9 | Saos Sambal | 1 sachet | |
-| 10 | Kemasan (box + plastik) | 1 set | |
+| # | Bahan | Qty | Satuan |
+|---|-------|-----|--------|
+| 1 | Odading Hotdog | 1 | Pcs |
+| 2 | Sosis | 1 | Pcs |
+| 3 | Timun Kyuri | 2 | Pcs |
+| 4 | Tomat | 2 | Pcs |
+| 5 | Lettuce | 20 | Gr |
+| 6 | Mayonaise | 60 | Gr |
+| 7 | BBQ Sauce | 20 | Gr |
 
-**Cara Perakitan:** Sama dengan Odadog Rudal — ganti sosis dengan patty yang sudah dimasak.
+### Standar Visual
+- Bentuk rapi dan simetris
+- Sosis berada **tepat di tengah**
+- Sayuran fresh dan tidak layu
+- Mayo dripping dan **premium look**
+- BBQ sauce merata
+- Tidak berantakan
+- Produk terlihat penuh dan menggugah selera
 
----
+### Standar Quality
 
-## Produk 3 — Burger Liam (Medium)
+| Bahan | Standar |
+|-------|---------|
+| **Odading** | Warna putih bersih · Tekstur lembut · Tidak asam · Tidak berlendir |
+| **Sosis** | Warna merah kecoklatan · Aroma normal · Tidak berair · Tidak asam berlebihan |
+| **Sayuran** | Fresh · Warna cerah · Tidak layu · Tidak busuk |
+| **Saus & Mayo** | Tidak expired · Rasa sesuai standar |
 
-**Harga jual: Rp 29.000**
+### Standar Kebersihan
+- Botol sauce bersih, nozzle tidak tersumbat
+- Area kerja bersih
+- Sayuran dicuci bersih
+- Penyimpanan sesuai SOP → FIFO & FEFO
 
-| # | Bahan | Porsi/pcs | Catatan |
-|---|-------|-----------|---------|
-| 1 | Beef Patty Medium (100g) | 1 pcs | Par-cook dari CPNB — finish cook 75°C |
-| 2 | Bun Burger Medium | 1 pcs | Dibakar sebentar di grill (opsional) |
-| 3 | Timun Kyuri (iris tipis) | 10 g | |
-| 4 | Kol putih (iris tipis) | 25 g | |
-| 5 | Tomat (iris) | 15 g | |
-| 6 | Mayonnaise (Kewpie mix) | 30 g | |
-| 7 | BBQ Sauce | 30 g | |
-| 8 | Saos Tomat | 1 sachet | |
-| 9 | Saos Sambal | 1 sachet | |
-| 10 | Kemasan (box + plastik) | 1 set | |
+### Don't (Larangan)
+- ❌ Mayo terlalu banyak
+- ❌ Saus dan mayo berantakan
+- ❌ Sosis tidak di tengah
+- ❌ Sayuran layu
+- ❌ Produk terlihat kosong
+- ❌ Box kotor
+- ❌ Produk tidak sesuai gambar referensi
 
-**Cara Perakitan:**
-1. Belah bun burger — bakar sebentar di grill jika mau (menambah tekstur)
-2. Bawah bun: taruh patty yang sudah matang
-3. Susun sayuran: kol → tomat → timun
-4. Tambahkan mayo dan BBQ sauce sesuai porsi
-5. Tutup dengan bun atas
-6. Sertakan sachet saos, masukkan ke box
-
----
-
-## Produk 4 — Burger Noel (Small)
-
-**Harga jual: Rp 24.000**
-
-| # | Bahan | Porsi/pcs | Catatan |
-|---|-------|-----------|---------|
-| 1 | Beef Patty Small (±70g) | 1 pcs | Par-cook dari CPNB — finish cook 75°C |
-| 2 | Bun Burger Small | 1 pcs | |
-| 3 | Timun Kyuri (iris tipis) | 10 g | |
-| 4 | Kol putih (iris tipis) | 25 g | |
-| 5 | Tomat (iris) | 15 g | |
-| 6 | Mayonnaise (Kewpie mix) | 30 g | |
-| 7 | BBQ Sauce | 30 g | |
-| 8 | Saos Tomat | 1 sachet | |
-| 9 | Saos Sambal | 1 sachet | |
-| 10 | Kemasan (box + plastik) | 1 set | |
-
-**Cara Perakitan:** Sama dengan Burger Liam — gunakan bun dan patty ukuran small.
+### Quality Control *(centang sebelum serahkan ke customer)*
+- [ ] Visual menarik
+- [ ] Gramasi sesuai
+- [ ] Rasa konsisten
+- [ ] Produk layak jual
+- [ ] Packaging bersih
+- [ ] Dokumentasi tersedia
 
 ---
 
-## Produk 5 — Punten (Minuman)
+## 2. Odadog Paus Jumbo
 
-**Harga jual: Rp 23.000 | Varian: Kopi / Coklat / Matcha**
+### Komposisi
 
-| # | Bahan | Porsi/serving | Catatan |
-|---|-------|---------------|---------|
-| 1 | Bahan minuman (kopi/coklat/matcha) | 100–120 ml | Buat per order, tidak disimpan |
-| 2 | Es batu | Secukupnya | Untuk mempertahankan volume visual |
-| 3 | Cup seal | 1 pcs | Rp 700/serving |
+| # | Bahan | Qty | Satuan |
+|---|-------|-----|--------|
+| 1 | Odading Hotdog | 1 | Pcs |
+| 2 | Patty Reguler | 1 | Pcs (belah 2) |
+| 3 | Timun Kyuri | 2 | Pcs |
+| 4 | Tomat | 2 | Pcs |
+| 5 | Lettuce | 20 | Gr |
+| 6 | Mayonaise | 60 | Gr |
+| 7 | BBQ Sauce | 20 | Gr |
 
-**Cara Pembuatan:**
-1. Siapkan cup, masukkan es batu
-2. Tuang bahan minuman 100–120 ml ke dalam cup
-3. Seal cup dengan mesin cup sealer
-4. Sajikan segera
+### Standar Visual
+- Bentuk rapi dan simetris
+- Beef berada **di dalam odadog**
+- Sayuran fresh dan tidak layu
+- Mayo dripping dan premium look
+- BBQ sauce merata
+- Tidak berantakan
+- Produk terlihat penuh dan menggugah selera
 
-> **Penting:** Punten tidak disimpan — dibuat per order, langsung sajikan.
+### Standar Quality
+
+| Bahan | Standar |
+|-------|---------|
+| **Odading** | Warna putih bersih · Tekstur lembut · Tidak asam · Tidak berlendir |
+| **Beef Patty** | Tidak gosong · Aroma normal · Tidak asam |
+| **Sayuran** | Fresh · Warna cerah · Tidak layu · Tidak busuk |
+| **Saus & Mayo** | Tidak expired · Rasa sesuai standar |
+
+### Standar Kebersihan
+- Botol sauce bersih, nozzle tidak tersumbat
+- Area kerja bersih
+- Sayuran dicuci bersih
+- Penyimpanan sesuai SOP → FIFO & FEFO
+
+### Don't (Larangan)
+- ❌ Mayo terlalu banyak
+- ❌ Saus dan mayo berantakan
+- ❌ Beef gosong dan hancur
+- ❌ Sayuran layu
+- ❌ Produk terlihat kosong
+- ❌ Box kotor
+- ❌ Produk tidak sesuai gambar referensi
+
+### Quality Control *(centang sebelum serahkan ke customer)*
+- [ ] Visual menarik
+- [ ] Gramasi sesuai
+- [ ] Rasa konsisten
+- [ ] Produk layak jual
+- [ ] Packaging bersih
+- [ ] Dokumentasi tersedia
 
 ---
 
-## Informasi Alergen
+## 3. Odadog Chicken Jumbo
 
-| Produk | Mengandung |
-|--------|-----------|
-| Semua burger & odadog | Gluten (roti), Telur (mayo) |
-| Punten Coklat | Susu (jika menggunakan susu) |
-| Semua produk | Kedelai (saos) |
+### Komposisi
+
+| # | Bahan | Qty | Satuan |
+|---|-------|-----|--------|
+| 1 | Odading Hotdog | 1 | Pcs |
+| 2 | Nugget Chicken | 2 | Pcs (belah 4 → 8 slice) |
+| 3 | Timun Kyuri | 2 | Pcs |
+| 4 | Tomat | 2 | Pcs |
+| 5 | Lettuce | 20 | Gr |
+| 6 | Mayonaise | 60 | Gr |
+| 7 | BBQ Sauce | 20 | Gr |
+
+### Standar Visual
+- Bentuk rapi dan simetris
+- Nugget berada **di dalam odadog**
+- Sayuran fresh dan tidak layu
+- Mayo dripping dan premium look
+- BBQ sauce merata
+- Tidak berantakan
+- Produk terlihat penuh dan menggugah selera
+
+### Standar Quality
+
+| Bahan | Standar |
+|-------|---------|
+| **Odading** | Warna putih bersih · Tekstur lembut · Tidak asam · Tidak berlendir |
+| **Nugget** | Tidak gosong · Aroma normal · Tidak asam |
+| **Sayuran** | Fresh · Warna cerah · Tidak layu · Tidak busuk |
+| **Saus & Mayo** | Tidak expired · Rasa sesuai standar |
+
+### Standar Kebersihan
+- Botol sauce bersih, nozzle tidak tersumbat
+- Area kerja bersih
+- Sayuran dicuci bersih
+- Penyimpanan sesuai SOP → FIFO & FEFO
+
+### Don't (Larangan)
+- ❌ Mayo terlalu banyak
+- ❌ Saus dan mayo berantakan
+- ❌ Nugget gosong atau salah cara olah
+- ❌ Sayuran layu
+- ❌ Produk terlihat kosong
+- ❌ Box kotor
+- ❌ Produk tidak sesuai gambar referensi
+
+### Quality Control *(centang sebelum serahkan ke customer)*
+- [ ] Visual menarik
+- [ ] Gramasi sesuai
+- [ ] Rasa konsisten
+- [ ] Produk layak jual
+- [ ] Packaging bersih
+- [ ] Dokumentasi tersedia
+
+---
+
+## 4. Noel Burger
+
+### Komposisi
+
+| # | Bahan | Qty | Satuan |
+|---|-------|-----|--------|
+| 1 | Bun Reguler | 1 | Pcs |
+| 2 | Patty Reguler | 1 | Pcs |
+| 3 | Timun Kyuri | 2 | Pcs |
+| 4 | Tomat | 2 | Pcs |
+| 5 | Lettuce | 20 | Gr |
+| 6 | Mayonaise | 60 | Gr |
+| 7 | BBQ Sauce | 20 | Gr |
+
+### Standar Visual
+- Bentuk rapi dan simetris
+- Beef berada **di tengah**
+- Sayuran fresh dan tidak layu
+- Mayo dripping dan premium look
+- BBQ sauce merata
+- Tidak berantakan
+- Produk terlihat penuh dan menggugah selera
+
+### Standar Quality
+
+| Bahan | Standar |
+|-------|---------|
+| **Bun Burger** | Warna putih bersih · Tekstur lembut · Tidak asam · Tidak hancur |
+| **Beef Patty** | Tidak gosong · Aroma normal · Tidak asam |
+| **Sayuran** | Fresh · Warna cerah · Tidak layu · Tidak busuk |
+| **Saus & Mayo** | Tidak expired · Rasa sesuai standar |
+
+### Standar Kebersihan
+- Botol sauce bersih, nozzle tidak tersumbat
+- Area kerja bersih
+- Sayuran dicuci bersih
+- Penyimpanan sesuai SOP → FIFO & FEFO
+
+### Don't (Larangan)
+- ❌ Mayo terlalu banyak
+- ❌ Saus dan mayo berantakan
+- ❌ Beef gosong atau salah penempatan
+- ❌ Sayuran layu
+- ❌ Produk terlihat kosong
+- ❌ Box kotor
+- ❌ Produk tidak sesuai gambar referensi
+
+### Quality Control *(centang sebelum serahkan ke customer)*
+- [ ] Visual menarik
+- [ ] Gramasi sesuai
+- [ ] Rasa konsisten
+- [ ] Produk layak jual
+- [ ] Packaging bersih
+- [ ] Dokumentasi tersedia
+
+---
+
+## 5. Liam Burger
+
+### Komposisi
+
+| # | Bahan | Qty | Satuan |
+|---|-------|-----|--------|
+| 1 | Bun Medium | 1 | Pcs |
+| 2 | Patty Medium | 1 | Pcs |
+| 3 | Timun Kyuri | 2 | Pcs |
+| 4 | Tomat | 2 | Pcs |
+| 5 | Lettuce | 20 | Gr |
+| 6 | Mayonaise | 60 | Gr |
+| 7 | BBQ Sauce | 20 | Gr |
+
+### Standar Visual
+- Bentuk rapi dan simetris
+- Beef berada **di tengah**
+- Sayuran fresh dan tidak layu
+- Mayo dripping dan premium look
+- BBQ sauce merata
+- Tidak berantakan
+- Produk terlihat penuh dan menggugah selera
+
+### Standar Quality
+
+| Bahan | Standar |
+|-------|---------|
+| **Bun Burger** | Warna putih bersih · Tekstur lembut · Tidak asam · Tidak hancur |
+| **Beef Patty** | Tidak gosong · Aroma normal · Tidak asam |
+| **Sayuran** | Fresh · Warna cerah · Tidak layu · Tidak busuk |
+| **Saus & Mayo** | Tidak expired · Rasa sesuai standar |
+
+### Standar Kebersihan
+- Botol sauce bersih, nozzle tidak tersumbat
+- Area kerja bersih
+- Sayuran dicuci bersih
+- Penyimpanan sesuai SOP → FIFO & FEFO
+
+### Don't (Larangan)
+- ❌ Mayo terlalu banyak
+- ❌ Saus dan mayo berantakan
+- ❌ Beef gosong
+- ❌ Sayuran layu
+- ❌ Produk terlihat kosong
+- ❌ Box kotor
+- ❌ Produk tidak sesuai gambar referensi
+
+### Quality Control *(centang sebelum serahkan ke customer)*
+- [ ] Visual menarik
+- [ ] Gramasi sesuai
+- [ ] Rasa konsisten
+- [ ] Produk layak jual
+- [ ] Packaging bersih
+- [ ] Dokumentasi tersedia
 
 ---
 
 ## Catatan / Versi
-- v1.0 (2026-06-12): Draft awal berdasarkan data COGS aktual — perlu konfirmasi resep final dari Bisnis Development
+- v1.0 (2026-06-12): Draft awal — estimasi berdasarkan data COGS
+- v2.0 (2026-06-13): Digantikan dengan data resmi Tabel Standarisasi Produk dari dokumen operasional Aldis Hotdog
