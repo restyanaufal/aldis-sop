@@ -39,6 +39,7 @@
 | 3 | [[03 - Delivery Order]] | SCM | Draft | Fase 3 |
 | 4 | [[04 - FIFO Monitoring Sheet]] | SCM & Store Leader | Draft | Fase 3 |
 | 19 | [[19 - Inventory Usage Report]] | SCM & Store Leader | Draft | Fase 3 |
+| 24 | [[24 - Blok M Ponpin Integration SOP]] | Manager Blok M, Leader Ponpin | Draft | Fase 1 |
 
 ## 04 - Penjualan & Pelanggan
 | # | Dokumen | PIC | Status | Prioritas |
@@ -57,7 +58,7 @@
 ---
 
 ## Progress
-- **Total SOP:** 27 dokumen (4 SOP Induk + 23 Work Instructions)
+- **Total SOP:** 28 dokumen (4 SOP Induk + 24 Work Instructions)
 - **Aktif:** 4 ✅ (SOP Induk F1–F4)
 - **Draft:** 23 (semua Work Instructions)
 - **Review (uji coba lapangan):** 0
