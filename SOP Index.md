@@ -4,6 +4,14 @@
 
 ---
 
+## 00 - SOP Induk (Formal Parent Documents)
+| # | Dokumen | PIC | Status | Prioritas |
+|---|---------|-----|--------|-----------|
+| F1 | [[SOP-OPS-01 - Opening Outlet]] | Leader, Semua Karyawan | Aktif | Induk |
+| F2 | [[SOP-OPS-02 - Closing Outlet]] | Leader, Semua Karyawan | Aktif | Induk |
+| F3 | [[SOP-OPS-03 - Operasional Dapur]] | Leader, Staff Kitchen | Aktif | Induk |
+| F4 | [[SOP-OPS-04 - Pelayanan Pelanggan]] | Leader, Kasir, Waiters | Aktif | Induk |
+
 ## 01 - Operasional Toko
 | # | Dokumen | PIC | Status | Prioritas |
 |---|---------|-----|--------|-----------|
@@ -11,6 +19,7 @@
 | 7 | [[07 - Grooming Standardization]] | Store Leader | Draft | Fase 2 |
 | 6 | [[06 - Store Cleaning Checklist]] | Store Leader & Crew | Draft | Fase 1 |
 | 9 | [[09 - Greeting Standard]] | Store Leader, Kitchen & Front Crew | Draft | Fase 2 |
+| 10 | [[10 - Closing Checklist Report]] | Store Leader | Draft | Fase 1 |
 
 ## 02 - Dapur & Produk
 | # | Dokumen | PIC | Status | Prioritas |
@@ -48,10 +57,10 @@
 ---
 
 ## Progress
-- **Total SOP:** 22 dokumen
-- **Draft:** 22 ✅
+- **Total SOP:** 27 dokumen (4 SOP Induk + 23 Work Instructions)
+- **Aktif:** 4 ✅ (SOP Induk F1–F4)
+- **Draft:** 23 (semua Work Instructions)
 - **Review (uji coba lapangan):** 0
-- **Aktif:** 0
 
 > Langkah berikutnya: Bawa SOP Fase 1 ke Store Leader untuk review lapangan → uji coba 1–2 minggu → finalize.
 
