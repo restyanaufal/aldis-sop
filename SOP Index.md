@@ -37,6 +37,7 @@
 | 21 | [[21 - Waste Analysis Report]] | Store Leader | Draft v2.0 | Fase 4 ⬆️ |
 | 22 | [[22 - Next Day Preparation List]] | Store Leader | Draft | Fase 2 |
 | 26 | [[26 - Kalibrasi & Pemeliharaan Alat]] | Leader, Store Leader | Draft | Fase 1 🆕 |
+| 32 | [[32 - Minuman Jadi CK — QC & Shelf Life]] | CK · Store Leader penerima | Draft | Fase 2 🆕 |
 
 ## 03 - Supply Chain
 | # | Dokumen | PIC | Status | Prioritas |
@@ -69,7 +70,7 @@
 ---
 
 ## Progress
-- **Total SOP:** 35 dokumen (4 SOP Induk + 31 Work Instructions)
+- **Total SOP:** 36 dokumen (4 SOP Induk + 32 Work Instructions)
 - **Aktif:** 5 ✅ (F1–F4 + #13 Standard Recipe Book)
 - **Draft:** 28 (semua Work Instructions lainnya)
 - **Review (uji coba lapangan):** 0
