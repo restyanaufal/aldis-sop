@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,7 @@
 
     :root {
       --sidebar-w: 280px;
+      --toc-w: 220px;
       --accent: #e85d04;
       --accent-light: #fff3ec;
       --sidebar-bg: #111827;
@@ -20,8 +21,19 @@
       --border: #e5e7eb;
       --bg: #f9fafb;
       --content-bg: #ffffff;
+      --topbar-bg: #ffffff;
       --radius: 8px;
       --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-scale: 1rem;
+    }
+    [data-theme="dark"] {
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: #374151;
+      --bg: #0f172a;
+      --content-bg: #1e293b;
+      --topbar-bg: #1e293b;
+      --accent-light: #431407;
     }
 
     body {
@@ -31,6 +43,7 @@
       display: flex;
       height: 100vh;
       overflow: hidden;
+      transition: background 0.2s, color 0.2s;
     }
 
     /* ── SIDEBAR ── */
@@ -43,440 +56,243 @@
       flex-shrink: 0;
       overflow: hidden;
     }
-
-    .sidebar-header {
-      padding: 20px 16px 16px;
-      border-bottom: 1px solid #1f2937;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .logo-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--accent);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
+    .sidebar-header { padding: 16px 16px 12px; border-bottom: 1px solid #1f2937; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { width: 34px; height: 34px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
     .logo-text { color: #f9fafb; }
-    .logo-text h1 { font-size: 15px; font-weight: 700; line-height: 1.2; }
-    .logo-text span { font-size: 11px; color: #9ca3af; }
+    .logo-text h1 { font-size: 14px; font-weight: 700; line-height: 1.2; }
+    .logo-text span { font-size: 10px; color: #9ca3af; }
 
-    .search-wrap { padding: 10px 12px; }
+    .search-wrap { padding: 8px 12px 4px; }
     .search-wrap input {
-      width: 100%;
-      background: #1f2937;
-      border: 1px solid #374151;
-      border-radius: 6px;
-      padding: 7px 10px;
-      color: #d1d5db;
-      font-size: 13px;
-      outline: none;
+      width: 100%; background: #1f2937; border: 1px solid #374151; border-radius: 6px;
+      padding: 7px 10px; color: #d1d5db; font-size: 12.5px; outline: none;
     }
     .search-wrap input::placeholder { color: #6b7280; }
     .search-wrap input:focus { border-color: var(--accent); }
 
-    .nav-scroll {
-      flex: 1;
-      overflow-y: auto;
-      padding: 4px 0 16px;
+    /* Filter bar */
+    .filter-bar { padding: 6px 12px 4px; display: flex; gap: 4px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 3px 8px; font-size: 10px; border-radius: 20px; border: 1px solid #374151;
+      background: none; color: #6b7280; cursor: pointer; transition: all 0.15s; white-space: nowrap;
     }
+    .filter-btn:hover { border-color: var(--accent); color: #f9fafb; }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+
+    .nav-scroll { flex: 1; overflow-y: auto; padding: 4px 0 4px; }
     .nav-scroll::-webkit-scrollbar { width: 4px; }
-    .nav-scroll::-webkit-scrollbar-track { background: transparent; }
     .nav-scroll::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
 
-    .nav-index {
-      display: block;
-      padding: 8px 16px;
-      color: #9ca3af;
-      font-size: 12px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: color 0.15s;
-    }
+    .nav-index { display: block; padding: 7px 16px; color: #9ca3af; font-size: 12px; cursor: pointer; transition: color 0.15s; }
     .nav-index:hover { color: #f9fafb; }
 
-    .nav-category { margin-top: 4px; }
-
-    .cat-header {
-      display: flex;
-      align-items: center;
-      padding: 8px 16px;
-      cursor: pointer;
-      user-select: none;
+    /* Recently Viewed */
+    .recent-section { border-top: 1px solid #1f2937; padding: 8px 0 4px; }
+    .recent-label { padding: 4px 16px; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: #4b5563; font-weight: 700; }
+    .recent-item {
+      display: flex; align-items: center; padding: 5px 16px 5px 28px; cursor: pointer;
+      gap: 6px; transition: background 0.15s; border: none; background: none; width: 100%; text-align: left;
     }
+    .recent-item:hover { background: var(--sidebar-hover); }
+    .recent-item-name { font-size: 11.5px; color: #6b7280; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .recent-item:hover .recent-item-name { color: #d1d5db; }
+
+    .nav-category { margin-top: 2px; }
+    .cat-header { display: flex; align-items: center; padding: 7px 16px; cursor: pointer; user-select: none; }
     .cat-header:hover .cat-label { color: #f9fafb; }
-
-    .cat-num {
-      width: 20px;
-      height: 20px;
-      background: #374151;
-      border-radius: 4px;
-      font-size: 10px;
-      font-weight: 700;
-      color: #9ca3af;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-right: 8px;
-    }
-
-    .cat-label {
-      font-size: 11px;
-      font-weight: 600;
-      color: #9ca3af;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      flex: 1;
-    }
-
-    .cat-toggle {
-      color: #4b5563;
-      font-size: 10px;
-      transition: transform 0.2s;
-    }
+    .cat-num { width: 20px; height: 20px; background: #374151; border-radius: 4px; font-size: 10px; font-weight: 700; color: #9ca3af; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-right: 8px; }
+    .cat-label { font-size: 11px; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; flex: 1; }
+    .cat-toggle { color: #4b5563; font-size: 10px; transition: transform 0.2s; }
     .cat-toggle.open { transform: rotate(90deg); }
-
     .cat-files { display: none; }
     .cat-files.open { display: block; }
 
-    .nav-item {
-      display: flex;
-      align-items: center;
-      padding: 7px 16px 7px 40px;
-      cursor: pointer;
-      gap: 8px;
-      transition: background 0.15s;
-      border: none;
-      background: none;
-      width: 100%;
-      text-align: left;
-    }
+    .nav-item { display: flex; align-items: center; padding: 6px 16px 6px 40px; cursor: pointer; gap: 8px; transition: background 0.15s; border: none; background: none; width: 100%; text-align: left; }
     .nav-item:hover { background: var(--sidebar-hover); }
     .nav-item.active { background: var(--sidebar-active); }
     .nav-item.active .item-name { color: #f9fafb; }
     .nav-item.active .item-num { background: var(--accent); color: #fff; }
     .nav-item.hidden { display: none; }
-
-    .item-num {
-      width: 22px;
-      height: 22px;
-      background: #1f2937;
-      border-radius: 5px;
-      font-size: 10px;
-      font-weight: 700;
-      color: #6b7280;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .item-name {
-      font-size: 12.5px;
-      color: #9ca3af;
-      line-height: 1.3;
-    }
+    .item-num { width: 22px; height: 22px; background: #1f2937; border-radius: 5px; font-size: 10px; font-weight: 700; color: #6b7280; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .item-name { font-size: 12.5px; color: #9ca3af; line-height: 1.3; }
 
     /* ── MAIN ── */
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      overflow: hidden;
-    }
+    .main { flex: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 
     .topbar {
-      background: var(--content-bg);
+      background: var(--topbar-bg);
       border-bottom: 1px solid var(--border);
-      padding: 0 28px;
+      padding: 0 20px;
       height: 52px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-shrink: 0;
+      gap: 8px;
     }
+    .topbar-left { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .topbar-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      color: var(--text-muted);
+    .back-btn {
+      display: none; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--border);
+      background: none; cursor: pointer; color: var(--text-muted); font-size: 16px;
+      transition: all 0.15s;
     }
-    .breadcrumb span { color: var(--text); font-weight: 500; }
-    .breadcrumb .sep { color: #d1d5db; }
+    .back-btn:hover { background: var(--bg); color: var(--text); }
+    .back-btn.visible { display: flex; }
 
-    .status-badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); min-width: 0; }
+    .breadcrumb span { color: var(--text); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .breadcrumb .sep { color: var(--border); flex-shrink: 0; }
+
+    .status-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
     .badge-draft { background: #dbeafe; color: #1d4ed8; }
     .badge-review { background: #fef9c3; color: #a16207; }
     .badge-aktif { background: #dcfce7; color: #15803d; }
     .badge-notexist { background: #f3f4f6; color: #6b7280; }
 
-    .content-scroll {
-      flex: 1;
-      overflow-y: auto;
-      padding: 32px 28px 48px;
+    /* Topbar control buttons */
+    .ctrl-btn {
+      display: flex; align-items: center; justify-content: center;
+      height: 30px; min-width: 30px; padding: 0 8px;
+      border-radius: 6px; border: 1px solid var(--border);
+      background: none; cursor: pointer; color: var(--text-muted);
+      font-size: 12px; font-weight: 600; gap: 4px; transition: all 0.15s;
+      white-space: nowrap;
     }
+    .ctrl-btn:hover { background: var(--bg); color: var(--text); border-color: var(--text-muted); }
+    .ctrl-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* Content wrapper with ToC */
+    .content-wrapper { flex: 1; display: flex; overflow: hidden; }
+
+    .content-scroll { flex: 1; overflow-y: auto; padding: 32px 28px 48px; }
     .content-scroll::-webkit-scrollbar { width: 6px; }
-    .content-scroll::-webkit-scrollbar-track { background: transparent; }
     .content-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
 
-    /* ── WELCOME ── */
-    .welcome {
-      max-width: 620px;
-      margin: 40px auto;
-      text-align: center;
-    }
-    .welcome-icon { font-size: 52px; margin-bottom: 16px; }
-    .welcome h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-    .welcome p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin: 28px 0;
-    }
-    .stat-card {
+    /* ── TOC PANEL ── */
+    .toc-panel {
+      width: var(--toc-w);
+      flex-shrink: 0;
+      overflow-y: auto;
+      border-left: 1px solid var(--border);
+      padding: 28px 0;
+      display: none;
       background: var(--content-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
-      text-align: center;
     }
+    .toc-panel.visible { display: block; }
+    .toc-panel::-webkit-scrollbar { width: 3px; }
+    .toc-panel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .toc-header { padding: 0 16px 10px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+    .toc-item {
+      display: block; padding: 5px 16px; font-size: 12px; color: var(--text-muted);
+      text-decoration: none; cursor: pointer; border-left: 2px solid transparent;
+      margin-left: -1px; transition: all 0.15s; line-height: 1.4;
+    }
+    .toc-item:hover { color: var(--text); background: var(--bg); }
+    .toc-item.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+    .toc-item.toc-h3 { padding-left: 28px; font-size: 11px; }
+
+    /* ── WELCOME ── */
+    .welcome { max-width: 620px; margin: 40px auto; text-align: center; }
+    .welcome-icon { font-size: 52px; margin-bottom: 16px; }
+    .welcome h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .welcome p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+    .stat-card { background: var(--content-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center; }
     .stat-num { font-size: 28px; font-weight: 700; color: var(--accent); }
     .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
     /* ── META CARD ── */
-    .meta-card {
-      background: var(--accent-light);
-      border: 1px solid #fbd38d;
-      border-radius: var(--radius);
-      padding: 14px 18px;
-      margin-bottom: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+    .meta-card { background: var(--accent-light); border: 1px solid #fbd38d; border-radius: var(--radius); padding: 14px 18px; margin-bottom: 24px; display: flex; flex-wrap: wrap; gap: 20px; }
     .meta-item { display: flex; flex-direction: column; gap: 2px; }
     .meta-key { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: #9a3412; font-weight: 600; }
     .meta-val { font-size: 13px; font-weight: 500; color: #7c2d12; }
 
     /* ── MARKDOWN CONTENT ── */
-    .md-body { max-width: 820px; }
+    .md-body { max-width: 820px; font-size: var(--font-scale); }
 
-    .md-body h1 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--accent);
-      color: var(--text);
-    }
-    .md-body h2 {
-      font-size: 16px;
-      font-weight: 700;
-      margin: 28px 0 12px;
-      color: var(--text);
-    }
-    .md-body h2::before {
-      content: '';
-      display: inline-block;
-      width: 4px;
-      height: 16px;
-      background: var(--accent);
-      border-radius: 2px;
-      margin-right: 8px;
-      vertical-align: middle;
-    }
-    .md-body h3 {
-      font-size: 14px;
-      font-weight: 600;
-      margin: 20px 0 8px;
-      color: #374151;
-    }
-    .md-body p { font-size: 14px; line-height: 1.7; color: #374151; margin-bottom: 12px; }
+    .md-body h1 { font-size: calc(var(--font-scale) * 1.55); font-weight: 700; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--accent); color: var(--text); }
+    .md-body h2 { font-size: calc(var(--font-scale) * 1.13); font-weight: 700; margin: 28px 0 12px; color: var(--text); }
+    .md-body h2::before { content: ''; display: inline-block; width: 4px; height: 16px; background: var(--accent); border-radius: 2px; margin-right: 8px; vertical-align: middle; }
+    .md-body h3 { font-size: calc(var(--font-scale) * 1); font-weight: 600; margin: 20px 0 8px; color: #374151; }
+    .md-body p { font-size: var(--font-scale); line-height: 1.7; color: #374151; margin-bottom: 12px; }
     .md-body hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
     .md-body strong { color: var(--text); }
     .md-body em { color: var(--text-muted); }
-    .md-body code {
-      background: #f3f4f6;
-      border-radius: 4px;
-      padding: 1px 6px;
-      font-size: 12.5px;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      color: #e85d04;
-    }
-    .md-body pre {
-      background: #1c1c1e;
-      border-radius: var(--radius);
-      padding: 16px;
-      overflow-x: auto;
-      margin: 12px 0 16px;
-    }
-    .md-body pre code {
-      background: none;
-      color: #e5e7eb;
-      font-size: 13px;
-      padding: 0;
-    }
+    .md-body code { background: #f3f4f6; border-radius: 4px; padding: 1px 6px; font-size: calc(var(--font-scale) * 0.9); font-family: 'SF Mono', 'Fira Code', monospace; color: #e85d04; }
+    .md-body pre { background: #1c1c1e; border-radius: var(--radius); padding: 16px; overflow-x: auto; margin: 12px 0 16px; }
+    .md-body pre code { background: none; color: #e5e7eb; font-size: 13px; padding: 0; }
 
-    /* Tables */
-    .md-body table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      margin: 12px 0 20px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 0 0 1px var(--border);
-    }
-    .md-body th {
-      background: #f3f4f6;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 10px 14px;
-      text-align: left;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
-    }
-    .md-body td {
-      padding: 9px 14px;
-      border-bottom: 1px solid #f3f4f6;
-      color: #374151;
-      vertical-align: top;
-      line-height: 1.5;
-    }
+    [data-theme="dark"] .md-body p,
+    [data-theme="dark"] .md-body li,
+    [data-theme="dark"] .md-body td { color: #d1d5db; }
+    [data-theme="dark"] .md-body h3 { color: #e5e7eb; }
+    [data-theme="dark"] .md-body code { background: #374151; color: #fb923c; }
+
+    .md-body table { width: 100%; border-collapse: collapse; font-size: calc(var(--font-scale) * 0.93); margin: 12px 0 20px; border-radius: var(--radius); overflow: hidden; box-shadow: 0 0 0 1px var(--border); }
+    .md-body th { background: #f3f4f6; font-size: calc(var(--font-scale) * 0.78); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 14px; text-align: left; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    .md-body td { padding: 9px 14px; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; line-height: 1.5; }
     .md-body tr:last-child td { border-bottom: none; }
     .md-body tr:hover td { background: #fafafa; }
+    [data-theme="dark"] .md-body th { background: #374151; }
+    [data-theme="dark"] .md-body td { border-bottom-color: #374151; }
+    [data-theme="dark"] .md-body tr:hover td { background: #334155; }
 
-    /* Lists */
     .md-body ul { padding-left: 20px; margin-bottom: 12px; }
-    .md-body li { font-size: 14px; line-height: 1.7; color: #374151; margin-bottom: 3px; }
-
-    /* Checkboxes */
-    .md-body input[type="checkbox"] {
-      accent-color: var(--accent);
-      width: 15px;
-      height: 15px;
-      margin-right: 6px;
-      vertical-align: middle;
-      cursor: pointer;
-    }
-    .md-body li:has(input[type="checkbox"]) {
-      list-style: none;
-      margin-left: -20px;
-      padding: 3px 0;
-    }
-
-    /* Blockquote */
-    .md-body blockquote {
-      border-left: 3px solid var(--accent);
-      padding: 8px 16px;
-      margin: 12px 0;
-      background: var(--accent-light);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      color: #92400e;
-      font-size: 13.5px;
-    }
+    .md-body li { font-size: var(--font-scale); line-height: 1.7; color: #374151; margin-bottom: 3px; }
+    .md-body input[type="checkbox"] { accent-color: var(--accent); width: 15px; height: 15px; margin-right: 6px; vertical-align: middle; cursor: pointer; }
+    .md-body li:has(input[type="checkbox"]) { list-style: none; margin-left: -20px; padding: 3px 0; }
+    .md-body blockquote { border-left: 3px solid var(--accent); padding: 8px 16px; margin: 12px 0; background: var(--accent-light); border-radius: 0 var(--radius) var(--radius) 0; color: #92400e; font-size: calc(var(--font-scale) * 0.96); }
 
     /* Wiki links */
-    .wiki-link {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px dashed var(--accent);
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.15s;
-      border-radius: 3px;
-      padding: 0 2px;
-    }
-    .wiki-link:hover {
-      background: var(--accent-light);
-      border-bottom-style: solid;
-    }
-    .wiki-link-broken {
-      color: #9ca3af;
-      border-bottom: 1px dashed #d1d5db;
-      cursor: not-allowed;
-      border-radius: 3px;
-      padding: 0 2px;
-    }
+    .wiki-link { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); font-weight: 500; cursor: pointer; transition: background 0.15s; border-radius: 3px; padding: 0 2px; }
+    .wiki-link:hover { background: var(--accent-light); border-bottom-style: solid; }
+    .wiki-link-broken { color: #9ca3af; border-bottom: 1px dashed #d1d5db; cursor: not-allowed; border-radius: 3px; padding: 0 2px; }
 
     /* Loading */
-    .loading {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 200px;
-      color: var(--text-muted);
-      font-size: 14px;
-      gap: 10px;
-    }
-    .spinner {
-      width: 20px;
-      height: 20px;
-      border: 2px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
+    .loading { display: flex; align-items: center; justify-content: center; height: 200px; color: var(--text-muted); font-size: 14px; gap: 10px; }
+    .spinner { width: 20px; height: 20px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Mobile */
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--text-muted);
-      font-size: 20px;
-      padding: 4px;
-    }
+    /* Full-text search results */
+    .search-results { padding: 4px 0 8px; border-top: 1px solid #1f2937; }
+    .search-result-label { padding: 4px 16px; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: #4b5563; font-weight: 700; }
+    .search-result-item { display: block; padding: 6px 16px 6px 28px; cursor: pointer; transition: background 0.15s; border: none; background: none; width: 100%; text-align: left; }
+    .search-result-item:hover { background: var(--sidebar-hover); }
+    .search-result-name { font-size: 12px; color: #9ca3af; display: block; }
+    .search-result-item:hover .search-result-name { color: #f9fafb; }
+    .search-result-snippet { font-size: 10.5px; color: #4b5563; display: block; margin-top: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .search-highlight { background: #92400e; color: #fef3c7; border-radius: 2px; padding: 0 1px; }
 
+    /* Mobile */
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 20px; padding: 4px; }
     @media (max-width: 768px) {
-      .sidebar {
-        position: fixed;
-        left: -100%;
-        z-index: 100;
-        transition: left 0.25s;
-        box-shadow: 4px 0 20px rgba(0,0,0,0.3);
-      }
+      .sidebar { position: fixed; left: -100%; z-index: 100; transition: left 0.25s; box-shadow: 4px 0 20px rgba(0,0,0,0.3); }
       .sidebar.open { left: 0; }
       .menu-toggle { display: block; }
-      .overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.4);
-        z-index: 99;
-      }
+      .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 99; }
       .overlay.open { display: block; }
       .content-scroll { padding: 20px 16px 40px; }
-      .topbar { padding: 0 16px; }
+      .topbar { padding: 0 12px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .toc-panel { display: none !important; }
+      .ctrl-btn span { display: none; }
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      .sidebar, .toc-panel, .overlay, .topbar { display: none !important; }
+      body { overflow: auto; height: auto; display: block; }
+      .main { height: auto; display: block; }
+      .content-wrapper { display: block; overflow: visible; }
+      .content-scroll { overflow: visible; padding: 0; }
+      .md-body { max-width: 100%; }
+      .meta-card { break-inside: avoid; }
+      .md-body table { break-inside: avoid; }
+      .md-body h2, .md-body h3 { break-after: avoid; }
     }
   </style>
 </head>
@@ -497,30 +313,53 @@
   </div>
 
   <div class="search-wrap">
-    <input type="text" id="search" placeholder="Cari SOP..." oninput="filterNav(this.value)">
+    <input type="text" id="search" placeholder="🔍 Cari SOP atau konten..." oninput="handleSearch(this.value)">
   </div>
 
-  <div class="nav-scroll">
-    <a class="nav-index" onclick="loadIndex()">📋 Master Index</a>
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-btn active" onclick="setFilter(this,'all')">Semua</button>
+    <button class="filter-btn" onclick="setFilter(this,'Fase 1')">Fase 1</button>
+    <button class="filter-btn" onclick="setFilter(this,'Fase 2')">Fase 2</button>
+    <button class="filter-btn" onclick="setFilter(this,'Fase 3')">Fase 3</button>
+    <button class="filter-btn" onclick="setFilter(this,'Induk')">Induk</button>
+  </div>
 
+  <div class="nav-scroll" id="nav-scroll">
+    <a class="nav-index" onclick="loadIndex()">📋 Master Index</a>
     <div id="nav-tree"></div>
+    <div id="search-results-panel" style="display:none"></div>
+    <div class="recent-section" id="recent-section" style="display:none">
+      <div class="recent-label">🕐 Terakhir Dibuka</div>
+      <div id="recent-list"></div>
+    </div>
   </div>
 </nav>
 
 <!-- MAIN -->
 <div class="main">
   <div class="topbar">
-    <div style="display:flex;align-items:center;gap:12px">
+    <div class="topbar-left">
       <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumb" id="breadcrumb">
-        <span>SOP Aldies</span>
-      </div>
+      <button class="back-btn" id="back-btn" onclick="goBack()" title="Kembali (Alt+←)">←</button>
+      <div class="breadcrumb" id="breadcrumb"><span>SOP Aldies</span></div>
     </div>
-    <div id="status-badge"></div>
+    <div class="topbar-right">
+      <span id="status-badge"></span>
+      <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Perkecil teks">A−</button>
+      <button class="ctrl-btn" onclick="changeFontSize(1)" title="Perbesar teks">A+</button>
+      <button class="ctrl-btn" id="dark-btn" onclick="toggleDark()" title="Dark mode">🌙</button>
+      <button class="ctrl-btn" onclick="printDoc()" title="Print / Save PDF">🖨️ <span>Print</span></button>
+    </div>
   </div>
 
-  <div class="content-scroll" id="content-scroll">
-    <div id="content-area"></div>
+  <div class="content-wrapper">
+    <div class="content-scroll" id="content-scroll">
+      <div id="content-area"></div>
+    </div>
+    <div class="toc-panel" id="toc-panel">
+      <div class="toc-header">Daftar Isi</div>
+      <div id="toc-list"></div>
+    </div>
   </div>
 </div>
 
@@ -528,9 +367,7 @@
 // ── NAV DATA ──────────────────────────────────────────────────
 const navData = [
   {
-    id: "00",
-    label: "SOP Induk",
-    badge: "Formal",
+    id: "00", label: "SOP Induk", badge: "Formal",
     files: [
       { num: "F1", name: "Opening Outlet",       path: "00 - SOP Induk/SOP-OPS-01 - Opening Outlet.md",       priority: "Induk" },
       { num: "F2", name: "Closing Outlet",        path: "00 - SOP Induk/SOP-OPS-02 - Closing Outlet.md",        priority: "Induk" },
@@ -539,82 +376,83 @@ const navData = [
     ]
   },
   {
-    id: "01",
-    label: "Operasional Toko",
+    id: "01", label: "Operasional Toko",
     files: [
-      { num: 8,  name: "Opening Checklist Report",   path: "01 - Operasional Toko/08 - Opening Checklist Report.md",   priority: "Fase 1" },
-      { num: 7,  name: "Grooming Standardization",   path: "01 - Operasional Toko/07 - Grooming Standardization.md",   priority: "Fase 2" },
-      { num: 6,  name: "Store Cleaning Checklist",   path: "01 - Operasional Toko/06 - Store Cleaning Checklist.md",   priority: "Fase 1" },
-      { num: 9,  name: "Greeting Standard",          path: "01 - Operasional Toko/09 - Greeting Standard.md",          priority: "Fase 2" },
-      { num: 10, name: "Closing Checklist Report",    path: "01 - Operasional Toko/10 - Closing Checklist Report.md",    priority: "Fase 1" },
-      { num: 27, name: "Kesehatan & Higienitas",      path: "01 - Operasional Toko/27 - Kesehatan & Higienitas Karyawan.md", priority: "Fase 1" },
-      { num: 28, name: "Training & Onboarding",       path: "01 - Operasional Toko/28 - Training & Onboarding Karyawan.md",  priority: "Fase 2" },
-      { num: 29, name: "Emergency Response",          path: "01 - Operasional Toko/29 - Emergency Response.md",              priority: "Fase 1" },
+      { num: 8,  name: "Opening Checklist Report",      path: "01 - Operasional Toko/08 - Opening Checklist Report.md",          priority: "Fase 1" },
+      { num: 7,  name: "Grooming Standardization",      path: "01 - Operasional Toko/07 - Grooming Standardization.md",          priority: "Fase 2" },
+      { num: 6,  name: "Store Cleaning Checklist",      path: "01 - Operasional Toko/06 - Store Cleaning Checklist.md",          priority: "Fase 1" },
+      { num: 9,  name: "Greeting Standard",             path: "01 - Operasional Toko/09 - Greeting Standard.md",                 priority: "Fase 2" },
+      { num: 10, name: "Closing Checklist Report",      path: "01 - Operasional Toko/10 - Closing Checklist Report.md",          priority: "Fase 1" },
+      { num: 27, name: "Kesehatan & Higienitas",        path: "01 - Operasional Toko/27 - Kesehatan & Higienitas Karyawan.md",   priority: "Fase 1" },
+      { num: 28, name: "Training & Onboarding",         path: "01 - Operasional Toko/28 - Training & Onboarding Karyawan.md",    priority: "Fase 2" },
+      { num: 29, name: "Emergency Response",            path: "01 - Operasional Toko/29 - Emergency Response.md",                priority: "Fase 1" },
     ]
   },
   {
-    id: "02",
-    label: "Dapur & Produk",
+    id: "02", label: "Dapur & Produk",
     files: [
-      { num: 5,  name: "Food Safety Checklist",       path: "02 - Dapur & Produk/05 - Food Safety Checklist.md",       priority: "Fase 1" },
-      { num: 13, name: "Standard Recipe Book",        path: "02 - Dapur & Produk/13 - Standard Recipe Book.md",        priority: "Fase 1" },
-      { num: 14, name: "Cooking Time Standard",       path: "02 - Dapur & Produk/14 - Cooking Time Standard.md",       priority: "Fase 1" },
-      { num: 15, name: "Plating Guide",               path: "02 - Dapur & Produk/15 - Plating Guide.md",               priority: "Fase 2" },
-      { num: 16, name: "Quality Control Form",        path: "02 - Dapur & Produk/16 - Quality Control Form.md",        priority: "Fase 4" },
-      { num: 17, name: "Menu Availability Checklist", path: "02 - Dapur & Produk/17 - Menu Availability Checklist.md", priority: "Fase 2" },
-      { num: 21, name: "Waste Analysis Report",       path: "02 - Dapur & Produk/21 - Waste Analysis Report.md",       priority: "Fase 4" },
-      { num: 22, name: "Next Day Preparation List",  path: "02 - Dapur & Produk/22 - Next Day Preparation List.md",   priority: "Fase 2" },
-      { num: 26, name: "Kalibrasi & Pemeliharaan Alat", path: "02 - Dapur & Produk/26 - Kalibrasi & Pemeliharaan Alat.md", priority: "Fase 1" },
+      { num: 5,  name: "Food Safety Checklist",         path: "02 - Dapur & Produk/05 - Food Safety Checklist.md",              priority: "Fase 1" },
+      { num: 13, name: "Standard Recipe Book",          path: "02 - Dapur & Produk/13 - Standard Recipe Book.md",               priority: "Fase 1" },
+      { num: 14, name: "Cooking Time Standard",         path: "02 - Dapur & Produk/14 - Cooking Time Standard.md",              priority: "Fase 1" },
+      { num: 15, name: "Plating Guide",                 path: "02 - Dapur & Produk/15 - Plating Guide.md",                      priority: "Fase 2" },
+      { num: 16, name: "Quality Control Form",          path: "02 - Dapur & Produk/16 - Quality Control Form.md",               priority: "Fase 4" },
+      { num: 17, name: "Menu Availability Checklist",   path: "02 - Dapur & Produk/17 - Menu Availability Checklist.md",        priority: "Fase 2" },
+      { num: 21, name: "Waste Analysis Report",         path: "02 - Dapur & Produk/21 - Waste Analysis Report.md",              priority: "Fase 4" },
+      { num: 22, name: "Next Day Preparation List",     path: "02 - Dapur & Produk/22 - Next Day Preparation List.md",          priority: "Fase 2" },
+      { num: 26, name: "Kalibrasi & Pemeliharaan Alat", path: "02 - Dapur & Produk/26 - Kalibrasi & Pemeliharaan Alat.md",      priority: "Fase 1" },
     ]
   },
   {
-    id: "03",
-    label: "Supply Chain",
+    id: "03", label: "Supply Chain",
     files: [
-      { num: 3,  name: "Delivery Order",            path: "03 - Supply Chain/03 - Delivery Order.md",                   priority: "Fase 3" },
-      { num: 4,  name: "FIFO Monitoring Sheet",     path: "03 - Supply Chain/04 - FIFO Monitoring Sheet.md",             priority: "Fase 3" },
-      { num: 19, name: "Inventory Usage Report",    path: "03 - Supply Chain/19 - Inventory Usage Report.md",            priority: "Fase 3" },
-      { num: 24, name: "Blok M × Ponpin Integration", path: "03 - Supply Chain/24 - Blok M Ponpin Integration SOP.md", priority: "Fase 1" },
+      { num: 3,  name: "Delivery Order",               path: "03 - Supply Chain/03 - Delivery Order.md",                        priority: "Fase 3" },
+      { num: 4,  name: "FIFO Monitoring Sheet",        path: "03 - Supply Chain/04 - FIFO Monitoring Sheet.md",                 priority: "Fase 3" },
+      { num: 19, name: "Inventory Usage Report",       path: "03 - Supply Chain/19 - Inventory Usage Report.md",                priority: "Fase 3" },
+      { num: 24, name: "Blok M × Ponpin Integration",  path: "03 - Supply Chain/24 - Blok M Ponpin Integration SOP.md",        priority: "Fase 1" },
     ]
   },
   {
-    id: "04",
-    label: "Penjualan & Pelanggan",
+    id: "04", label: "Penjualan & Pelanggan",
     files: [
-      { num: 1,  name: "Customer Feedback Form",   path: "04 - Penjualan & Pelanggan/01 - Customer Feedback Form.md",   priority: "Fase 5" },
-      { num: 2,  name: "Store Performance History", path: "04 - Penjualan & Pelanggan/02 - Store Performance History.md", priority: "Fase 5" },
-      { num: 12, name: "Upselling Product",         path: "04 - Penjualan & Pelanggan/12 - Upselling Product.md",         priority: "Fase 2" },
-      { num: 18, name: "Sales Summary Report",      path: "04 - Penjualan & Pelanggan/18 - Sales Summary Report.md",      priority: "Fase 4" },
-      { num: 20, name: "Daily Sales Report",          path: "04 - Penjualan & Pelanggan/20 - Daily Sales Report.md",          priority: "Fase 4" },
-      { num: 25, name: "Penanganan Komplain & Insiden", path: "04 - Penjualan & Pelanggan/25 - Penanganan Komplain & Insiden.md", priority: "Fase 1" },
+      { num: 1,  name: "Customer Feedback Form",       path: "04 - Penjualan & Pelanggan/01 - Customer Feedback Form.md",       priority: "Fase 5" },
+      { num: 2,  name: "Store Performance History",    path: "04 - Penjualan & Pelanggan/02 - Store Performance History.md",    priority: "Fase 5" },
+      { num: 12, name: "Upselling Product",            path: "04 - Penjualan & Pelanggan/12 - Upselling Product.md",            priority: "Fase 2" },
+      { num: 18, name: "Sales Summary Report",         path: "04 - Penjualan & Pelanggan/18 - Sales Summary Report.md",         priority: "Fase 4" },
+      { num: 20, name: "Daily Sales Report",           path: "04 - Penjualan & Pelanggan/20 - Daily Sales Report.md",           priority: "Fase 4" },
+      { num: 25, name: "Penanganan Komplain & Insiden",path: "04 - Penjualan & Pelanggan/25 - Penanganan Komplain & Insiden.md",priority: "Fase 1" },
     ]
   },
   {
-    id: "05",
-    label: "Keuangan",
+    id: "05", label: "Keuangan",
     files: [
       { num: 23, name: "Petty Cash", path: "05 - Keuangan/23 - Petty Cash.md", priority: "Fase 4" },
     ]
   },
   {
-    id: "06",
-    label: "SDM & Disiplin",
+    id: "06", label: "SDM & Disiplin",
     files: [
-      { num: 30, name: "Rules Operasional & Code of Conduct", path: "06 - SDM & Disiplin/30 - Rules Operasional Store & Code of Conduct.md", priority: "Fase 1" },
+      { num: 30, name: "Rules & Code of Conduct", path: "06 - SDM & Disiplin/30 - Rules Operasional Store & Code of Conduct.md", priority: "Fase 1" },
     ]
   }
 ];
+
+// ── STATE ────────────────────────────────────────────────────
+let activeBtn = null;
+let navHistory = [];
+let currentPath = null;
+let activeFilter = 'all';
+let contentIndex = {};  // path → rawText for full-text search
+let fontSizeLevel = parseInt(localStorage.getItem('sop-font') || '0');
+let isDark = localStorage.getItem('sop-dark') === '1';
 
 // ── WIKI LINK RESOLVER ───────────────────────────────────────
 const linkMap = {};
 navData.forEach(cat => {
   cat.files.forEach(f => {
-    // Map by full filename (without .md)
     const filename = f.path.split('/').pop().replace('.md', '');
-    linkMap[filename.toLowerCase()] = { path: f.path, name: f.name, cat: cat.label };
-    // Map by display name
-    linkMap[f.name.toLowerCase()] = { path: f.path, name: f.name, cat: cat.label };
-    // Map by filename without leading number "XX - "
+    [filename.toLowerCase(), f.name.toLowerCase()].forEach(k => {
+      linkMap[k] = { path: f.path, name: f.name, cat: cat.label };
+    });
     const bare = filename.replace(/^\d+ - /i, '').replace(/^SOP-[A-Z]+-\d+ - /i, '');
     if (bare) linkMap[bare.toLowerCase()] = { path: f.path, name: f.name, cat: cat.label };
   });
@@ -623,7 +461,6 @@ navData.forEach(cat => {
 function resolveWikiLink(target) {
   const t = target.trim().toLowerCase();
   if (linkMap[t]) return linkMap[t];
-  // Fuzzy: find best partial match
   for (const [key, val] of Object.entries(linkMap)) {
     if (key.includes(t) || t.includes(key)) return val;
   }
@@ -642,9 +479,8 @@ function buildNav() {
     header.className = 'cat-header';
     header.innerHTML = `
       <div class="cat-num">${cat.id}</div>
-      <div class="cat-label">${cat.label}</div>
-      <div class="cat-toggle open">▶</div>
-    `;
+      <div class="cat-label">${cat.label}${cat.badge ? ` <span style="font-size:9px;background:var(--accent);color:#fff;padding:1px 5px;border-radius:3px;margin-left:4px">${cat.badge}</span>` : ''}</div>
+      <span class="cat-toggle open">›</span>`;
     header.onclick = () => toggleCat(wrap);
 
     const files = document.createElement('div');
@@ -655,6 +491,7 @@ function buildNav() {
       btn.className = 'nav-item';
       btn.dataset.path = f.path;
       btn.dataset.name = f.name.toLowerCase();
+      btn.dataset.priority = f.priority;
       btn.innerHTML = `<span class="item-num">${f.num}</span><span class="item-name">${f.name}</span>`;
       btn.onclick = () => { loadMd(f.path, f.name, cat.label); closeSidebar(); };
       files.appendChild(btn);
@@ -673,13 +510,25 @@ function toggleCat(wrap) {
   toggle.classList.toggle('open');
 }
 
-// ── SEARCH ──────────────────────────────────────────────────
-function filterNav(q) {
+// ── FILTER ───────────────────────────────────────────────────
+function setFilter(btn, value) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = value;
+  handleSearch(document.getElementById('search').value);
+}
+
+// ── SEARCH (name + full-text) ─────────────────────────────────
+function handleSearch(q) {
   const query = q.toLowerCase().trim();
+  const resultsPanel = document.getElementById('search-results-panel');
+  const navTree = document.getElementById('nav-tree');
+
+  // Filter sidebar nav items
   document.querySelectorAll('.nav-item').forEach(btn => {
-    const name = btn.dataset.name || '';
-    const match = !query || name.includes(query);
-    btn.classList.toggle('hidden', !match);
+    const nameMatch = !query || btn.dataset.name.includes(query);
+    const filterMatch = activeFilter === 'all' || btn.dataset.priority === activeFilter;
+    btn.classList.toggle('hidden', !(nameMatch && filterMatch));
   });
   document.querySelectorAll('.nav-category').forEach(cat => {
     const visible = [...cat.querySelectorAll('.nav-item')].some(b => !b.classList.contains('hidden'));
@@ -689,6 +538,76 @@ function filterNav(q) {
       cat.querySelector('.cat-toggle').classList.add('open');
     }
   });
+
+  // Full-text search results
+  if (query.length >= 2 && Object.keys(contentIndex).length > 0) {
+    const matches = [];
+    Object.entries(contentIndex).forEach(([path, text]) => {
+      const idx = text.toLowerCase().indexOf(query);
+      if (idx !== -1) {
+        const f = findFileByPath(path);
+        if (!f) return;
+        const filterOk = activeFilter === 'all' || f.priority === activeFilter;
+        if (!filterOk) return;
+        const snippet = text.slice(Math.max(0, idx - 30), idx + 60).replace(/\n/g, ' ');
+        matches.push({ path, name: f.name, cat: f.catLabel, snippet, idx });
+      }
+    });
+    if (matches.length > 0) {
+      navTree.style.display = 'none';
+      resultsPanel.style.display = 'block';
+      resultsPanel.innerHTML = `
+        <div class="search-results">
+          <div class="search-result-label">🔍 ${matches.length} hasil dalam konten</div>
+          ${matches.slice(0,8).map(m => `
+            <button class="search-result-item" onclick="loadMd('${m.path.replace(/'/g,"\\'")}','${m.name.replace(/'/g,"\\'")}','${m.cat.replace(/'/g,"\\'")}');closeSidebar()">
+              <span class="search-result-name">${m.name}</span>
+              <span class="search-result-snippet">...${escHtml(m.snippet)}...</span>
+            </button>`).join('')}
+        </div>`;
+      return;
+    }
+  }
+
+  // Hide full-text results if not enough query or no matches
+  navTree.style.display = '';
+  resultsPanel.style.display = 'none';
+}
+
+function findFileByPath(path) {
+  for (const cat of navData) {
+    for (const f of cat.files) {
+      if (f.path === path) return { ...f, catLabel: cat.label };
+    }
+  }
+  return null;
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── RECENTLY VIEWED ───────────────────────────────────────────
+function getRecent() {
+  try { return JSON.parse(localStorage.getItem('sop-recent') || '[]'); } catch { return []; }
+}
+function addRecent(path, name, cat) {
+  let r = getRecent().filter(x => x.path !== path);
+  r.unshift({ path, name, cat });
+  r = r.slice(0, 5);
+  localStorage.setItem('sop-recent', JSON.stringify(r));
+  renderRecent();
+}
+function renderRecent() {
+  const r = getRecent();
+  const section = document.getElementById('recent-section');
+  const list = document.getElementById('recent-list');
+  if (!r.length) { section.style.display = 'none'; return; }
+  section.style.display = 'block';
+  list.innerHTML = r.map(x => `
+    <button class="recent-item" onclick="loadMd('${x.path.replace(/'/g,"\\'")}','${x.name.replace(/'/g,"\\'")}','${x.cat.replace(/'/g,"\\'")}');closeSidebar()">
+      <span class="recent-item-name">↩ ${escHtml(x.name)}</span>
+    </button>`).join('');
 }
 
 // ── FRONTMATTER PARSER ───────────────────────────────────────
@@ -699,9 +618,7 @@ function parseFrontmatter(raw) {
   match[1].split('\n').forEach(line => {
     const idx = line.indexOf(':');
     if (idx > 0) {
-      const k = line.slice(0, idx).trim();
-      const v = line.slice(idx + 1).trim();
-      meta[k] = v;
+      meta[line.slice(0, idx).trim()] = line.slice(idx + 1).trim();
     }
   });
   return { meta, body: raw.slice(match[0].length).trim() };
@@ -712,56 +629,144 @@ function statusBadge(status) {
   if (!status) return '';
   const s = status.toLowerCase();
   let cls = 'badge-notexist', label = status;
-  if (s.includes('aktif'))   { cls = 'badge-aktif';  label = '✅ Aktif'; }
-  if (s.includes('review'))  { cls = 'badge-review'; label = '🔄 Review'; }
-  if (s.includes('draft'))   { cls = 'badge-draft';  label = '📝 Draft'; }
-  if (s.includes('not'))     { cls = 'badge-notexist'; label = '⬜ Not Exist'; }
+  if (s.includes('aktif'))  { cls = 'badge-aktif';  label = '✅ Aktif'; }
+  if (s.includes('review')) { cls = 'badge-review'; label = '🔄 Review'; }
+  if (s.includes('draft'))  { cls = 'badge-draft';  label = '📝 Draft'; }
+  if (s.includes('not'))    { cls = 'badge-notexist'; label = '⬜ Not Exist'; }
   return `<span class="status-badge ${cls}">${label}</span>`;
 }
 
 // ── META CARD ────────────────────────────────────────────────
 function metaCard(meta) {
-  const fields = [
-    ['PIC', meta.pic],
-    ['Frekuensi', meta.frekuensi],
-    ['Waktu', meta.waktu_pengerjaan],
-    ['Versi', meta.versi],
-    ['Update', meta.terakhir_diperbarui],
-  ].filter(([,v]) => v);
+  const fields = [['PIC',meta.pic],['Frekuensi',meta.frekuensi],['Waktu',meta.waktu_pengerjaan],['Versi',meta.versi],['Update',meta.terakhir_diperbarui]].filter(([,v])=>v);
   if (!fields.length) return '';
-  return `<div class="meta-card">${fields.map(([k,v]) =>
-    `<div class="meta-item"><span class="meta-key">${k}</span><span class="meta-val">${v}</span></div>`
-  ).join('')}</div>`;
+  return `<div class="meta-card">${fields.map(([k,v])=>`<div class="meta-item"><span class="meta-key">${k}</span><span class="meta-val">${v}</span></div>`).join('')}</div>`;
 }
 
-// ── LOAD MD ──────────────────────────────────────────────────
-let activeBtn = null;
+// ── TABLE OF CONTENTS ─────────────────────────────────────────
+function buildToC(contentEl) {
+  const headings = [...contentEl.querySelectorAll('h2, h3')];
+  const panel = document.getElementById('toc-panel');
+  const list = document.getElementById('toc-list');
 
+  if (headings.length < 3) { panel.classList.remove('visible'); return; }
+
+  // Assign IDs to headings
+  headings.forEach((h, i) => { if (!h.id) h.id = 'toc-' + i; });
+
+  list.innerHTML = headings.map(h => {
+    const cls = h.tagName === 'H3' ? 'toc-item toc-h3' : 'toc-item';
+    return `<a class="${cls}" href="#${h.id}" onclick="tocClick(event,'${h.id}')">${escHtml(h.textContent)}</a>`;
+  }).join('');
+
+  panel.classList.add('visible');
+
+  // Highlight active heading on scroll
+  const scroll = document.getElementById('content-scroll');
+  scroll.onscroll = () => {
+    let active = headings[0];
+    headings.forEach(h => { if (h.getBoundingClientRect().top < 120) active = h; });
+    list.querySelectorAll('.toc-item').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + (active && active.id));
+    });
+  };
+}
+
+function tocClick(e, id) {
+  e.preventDefault();
+  const el = document.getElementById(id);
+  if (el) {
+    document.getElementById('content-scroll').scrollTo({ top: el.offsetTop - 20, behavior: 'smooth' });
+  }
+}
+
+// ── NAVIGATION HISTORY ────────────────────────────────────────
+function pushHistory(path) {
+  if (currentPath && currentPath !== path) {
+    navHistory.push(currentPath);
+    if (navHistory.length > 30) navHistory.shift();
+  }
+  currentPath = path;
+  document.getElementById('back-btn').classList.toggle('visible', navHistory.length > 0);
+}
+
+function goBack() {
+  const prev = navHistory.pop();
+  if (!prev) return;
+  const f = findFileByPath(prev);
+  if (f) { currentPath = null; loadMd(prev, f.name, f.catLabel); }
+  document.getElementById('back-btn').classList.toggle('visible', navHistory.length > 0);
+}
+
+// ── URL HASH ROUTING ──────────────────────────────────────────
+function setHash(path) {
+  history.replaceState(null, '', '#' + encodeURIComponent(path));
+}
+
+function readHash() {
+  const h = location.hash.slice(1);
+  if (!h) return null;
+  try { return decodeURIComponent(h); } catch { return null; }
+}
+
+// ── DARK MODE ─────────────────────────────────────────────────
+function applyDark() {
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  document.getElementById('dark-btn').textContent = isDark ? '☀️' : '🌙';
+}
+
+function toggleDark() {
+  isDark = !isDark;
+  localStorage.setItem('sop-dark', isDark ? '1' : '0');
+  applyDark();
+}
+
+// ── FONT SIZE ─────────────────────────────────────────────────
+const fontSizes = ['0.875rem', '1rem', '1.0625rem', '1.125rem'];
+
+function applyFontSize() {
+  document.documentElement.style.setProperty('--font-scale', fontSizes[fontSizeLevel]);
+}
+
+function changeFontSize(dir) {
+  fontSizeLevel = Math.max(0, Math.min(3, fontSizeLevel + dir));
+  localStorage.setItem('sop-font', fontSizeLevel);
+  applyFontSize();
+}
+
+// ── PRINT ─────────────────────────────────────────────────────
+function printDoc() { window.print(); }
+
+// ── LOAD MD ──────────────────────────────────────────────────
 async function loadMd(path, name, category) {
-  // Update active nav item
+  pushHistory(path);
+  setHash(path);
+  addRecent(path, name, category);
+
   if (activeBtn) activeBtn.classList.remove('active');
   activeBtn = document.querySelector(`[data-path="${path}"]`);
   if (activeBtn) activeBtn.classList.add('active');
 
-  // Update breadcrumb
   document.getElementById('breadcrumb').innerHTML =
-    `<span>${category}</span><span class="sep">›</span><span>${name}</span>`;
+    `<span style="color:var(--text-muted);font-weight:400">${category}</span><span class="sep">›</span><span>${name}</span>`;
 
-  // Show loading
   const area = document.getElementById('content-area');
   area.innerHTML = `<div class="loading"><div class="spinner"></div> Memuat dokumen...</div>`;
   document.getElementById('status-badge').innerHTML = '';
+  document.getElementById('toc-panel').classList.remove('visible');
   document.getElementById('content-scroll').scrollTop = 0;
+  if (document.getElementById('content-scroll').onscroll)
+    document.getElementById('content-scroll').onscroll = null;
 
   try {
-    // Encode each path segment to handle spaces
     const encodedPath = path.split('/').map(s => encodeURIComponent(s)).join('/');
     const res = await fetch(encodedPath);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const raw = await res.text();
+    contentIndex[path] = raw; // index for full-text search
+
     const { meta, body } = parseFrontmatter(raw);
 
-    // Convert Obsidian wiki-links [[...]] to clickable links
     const cleanBody = body
       .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, target, label) => {
         const displayText = label || target;
@@ -773,47 +778,45 @@ async function loadMd(path, name, category) {
       })
       .replace(/^> \[!.*?\]\s*/gm, '> ');
 
-    // Render
     document.getElementById('status-badge').innerHTML = statusBadge(meta.status);
-    area.innerHTML = `
-      <div class="md-body">
-        ${metaCard(meta)}
-        ${marked.parse(cleanBody)}
-      </div>
-    `;
+    area.innerHTML = `<div class="md-body">${metaCard(meta)}${marked.parse(cleanBody)}</div>`;
 
-    // Wire up wiki-link clicks
+    // Wiki-link clicks
     area.querySelectorAll('a.wiki-link').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         loadMd(link.dataset.path, link.dataset.name, link.dataset.cat);
-        document.getElementById('content-scroll').scrollTop = 0;
-        closeSidebar();
       });
     });
 
-    // Make checkboxes functional (toggle UI only, not persistent)
-    area.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-      cb.removeAttribute('disabled');
-    });
+    // Checkboxes
+    area.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.removeAttribute('disabled'));
+
+    // Table of Contents
+    buildToC(area);
 
   } catch (err) {
     area.innerHTML = `
-      <div style="text-align:center;padding:60px 20px;color:#6b7280">
+      <div style="text-align:center;padding:60px 20px;color:var(--text-muted)">
         <div style="font-size:40px;margin-bottom:12px">⚠️</div>
         <div style="font-size:15px;font-weight:600;margin-bottom:6px">Gagal memuat dokumen</div>
         <div style="font-size:13px">${err.message}</div>
-        <div style="font-size:12px;margin-top:8px;color:#9ca3af">Pastikan file MD tersedia di path: <code>${path}</code></div>
+        <div style="font-size:12px;margin-top:8px;opacity:0.6">Path: <code>${path}</code></div>
       </div>`;
   }
 }
 
 // ── LOAD INDEX ───────────────────────────────────────────────
 function loadIndex() {
+  navHistory = [];
+  currentPath = null;
   if (activeBtn) activeBtn.classList.remove('active');
   activeBtn = null;
+  history.replaceState(null, '', location.pathname);
   document.getElementById('breadcrumb').innerHTML = '<span>Master Index</span>';
   document.getElementById('status-badge').innerHTML = '';
+  document.getElementById('toc-panel').classList.remove('visible');
+  document.getElementById('back-btn').classList.remove('visible');
   document.getElementById('content-scroll').scrollTop = 0;
 
   const total = navData.reduce((sum, c) => sum + c.files.length, 0);
@@ -822,20 +825,11 @@ function loadIndex() {
     <div class="welcome">
       <div class="welcome-icon">🌭</div>
       <h2>SOP Aldies — Master Index</h2>
-      <p>Standard Operating Procedure untuk seluruh outlet Aldies. Pilih dokumen dari sidebar atau klik kategori di bawah untuk mulai membaca.</p>
+      <p>Standard Operating Procedure untuk seluruh outlet Aldies. Pilih dokumen dari sidebar atau klik kategori di bawah.</p>
       <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-num">${total}</div>
-          <div class="stat-label">Total Dokumen SOP</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Outlet Aktif</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">5</div>
-          <div class="stat-label">Kategori</div>
-        </div>
+        <div class="stat-card"><div class="stat-num">${total}</div><div class="stat-label">Total Dokumen SOP</div></div>
+        <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Outlet Aktif</div></div>
+        <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">Kategori</div></div>
       </div>
     </div>
     <div class="md-body" style="max-width:820px">
@@ -845,16 +839,14 @@ function loadIndex() {
           <thead><tr><th>#</th><th>Dokumen</th><th>Prioritas</th></tr></thead>
           <tbody>
             ${cat.files.map(f => `
-              <tr style="cursor:pointer" onclick="loadMd('${f.path}','${f.name}','${cat.label}')">
+              <tr style="cursor:pointer" onclick="loadMd('${f.path.replace(/'/g,"\\'")}','${f.name.replace(/'/g,"\\'")}','${cat.label}')">
                 <td><span class="item-num" style="display:inline-flex">${f.num}</span></td>
-                <td style="color:#e85d04;font-weight:500">${f.name}</td>
+                <td style="color:var(--accent);font-weight:500">${f.name}</td>
                 <td><span style="font-size:11px;background:#f3f4f6;padding:2px 8px;border-radius:20px;color:#6b7280">${f.priority}</span></td>
               </tr>`).join('')}
           </tbody>
-        </table>
-      `).join('')}
-    </div>
-  `;
+        </table>`).join('')}
+    </div>`;
 }
 
 // ── MOBILE ───────────────────────────────────────────────────
@@ -867,9 +859,48 @@ function closeSidebar() {
   document.getElementById('overlay').classList.remove('open');
 }
 
+// ── KEYBOARD SHORTCUTS ────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
+    e.preventDefault();
+    document.getElementById('search').focus();
+  }
+  if (e.altKey && e.key === 'ArrowLeft') goBack();
+  if (e.key === 'Escape') document.getElementById('search').blur();
+});
+
+// ── BACKGROUND INDEXER ────────────────────────────────────────
+async function backgroundIndex() {
+  const allFiles = navData.flatMap(c => c.files);
+  for (const f of allFiles) {
+    if (contentIndex[f.path]) continue;
+    try {
+      await new Promise(r => setTimeout(r, 80)); // throttle
+      const encoded = f.path.split('/').map(s => encodeURIComponent(s)).join('/');
+      const res = await fetch(encoded);
+      if (res.ok) contentIndex[f.path] = await res.text();
+    } catch {}
+  }
+}
+
 // ── INIT ─────────────────────────────────────────────────────
+applyDark();
+applyFontSize();
 buildNav();
-loadIndex();
+renderRecent();
+
+// Hash routing on load
+const hashPath = readHash();
+if (hashPath) {
+  const f = findFileByPath(hashPath);
+  if (f) { loadMd(hashPath, f.name, f.catLabel); }
+  else loadIndex();
+} else {
+  loadIndex();
+}
+
+// Start background indexer after 2s
+setTimeout(backgroundIndex, 2000);
 </script>
 </body>
 </html>
