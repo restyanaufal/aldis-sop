@@ -23,6 +23,7 @@
 | 27 | [[27 - Kesehatan & Higienitas Karyawan]] | Leader, Store Leader | Draft | Fase 1 🆕 |
 | 28 | [[28 - Training & Onboarding Karyawan]] | Store Leader, Manager | Draft | Fase 2 🆕 |
 | 29 | [[29 - Emergency Response]] | Leader, semua karyawan | Draft | Fase 1 🆕 |
+| 31 | [[31 - Toilet Cleaning SOP]] | Crew Shift | Draft | Fase 1 🆕 |
 
 ## 02 - Dapur & Produk
 | # | Dokumen | PIC | Status | Prioritas |
@@ -68,7 +69,7 @@
 ---
 
 ## Progress
-- **Total SOP:** 34 dokumen (4 SOP Induk + 30 Work Instructions)
+- **Total SOP:** 35 dokumen (4 SOP Induk + 31 Work Instructions)
 - **Aktif:** 5 ✅ (F1–F4 + #13 Standard Recipe Book)
 - **Draft:** 28 (semua Work Instructions lainnya)
 - **Review (uji coba lapangan):** 0
