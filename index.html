@@ -402,6 +402,29 @@
       font-size: 13.5px;
     }
 
+    /* Wiki links */
+    .wiki-link {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--accent);
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+      border-radius: 3px;
+      padding: 0 2px;
+    }
+    .wiki-link:hover {
+      background: var(--accent-light);
+      border-bottom-style: solid;
+    }
+    .wiki-link-broken {
+      color: #9ca3af;
+      border-bottom: 1px dashed #d1d5db;
+      cursor: not-allowed;
+      border-radius: 3px;
+      padding: 0 2px;
+    }
+
     /* Loading */
     .loading {
       display: flex;
@@ -582,6 +605,31 @@ const navData = [
   }
 ];
 
+// ── WIKI LINK RESOLVER ───────────────────────────────────────
+const linkMap = {};
+navData.forEach(cat => {
+  cat.files.forEach(f => {
+    // Map by full filename (without .md)
+    const filename = f.path.split('/').pop().replace('.md', '');
+    linkMap[filename.toLowerCase()] = { path: f.path, name: f.name, cat: cat.label };
+    // Map by display name
+    linkMap[f.name.toLowerCase()] = { path: f.path, name: f.name, cat: cat.label };
+    // Map by filename without leading number "XX - "
+    const bare = filename.replace(/^\d+ - /i, '').replace(/^SOP-[A-Z]+-\d+ - /i, '');
+    if (bare) linkMap[bare.toLowerCase()] = { path: f.path, name: f.name, cat: cat.label };
+  });
+});
+
+function resolveWikiLink(target) {
+  const t = target.trim().toLowerCase();
+  if (linkMap[t]) return linkMap[t];
+  // Fuzzy: find best partial match
+  for (const [key, val] of Object.entries(linkMap)) {
+    if (key.includes(t) || t.includes(key)) return val;
+  }
+  return null;
+}
+
 // ── BUILD NAV ────────────────────────────────────────────────
 function buildNav() {
   const tree = document.getElementById('nav-tree');
@@ -713,9 +761,16 @@ async function loadMd(path, name, category) {
     const raw = await res.text();
     const { meta, body } = parseFrontmatter(raw);
 
-    // Remove Obsidian wiki-links [[...]] from body
+    // Convert Obsidian wiki-links [[...]] to clickable links
     const cleanBody = body
-      .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, target, label) => label || target)
+      .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, target, label) => {
+        const displayText = label || target;
+        const resolved = resolveWikiLink(target);
+        if (resolved) {
+          return `<a class="wiki-link" data-path="${resolved.path}" data-cat="${resolved.cat}" data-name="${resolved.name}" href="#">${displayText}</a>`;
+        }
+        return `<span class="wiki-link-broken" title="Dokumen tidak ditemukan: ${target}">${displayText}</span>`;
+      })
       .replace(/^> \[!.*?\]\s*/gm, '> ');
 
     // Render
@@ -726,6 +781,16 @@ async function loadMd(path, name, category) {
         ${marked.parse(cleanBody)}
       </div>
     `;
+
+    // Wire up wiki-link clicks
+    area.querySelectorAll('a.wiki-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        loadMd(link.dataset.path, link.dataset.name, link.dataset.cat);
+        document.getElementById('content-scroll').scrollTop = 0;
+        closeSidebar();
+      });
+    });
 
     // Make checkboxes functional (toggle UI only, not persistent)
     area.querySelectorAll('input[type="checkbox"]').forEach(cb => {
