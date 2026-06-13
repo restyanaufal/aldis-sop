@@ -260,6 +260,27 @@
     .h1-with-btn h1 { flex: 1; border-bottom: none !important; margin-bottom: 0 !important; padding-bottom: 0 !important; }
     .print-form-btn { flex-shrink: 0; display: flex; align-items: center; gap: 5px; padding: 6px 12px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; margin-top: 6px; transition: opacity 0.15s; font-family: var(--font); }
     .print-form-btn:hover { opacity: 0.82; }
+    .wa-copy-btn { flex-shrink: 0; display: flex; align-items: center; gap: 5px; padding: 6px 12px; background: #25d366; color: #fff; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; margin-top: 6px; transition: opacity 0.15s; font-family: var(--font); }
+    .wa-copy-btn:hover { opacity: 0.82; }
+    .wa-copy-btn.copied { background: #128c7e; }
+    .toast-el { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); background: #1f2937; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 500; z-index: 9999; opacity: 0; transition: opacity 0.2s; pointer-events: none; white-space: nowrap; }
+    .toast-el.show { opacity: 1; }
+    /* WA templates */
+    .wa-section { margin-bottom: 40px; }
+    .wa-section h2 { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+    .wa-section .wa-sub { font-size: 12.5px; color: var(--text-muted); margin-bottom: 16px; }
+    .wa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+    .wa-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .wa-card-hd { background: #25d366; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .wa-card-hd span { font-size: 12.5px; font-weight: 700; color: #fff; }
+    .wa-card-freq { font-size: 9.5px; background: rgba(255,255,255,0.2); color: #fff; border-radius: 4px; padding: 2px 7px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+    .wa-card-copy { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); color: #fff; border-radius: 5px; padding: 4px 10px; font-size: 11px; font-weight: 700; cursor: pointer; white-space: nowrap; flex-shrink: 0; font-family: var(--font); transition: background 0.15s; }
+    .wa-card-copy:hover { background: rgba(255,255,255,0.32); }
+    .wa-card-copy.copied { background: #128c7e; border-color: #0a6e60; }
+    .wa-preview { padding: 12px 14px; background: var(--content-bg); font-size: 11px; color: var(--text-muted); font-family: monospace; line-height: 1.75; max-height: 220px; overflow-y: auto; white-space: pre; }
+    .wa-bundle-card { grid-column: 1 / -1; }
+    .wa-bundle-card .wa-card-hd { background: #075e54; }
+    @media (max-width: 600px) { .wa-grid { grid-template-columns: 1fr; } }
 
     /* ── IMPLEMENTASI PAGE ── */
     .impl-page { max-width: 1000px; margin: 0 auto; padding: 36px 32px 64px; }
@@ -987,6 +1008,195 @@ function renderImplementasi() {
       <p style="font-size:11px;color:var(--text-muted);margin-top:8px">★ Exception: Fase 3 tapi dipercepat karena food safety overlap &nbsp;|&nbsp; † Exception: Fase 4 tapi Low Effort sehingga masuk Minggu 2</p>
     </div>
 
+    <div class="wa-section">
+      <h2>Template WA Siap Pakai</h2>
+      <p class="wa-sub">Copy → paste ke grup WA outlet → edit nama & tanggal → kirim. Tidak perlu install apapun.</p>
+      <div class="wa-grid">
+
+        <div class="wa-card">
+          <div class="wa-card-hd">
+            <span>Opening Checklist</span>
+            <span class="wa-card-freq">Harian · Pagi</span>
+            <button class="wa-card-copy" onclick="copyWATemplate('watpl-opening')">Copy</button>
+          </div>
+          <pre class="wa-preview" id="watpl-opening">*OPENING CHECKLIST*
+*[Nama Outlet] · [Tanggal]*
+👤 [Store Leader]
+━━━━━━━━━━━━━━━━━━━━━━
+
+*Toko & Equipment*
+□ Lampu, AC, semua peralatan ON
+□ Kasir menyala, uang kembalian siap
+□ Display/papan menu bersih & lengkap
+
+*Dapur & Bahan*
+□ Suhu freezer ___ °C (standar ≤−18°C)
+□ Suhu chiller ___ °C (standar ≤8°C)
+□ Stok bahan OK — tidak ada kadaluarsa
+□ Protein (patty, sosis) ≤8°C ✓
+□ FIFO rotasi: stok lama di depan
+
+*Crew & Grooming*
+□ Semua crew hadir & on time
+□ Topi crew + seragam Aldies semua
+□ Briefing opening selesai
+
+━━━━━━━━━━━━━━━━━━━━━━
+✅ done   ❌ ada masalah → foto + lapor
+_Kirim ke grup outlet saat buka_</pre>
+        </div>
+
+        <div class="wa-card">
+          <div class="wa-card-hd">
+            <span>Closing Checklist</span>
+            <span class="wa-card-freq">Harian · Malam</span>
+            <button class="wa-card-copy" onclick="copyWATemplate('watpl-closing')">Copy</button>
+          </div>
+          <pre class="wa-preview" id="watpl-closing">*CLOSING CHECKLIST*
+*[Nama Outlet] · [Tanggal]*
+👤 [Store Leader]
+━━━━━━━━━━━━━━━━━━━━━━
+
+*Dapur*
+□ Semua alat masak dicuci & disimpan
+□ Sisa bahan dikemas + label tanggal
+□ Suhu freezer & chiller dicatat
+□ Kompor/alat pemanas semua OFF
+□ Area dapur disapu & dipel
+
+*Toko*
+□ Meja, kursi, lantai bersih
+□ Sampah sudah dibuang ke luar
+□ Kasir ditutup, uang & nota disetor
+□ Tidak ada barang tertinggal customer
+
+*Keamanan*
+□ Semua pintu & jendela terkunci
+□ Lampu OFF semua (kecuali emergency)
+□ AC OFF semua
+
+━━━━━━━━━━━━━━━━━━━━━━
+✅ done   ❌ ada masalah → foto + lapor
+_Kirim ke grup outlet saat tutup_</pre>
+        </div>
+
+        <div class="wa-card">
+          <div class="wa-card-hd">
+            <span>Food Safety Log</span>
+            <span class="wa-card-freq">Harian · 2× cek</span>
+            <button class="wa-card-copy" onclick="copyWATemplate('watpl-foodsafety')">Copy</button>
+          </div>
+          <pre class="wa-preview" id="watpl-foodsafety">*FOOD SAFETY LOG*
+*[Nama Outlet] · [Tanggal]*
+👤 [PIC Kitchen]
+━━━━━━━━━━━━━━━━━━━━━━
+
+*Cek Pagi (opening)*
+Freezer: ___ °C   Chiller: ___ °C
+
+*Cek Siang (~13:00)*
+Freezer: ___ °C   Chiller: ___ °C
+
+*Visual Bahan*
+□ Tidak ada bahan kadaluarsa
+□ Semua bahan tertutup & terlabel
+□ Protein tersimpan benar (dipisah)
+□ Tidak ada tanda busuk / bau aneh
+
+*Kebersihan Handling*
+□ Cuci tangan sebelum pegang bahan
+□ Sarung tangan untuk protein mentah
+□ Tidak ada kontaminasi silang
+□ Alat masak bersih sebelum dipakai
+
+━━━━━━━━━━━━━━━━━━━━━━
+✅ OK   ❌ ada masalah → lapor + foto SEGERA</pre>
+        </div>
+
+        <div class="wa-card">
+          <div class="wa-card-hd">
+            <span>Toilet Cleaning — 3 Sesi</span>
+            <span class="wa-card-freq">3× sehari</span>
+            <button class="wa-card-copy" onclick="copyWATemplate('watpl-toilet')">Copy</button>
+          </div>
+          <pre class="wa-preview" id="watpl-toilet">*TOILET CLEANING LOG*
+*[Nama Outlet] · [Tanggal]*
+━━━━━━━━━━━━━━━━━━━━━━
+
+*PAGI (opening) · PIC: ___*
+□ Sampah buang + kantong baru
+□ Kloset disikat + dilap kering
+□ Wastafel bersih & kering
+□ Cermin dilap bersih
+□ Lantai dipel sampai kering
+□ Tisu + hand soap direstok
+□ Tidak ada bau ✓
+Jam selesai: ___
+
+*SIANG (~13:00) · PIC: ___*
+□ Sampah buang + kantong baru
+□ Kloset disikat + dilap
+□ Wastafel bersih
+□ Lantai dipel
+□ Tidak ada bau ✓
+Jam selesai: ___
+
+*SORE (closing) · PIC: ___*
+□ Sampah buang + kantong baru
+□ Kloset disikat + dilap kering
+□ Wastafel bersih & kering
+□ Cermin dilap bersih
+□ Lantai dipel sampai kering
+□ Tisu + hand soap direstok
+□ Tidak ada bau ✓
+Jam selesai: ___
+
+━━━━━━━━━━━━━━━━━━━━━━
+✅ selesai   ❌ ada masalah → foto + lapor</pre>
+        </div>
+
+        <div class="wa-card wa-bundle-card">
+          <div class="wa-card-hd">
+            <span>📦 Daily Bundle — Full Day Checklist (1 pesan untuk semua)</span>
+            <button class="wa-card-copy" onclick="copyWATemplate('watpl-bundle')">Copy</button>
+          </div>
+          <pre class="wa-preview" id="watpl-bundle">*DAILY CHECKLIST — [Nama Outlet]*
+*📅 [Tanggal]*   👤 Store Leader: ___
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+*🌅 OPENING (jam ___)*
+□ Lampu, AC, kasir ON — uang kembalian OK
+□ Freezer ___ °C | Chiller ___ °C ✓
+□ Stok bahan OK, tidak ada kadaluarsa
+□ FIFO rotasi done
+□ Semua crew: topi + seragam OK
+□ Briefing opening done
+
+*🚽 TOILET PAGI (jam ___) · PIC: ___*
+□ Kloset + wastafel + lantai bersih ✓
+□ Tisu + hand soap ada ✓
+
+*🌞 SIANG (~13:00)*
+□ Food safety cek: Freezer ___ °C | Chiller ___ °C
+□ Toilet siang done · PIC: ___
+□ Menu ada yang habis? → ___
+
+*🌆 CLOSING (jam ___)*
+□ Dapur bersih, semua alat dicuci
+□ Sisa bahan dikemas + label tanggal
+□ Kasir tutup, uang & nota disetor
+□ Toilet sore done · PIC: ___
+□ Sampah buang, toko bersih
+□ Lampu + AC OFF, pintu dikunci ✓
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Semua done   ❌ Ada masalah → foto + lapor
+_Kirim ke grup outlet tiap akhir shift_</pre>
+        </div>
+
+      </div>
+    </div>
+
     <div class="freq-section">
       <h2>Frekuensi Penggunaan SOP</h2>
       <div class="freq-grid">
@@ -1333,6 +1543,83 @@ function printForm() {
 }
 
 // ── DETECT & INJECT FORM PRINT BUTTON ────────────────────────
+function showToast(msg) {
+  let t = document.getElementById('app-toast');
+  if (!t) { t = document.createElement('div'); t.id = 'app-toast'; t.className = 'toast-el'; document.body.appendChild(t); }
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._tid);
+  t._tid = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function generateWAText(area, name) {
+  const lines = [];
+  lines.push(`*${name.toUpperCase()}*`);
+  lines.push(`\u{1F4C5} [Tanggal]   \u{1F3EA} [Nama Outlet]`);
+  lines.push(`\u{1F465} [PIC / Store Leader]`);
+  lines.push('━'.repeat(22));
+
+  const nodes = area.querySelectorAll('h2, h3, li');
+  let pendingSection = null;
+  let sectionHasItems = false;
+  nodes.forEach(el => {
+    if (el.tagName === 'H2' || el.tagName === 'H3') {
+      pendingSection = el.textContent.trim();
+      sectionHasItems = false;
+    } else if (el.tagName === 'LI') {
+      const cb = el.querySelector('input[type="checkbox"]');
+      if (cb) {
+        if (pendingSection && !sectionHasItems) {
+          lines.push('');
+          lines.push(`*${pendingSection}*`);
+          sectionHasItems = true;
+          pendingSection = null;
+        }
+        lines.push(`□ ${el.textContent.trim()}`);
+      }
+    }
+  });
+
+  lines.push('');
+  lines.push('━'.repeat(22));
+  lines.push('✅ done   ❌ ada masalah → foto + lapor');
+  return lines.join('\n');
+}
+
+function copyWAFormat() {
+  const area = document.getElementById('content-area');
+  const h1 = area.querySelector('h1');
+  const name = h1 ? h1.textContent.trim() : 'SOP Checklist';
+  const text = generateWAText(area, name);
+  const btn = document.querySelector('.wa-copy-btn');
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('✓ Format WA berhasil di-copy!');
+    if (btn) { btn.textContent = '✓ Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.innerHTML = '\u{1F4F1} Copy WA'; btn.classList.remove('copied'); }, 2000); }
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    showToast('✓ Format WA berhasil di-copy!');
+    if (btn) { btn.textContent = '✓ Copied!'; setTimeout(() => { btn.innerHTML = '\u{1F4F1} Copy WA'; }, 2000); }
+  });
+}
+
+function copyWATemplate(id) {
+  const pre = document.getElementById(id);
+  if (!pre) return;
+  const text = pre.textContent;
+  const btn = pre.closest('.wa-card').querySelector('.wa-card-copy');
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('✓ Template WA di-copy!');
+    if (btn) { const orig = btn.textContent; btn.textContent = '✓ Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000); }
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    showToast('✓ Template WA di-copy!');
+  });
+}
+
 function detectAndInjectFormBtn(area) {
   const mdBody = area.querySelector('.md-body');
   if (!mdBody) return;
@@ -1359,6 +1646,12 @@ function detectAndInjectFormBtn(area) {
   btn.title = 'Print form & checklist saja (tanpa penjelasan)';
   btn.onclick = printForm;
   wrapper.appendChild(btn);
+  const waBtn = document.createElement('button');
+  waBtn.className = 'wa-copy-btn';
+  waBtn.innerHTML = '📱 Copy WA';
+  waBtn.title = 'Copy format checklist untuk WhatsApp grup outlet';
+  waBtn.onclick = copyWAFormat;
+  wrapper.appendChild(waBtn);
 }
 function tagPrecedingHeading(el) {
   let prev = el.previousElementSibling;
