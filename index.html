@@ -282,6 +282,21 @@
       .ctrl-btn span { display: none; }
     }
 
+    /* ── PRINT FORM BUTTON ── */
+    .h1-with-btn {
+      display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--accent);
+    }
+    .h1-with-btn h1 { flex: 1; border-bottom: none !important; margin-bottom: 0 !important; padding-bottom: 0 !important; }
+    .print-form-btn {
+      flex-shrink: 0; display: flex; align-items: center; gap: 5px;
+      padding: 6px 12px; background: var(--accent); color: #fff;
+      border: none; border-radius: 6px; font-size: 12px; font-weight: 600;
+      cursor: pointer; white-space: nowrap; margin-top: 6px; transition: opacity 0.15s;
+      font-family: var(--font);
+    }
+    .print-form-btn:hover { opacity: 0.82; }
+
     /* ── PRINT ── */
     @media print {
       .sidebar, .toc-panel, .overlay, .topbar { display: none !important; }
@@ -293,6 +308,20 @@
       .meta-card { break-inside: avoid; }
       .md-body table { break-inside: avoid; }
       .md-body h2, .md-body h3 { break-after: avoid; }
+      .print-form-btn { display: none !important; }
+
+      /* Form-only print mode — hide everything except tagged form elements */
+      body.print-form-only .meta-card { display: none !important; }
+      body.print-form-only .md-body > p { display: none !important; }
+      body.print-form-only .md-body > blockquote { display: none !important; }
+      body.print-form-only .md-body > pre { display: none !important; }
+      body.print-form-only .md-body > hr { display: none !important; }
+      body.print-form-only .md-body h2:not([data-fh]) { display: none !important; }
+      body.print-form-only .md-body h3:not([data-fh]) { display: none !important; }
+      body.print-form-only .md-body > ul:not([data-form]) { display: none !important; }
+      body.print-form-only .md-body table:not([data-form]) { display: none !important; }
+      body.print-form-only .md-body table[data-form] { break-inside: auto; }
+      body.print-form-only .md-body table[data-form] td { min-height: 26px; }
     }
   </style>
 </head>
@@ -737,6 +766,70 @@ function changeFontSize(dir) {
 // ── PRINT ─────────────────────────────────────────────────────
 function printDoc() { window.print(); }
 
+function printForm() {
+  document.body.classList.add('print-form-only');
+  window.print();
+  window.addEventListener('afterprint', () => {
+    document.body.classList.remove('print-form-only');
+  }, { once: true });
+}
+
+// ── DETECT & INJECT FORM PRINT BUTTON ────────────────────────
+function detectAndInjectFormBtn(area) {
+  const mdBody = area.querySelector('.md-body');
+  if (!mdBody) return;
+  let hasForm = false;
+
+  // Tag form tables: tables where ≥2 td cells are empty or contain only underscores/dashes
+  mdBody.querySelectorAll('table').forEach(tbl => {
+    const tds = [...tbl.querySelectorAll('td')];
+    const emptyCount = tds.filter(td => {
+      const t = td.textContent.trim();
+      return !t || /^[_\-\s]*$/.test(t);
+    }).length;
+    if (emptyCount >= 2) {
+      tbl.dataset.form = 'true';
+      hasForm = true;
+      tagPrecedingHeading(tbl);
+    }
+  });
+
+  // Tag checklist sections
+  mdBody.querySelectorAll('ul').forEach(ul => {
+    if (ul.querySelector('input[type="checkbox"]')) {
+      ul.dataset.form = 'true';
+      hasForm = true;
+      tagPrecedingHeading(ul);
+    }
+  });
+
+  if (!hasForm) return;
+
+  // Inject button next to H1
+  const h1 = mdBody.querySelector('h1');
+  if (!h1) return;
+  const wrapper = document.createElement('div');
+  wrapper.className = 'h1-with-btn';
+  h1.parentNode.insertBefore(wrapper, h1);
+  wrapper.appendChild(h1);
+  const btn = document.createElement('button');
+  btn.className = 'print-form-btn';
+  btn.innerHTML = '🖨️ Cetak Form';
+  btn.title = 'Print form & checklist saja (tanpa penjelasan)';
+  btn.onclick = printForm;
+  wrapper.appendChild(btn);
+}
+
+function tagPrecedingHeading(el) {
+  let prev = el.previousElementSibling;
+  while (prev) {
+    const tag = prev.tagName;
+    if (tag === 'H2' || tag === 'H3') { prev.dataset.fh = 'true'; return; }
+    if (tag === 'TABLE' || tag === 'UL') return; // stop at another block
+    prev = prev.previousElementSibling;
+  }
+}
+
 // ── LOAD MD ──────────────────────────────────────────────────
 async function loadMd(path, name, category) {
   pushHistory(path);
@@ -792,7 +885,10 @@ async function loadMd(path, name, category) {
     // Checkboxes
     area.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.removeAttribute('disabled'));
 
-    // Table of Contents
+    // Detect form elements and inject print button
+    detectAndInjectFormBtn(area);
+
+    // Table of Contents (after DOM mutations from detectAndInjectFormBtn)
     buildToC(area);
 
   } catch (err) {
