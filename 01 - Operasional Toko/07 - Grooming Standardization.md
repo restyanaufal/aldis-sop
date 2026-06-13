@@ -5,8 +5,8 @@ pic: Store Leader
 frekuensi: Setiap shift sebelum mulai bekerja
 waktu_pengerjaan: 5 menit (inspeksi Store Leader)
 status: Draft
-versi: 1.0
-terakhir_diperbarui: 2026-06-12
+versi: 1.1
+terakhir_diperbarui: 2026-06-13
 ---
 
 # Grooming Standardization
@@ -21,7 +21,7 @@ Memastikan semua crew tampil rapi, bersih, dan seragam — mencerminkan standar 
 ## Yang Dibutuhkan
 - Seragam Aldies bersih
 - Apron (crew dapur)
-- Penutup rambut / hair net (crew dapur)
+- Topi crew Aldies (semua crew)
 
 ---
 
@@ -35,7 +35,8 @@ Memastikan semua crew tampil rapi, bersih, dan seragam — mencerminkan standar 
 
 ### Rambut & Wajah
 - [ ] Rambut rapi, tidak menutupi wajah saat bekerja
-- [ ] Crew dapur **wajib** pakai hair net / penutup rambut
+- [ ] **Semua crew wajib pakai topi crew Aldies** selama shift berlangsung
+- [ ] Crew dapur: topi dipakai dengan benar sehingga rambut tidak menjuntai ke makanan
 - [ ] Tidak memakai parfum kuat yang bisa mencemari aroma makanan
 
 ### Kebersihan Diri
@@ -57,9 +58,10 @@ Semua poin terpenuhi sebelum crew diizinkan mulai bekerja di stationnya.
 | Masalah | Tindakan |
 |---------|----------|
 | Seragam kotor / tidak dibawa | Tegur, catat — gunakan cadangan jika ada |
-| Tidak pakai hair net di dapur | Minta pasang sebelum boleh masuk area produksi |
+| Tidak pakai topi crew | Minta pasang sebelum mulai shift — tidak ada pengecualian |
 | Luka terbuka di tangan | Wajib plester + sarung tangan plastik sebelum pegang produk |
 | Kuku panjang / cat kuku | Tidak boleh masuk area produksi sebelum diperbaiki |
 
 ## Catatan / Versi
 - v1.0 (2026-06-12): Draft awal — fundamental multi-outlet
+- v1.1 (2026-06-13): Ganti hair net → topi crew Aldies sebagai standar penutup kepala; berlaku semua crew (bukan hanya dapur)
