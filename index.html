@@ -351,6 +351,71 @@
     .freq-item:last-child { border-bottom: none; }
     .freq-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 
+    /* ── TIMELINE ── */
+    .tl-section { margin-bottom: 40px; }
+    .tl-section > h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--text); }
+    .tl-week { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 20px; }
+    .tl-week-hd { padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .tl-day { padding: 14px 20px; border-bottom: 1px solid var(--border); background: var(--content-bg); }
+    .tl-day:last-child { border-bottom: none; }
+    .tl-day-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+    .tl-day-label { font-size: 10.5px; font-weight: 800; background: var(--bg); border: 1px solid var(--border); padding: 3px 10px; border-radius: 20px; color: var(--text-muted); white-space: nowrap; }
+    .tl-day-focus { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; min-width: 0; }
+    .tl-type-badge { font-size: 9.5px; font-weight: 700; padding: 3px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
+    .tl-note { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.6; padding: 8px 12px; background: var(--bg); border-radius: 6px; border-left: 3px solid var(--border); }
+    .tl-note.special { border-left-color: #f59e0b; background: #fffbeb; color: #92400e; }
+    .tl-note.special b { color: #78350f; }
+    [data-theme="dark"] .tl-note.special { background: #41330044; color: #fbbf24; }
+    .tl-sop-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 6px; }
+    .tl-sop { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: var(--content-bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.15s; text-align: left; font-family: var(--font); width: 100%; }
+    .tl-sop:hover { border-color: var(--accent); box-shadow: 0 1px 8px rgba(232,93,4,0.1); }
+    .tl-score { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; }
+    .ts11 { background: #e85d04; color: #fff; }
+    .ts9  { background: #fb923c; color: #fff; }
+    .ts8  { background: #fbbf24; color: #1f2937; }
+    .ts7  { background: #e5e7eb; color: #6b7280; }
+    .tl-sop-num  { font-size: 10px; font-weight: 800; color: var(--accent); white-space: nowrap; flex-shrink: 0; }
+    .tl-sop-name { font-size: 12px; font-weight: 500; color: var(--text); flex: 1; line-height: 1.3; text-align: left; }
+    .tl-sop-freq { font-size: 9.5px; color: var(--text-muted); white-space: nowrap; flex-shrink: 0; background: var(--bg); padding: 2px 6px; border-radius: 4px; }
+    .tl-actions { display: flex; flex-direction: column; gap: 4px; }
+    .tl-action { font-size: 12px; color: var(--text-muted); padding: 6px 10px; background: var(--bg); border-radius: 6px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+    .tl-action::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+    /* Score table */
+    .score-section { margin-bottom: 40px; }
+    .score-section h2 { font-size: 16px; font-weight: 700; margin-bottom: 14px; color: var(--text); }
+    .score-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
+    .score-tbl { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .score-tbl th { background: #f3f4f6; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border); color: var(--text-muted); white-space: nowrap; }
+    .score-tbl td { padding: 7px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .score-tbl tr:last-child td { border-bottom: none; }
+    .score-tbl tr:hover td { background: var(--bg); }
+    [data-theme="dark"] .score-tbl th { background: #374151; }
+    .sf1 { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; font-size:10px; padding:2px 7px; border-radius:20px; font-weight:700; white-space:nowrap; }
+    .sf2 { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; font-size:10px; padding:2px 7px; border-radius:20px; font-weight:700; white-space:nowrap; }
+    .sf3 { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; font-size:10px; padding:2px 7px; border-radius:20px; font-weight:700; white-space:nowrap; }
+    .sf4 { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; font-size:10px; padding:2px 7px; border-radius:20px; font-weight:700; white-space:nowrap; }
+    .sf5 { background: #faf5ff; color: #6d28d9; border: 1px solid #ddd6fe; font-size:10px; padding:2px 7px; border-radius:20px; font-weight:700; white-space:nowrap; }
+    .snum { font-size: 13px; font-weight: 800; }
+
+    /* Roadmap after week 2 */
+    .roadmap-section { margin-bottom: 40px; }
+    .roadmap-section h2 { font-size: 16px; font-weight: 700; margin-bottom: 14px; color: var(--text); }
+    .roadmap-row { display: flex; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+    .roadmap-col { flex: 1; padding: 14px 16px; border-right: 1px solid var(--border); background: var(--content-bg); }
+    .roadmap-col:last-child { border-right: none; }
+    .roadmap-period { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 4px; }
+    .roadmap-title { font-size: 12.5px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .roadmap-item { font-size: 11px; color: var(--text-muted); padding: 2px 0; display: flex; align-items: center; gap: 5px; }
+    .roadmap-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+    @media (max-width: 768px) {
+      .tl-sop-list { grid-template-columns: 1fr; }
+      .roadmap-row { flex-direction: column; }
+      .roadmap-col { border-right: none; border-bottom: 1px solid var(--border); }
+      .roadmap-col:last-child { border-bottom: none; }
+      .impl-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
     /* ── PANDUAN PAGE ── */
     .panduan-page { max-width: 820px; margin: 0 auto; padding: 36px 32px 64px; }
     .panduan-page h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; color: var(--text); }
@@ -677,112 +742,261 @@ function sopCardHtml(s) {
 }
 
 function renderImplementasi() {
-  const p1 = sopScoring.filter(s => s.p === 1);
-  const p2 = sopScoring.filter(s => s.p === 2);
-  const p3 = sopScoring.filter(s => s.p === 3);
-  const aktif = sopScoring.filter(s => s.p === 0);
+  // Combined Score = Fase_weight(F1=5,F2=4,F3=3,F4=2,F5=1) + Effort_weight(Low=3,Med=1,High=0) + Impact_weight(High=3,Med=1,Low=0)
+  function sopBtn(s) {
+    const sc = String(s.score);
+    const cls = sc.startsWith('11') ? 'ts11' : sc.startsWith('9') ? 'ts9' : sc.startsWith('8') ? 'ts8' : 'ts7';
+    return `<button class="tl-sop" onclick="loadMd('${s.path.replace(/'/g,"\\'")}','${s.name.replace(/'/g,"\\'")}','${s.cat}');showPage('sop')">
+      <span class="tl-score ${cls}">${s.score}</span>
+      <span class="tl-sop-num">#${s.num}</span>
+      <span class="tl-sop-name">${s.name}</span>
+      <span class="tl-sop-freq">${s.freq}</span>
+    </button>`;
+  }
+
+  const week1 = {
+    color:'#e85d04', label:'Minggu 1 — Fondasi Operasional',
+    subtitle:'Goal: semua outlet buka & tutup dengan SOP dalam 5 hari kerja',
+    days:[
+      { day:'H1 · Senin', focus:'Setup & Persiapan', type:'prep',
+        note:'Tidak ada SOP baru yang dijalankan hari ini — fokus penuh pada infrastruktur sebelum deploy.',
+        actions:['Cetak semua checklist (format 7 hari) → 1 set per outlet (4 outlet = 4 set)','Meeting Store Leader semua outlet — 1 jam walkthrough sistem SOP dan cara pakai web app','Posting Cooking Time Standard (#14) di area dapur setiap outlet sebelum besok','Distribusi form fisik ke masing-masing outlet'],
+        sops:[] },
+      { day:'H2–3 · Selasa–Rabu', focus:'Deploy 8 SOP Fondasi (Score 11)', type:'deploy',
+        note:'8 SOP sekaligus — semua Low Effort + High Impact + Fase 1 = score tertinggi 11. Brief 10 menit per SOP cukup.',
+        actions:[],
+        sops:[
+          {num:8,  name:'Opening Checklist Report',     score:11, path:'01 - Operasional Toko/08 - Opening Checklist Report.md',          cat:'Operasional Toko', freq:'Harian'},
+          {num:10, name:'Closing Checklist Report',      score:11, path:'01 - Operasional Toko/10 - Closing Checklist Report.md',          cat:'Operasional Toko', freq:'Harian'},
+          {num:31, name:'Toilet Cleaning SOP',           score:11, path:'01 - Operasional Toko/31 - Toilet Cleaning SOP.md',               cat:'Operasional Toko', freq:'3× sehari'},
+          {num:6,  name:'Store Cleaning Checklist',      score:11, path:'01 - Operasional Toko/06 - Store Cleaning Checklist.md',          cat:'Operasional Toko', freq:'Harian'},
+          {num:5,  name:'Food Safety Checklist',         score:11, path:'02 - Dapur & Produk/05 - Food Safety Checklist.md',              cat:'Dapur & Produk',   freq:'Harian'},
+          {num:14, name:'Cooking Time Standard',         score:11, path:'02 - Dapur & Produk/14 - Cooking Time Standard.md',              cat:'Dapur & Produk',   freq:'Referensi'},
+          {num:29, name:'Emergency Response',            score:11, path:'01 - Operasional Toko/29 - Emergency Response.md',               cat:'Operasional Toko', freq:'Referensi'},
+          {num:25, name:'Penanganan Komplain & Insiden', score:11, path:'04 - Penjualan & Pelanggan/25 - Penanganan Komplain & Insiden.md',cat:'Penjualan',        freq:'Situasional'},
+        ] },
+      { day:'H4 · Kamis', focus:'FIFO — Special Case (Food Safety Exception)', type:'special',
+        note:'⚠️ Resmi Fase 3, tapi bersinggungan langsung dengan food safety. Bahan expired = bahaya sama besarnya dengan tidak punya Food Safety Checklist. Tidak bisa nunggu Fase 3.',
+        actions:[],
+        sops:[
+          {num:4, name:'FIFO Monitoring Sheet', score:'9★', path:'03 - Supply Chain/04 - FIFO Monitoring Sheet.md', cat:'Supply Chain', freq:'Harian'},
+        ] },
+      { day:'H5 · Jumat', focus:'Evaluasi Minggu 1', type:'eval',
+        note:'Sebelum menambah beban di Minggu 2, pastikan 9 SOP Minggu 1 berjalan minimal 80% konsisten di semua outlet.',
+        actions:['Cek checklist pengisian tiap outlet — ada yang kosong / tidak terisi?','Kumpulkan feedback Store Leader per outlet (5 menit per orang)','Identifikasi hambatan — ada SOP yang prosedurnya perlu disesuaikan kondisi lapangan?','Go/no-go: apakah semua outlet siap menambah SOP minggu depan?'],
+        sops:[] },
+    ]
+  };
+
+  const week2 = {
+    color:'#fb923c', label:'Minggu 2 — Brand Standards & Supply Chain',
+    subtitle:'Prasyarat: 9 SOP Minggu 1 sudah berjalan minimal 80% konsisten',
+    days:[
+      { day:'H6 · Senin', focus:'Fase 1 Medium Effort (Score 9)', type:'deploy',
+        note:'Butuh briefing lebih dalam 20–30 menit per SOP. Distribusi dokumen fisik untuk Rules & CoC.',
+        actions:[],
+        sops:[
+          {num:24, name:'Blok M × Ponpin Integration SOP', score:9, path:'03 - Supply Chain/24 - Blok M Ponpin Integration SOP.md',              cat:'Supply Chain', freq:'Situasional'},
+          {num:30, name:'Rules & Code of Conduct',          score:9, path:'06 - SDM & Disiplin/30 - Rules Operasional Store & Code of Conduct.md',cat:'SDM',          freq:'Referensi'},
+          {num:27, name:'Kesehatan & Higienitas Karyawan',  score:9, path:'01 - Operasional Toko/27 - Kesehatan & Higienitas Karyawan.md',       cat:'Operasional Toko', freq:'Per karyawan'},
+        ] },
+      { day:'H7–8 · Selasa–Rabu', focus:'Fase 2 Low Effort + Daily Sales (Score 8)', type:'deploy',
+        note:'#20 Daily Sales dimasukkan di sini meski Fase 4 — Low Effort, tapi datanya baru bermakna setelah Fase 1 sudah stabil minimal 1 minggu.',
+        actions:[],
+        sops:[
+          {num:7,  name:'Grooming Standardization',    score:8,   path:'01 - Operasional Toko/07 - Grooming Standardization.md',  cat:'Operasional Toko', freq:'Per shift'},
+          {num:9,  name:'Greeting Standard',            score:8,   path:'01 - Operasional Toko/09 - Greeting Standard.md',         cat:'Operasional Toko', freq:'Setiap tamu'},
+          {num:17, name:'Menu Availability Checklist',  score:8,   path:'02 - Dapur & Produk/17 - Menu Availability Checklist.md', cat:'Dapur & Produk',   freq:'Harian'},
+          {num:22, name:'Next Day Preparation List',    score:8,   path:'02 - Dapur & Produk/22 - Next Day Preparation List.md',   cat:'Dapur & Produk',   freq:'Harian'},
+          {num:20, name:'Daily Sales Report',            score:'8†',path:'04 - Penjualan & Pelanggan/20 - Daily Sales Report.md',  cat:'Penjualan',        freq:'Harian'},
+        ] },
+      { day:'H9 · Kamis', focus:'Upselling Training (Score 8)', type:'deploy',
+        note:'Butuh role-play 30 menit — Store Leader brief crew teknik upselling dengan skenario nyata di outlet.',
+        actions:[],
+        sops:[
+          {num:12, name:'Upselling Product', score:8, path:'04 - Penjualan & Pelanggan/12 - Upselling Product.md', cat:'Penjualan', freq:'Harian'},
+        ] },
+      { day:'H10 · Jumat', focus:'Evaluasi Total 2 Minggu', type:'eval',
+        note:'20 SOP diperkenalkan dalam 2 minggu — ukur, catat gap, rencanakan lanjutan berdasarkan data nyata.',
+        actions:['Audit checklist 2 minggu per outlet — berapa % terisi konsisten?','Tandai SOP mana yang sudah berjalan vs belum berjalan sama sekali','Prioritaskan reinforcement dulu sebelum tambah SOP baru jika ada yang tertinggal','Rencanakan Week 3–4: Inventory (#19), Kalibrasi (#26), Training & Onboarding (#28)'],
+        sops:[] },
+    ]
+  };
+
+  function renderDay(d) {
+    const typeBg    = {deploy:'#dcfce7',prep:'#dbeafe',eval:'#f3e8ff',special:'#fef9c3'}[d.type];
+    const typeColor = {deploy:'#15803d',prep:'#1d4ed8',eval:'#7c3aed',special:'#92400e'}[d.type];
+    const typeLabel = {deploy:'Deploy',prep:'Persiapan',eval:'Evaluasi',special:'Exception'}[d.type];
+    return `<div class="tl-day">
+      <div class="tl-day-hd">
+        <span class="tl-day-label">${d.day}</span>
+        <span class="tl-day-focus">${d.focus}</span>
+        <span class="tl-type-badge" style="background:${typeBg};color:${typeColor}">${typeLabel}</span>
+      </div>
+      ${d.note ? `<div class="tl-note${d.type==='special'?' special':''}">${d.note}</div>` : ''}
+      ${d.sops.length ? `<div class="tl-sop-list">${d.sops.map(sopBtn).join('')}</div>` : ''}
+      ${d.actions && d.actions.length ? `<div class="tl-actions">${d.actions.map(a=>`<div class="tl-action">${a}</div>`).join('')}</div>` : ''}
+    </div>`;
+  }
+
+  function renderWeek(w) {
+    const sopCount = w.days.reduce((a,d)=>a+d.sops.length,0);
+    return `<div class="tl-week">
+      <div class="tl-week-hd" style="background:${w.color}">
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#fff;line-height:1.3">${w.label}</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.82);margin-top:2px">${w.subtitle}</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:22px;font-weight:900;color:#fff;line-height:1">${sopCount}</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.75);font-weight:600">SOP baru</div>
+        </div>
+      </div>
+      ${w.days.map(renderDay).join('')}
+    </div>`;
+  }
+
+  // Full scoring reference table (all 29 non-aktif SOPs)
+  const allScored = [
+    {num:8,  name:'Opening Checklist Report',          fase:1,sc:11,effort:'Low',impact:'High',week:'Minggu 1 H2',  path:'01 - Operasional Toko/08 - Opening Checklist Report.md',          cat:'Operasional Toko'},
+    {num:10, name:'Closing Checklist Report',           fase:1,sc:11,effort:'Low',impact:'High',week:'Minggu 1 H2',  path:'01 - Operasional Toko/10 - Closing Checklist Report.md',          cat:'Operasional Toko'},
+    {num:31, name:'Toilet Cleaning SOP',                fase:1,sc:11,effort:'Low',impact:'High',week:'Minggu 1 H2',  path:'01 - Operasional Toko/31 - Toilet Cleaning SOP.md',               cat:'Operasional Toko'},
+    {num:6,  name:'Store Cleaning Checklist',           fase:1,sc:11,effort:'Low',impact:'High',week:'Minggu 1 H2',  path:'01 - Operasional Toko/06 - Store Cleaning Checklist.md',          cat:'Operasional Toko'},
+    {num:5,  name:'Food Safety Checklist',              fase:1,sc:11,effort:'Low',impact:'High',week:'Minggu 1 H2',  path:'02 - Dapur & Produk/05 - Food Safety Checklist.md',              cat:'Dapur & Produk'},
+    {num:14, name:'Cooking Time Standard',              fase:1,sc:11,effort:'Low',impact:'High',week:'Minggu 1 H1',  path:'02 - Dapur & Produk/14 - Cooking Time Standard.md',              cat:'Dapur & Produk'},
+    {num:29, name:'Emergency Response',                 fase:1,sc:11,effort:'Low',impact:'High',week:'Minggu 1 H2',  path:'01 - Operasional Toko/29 - Emergency Response.md',               cat:'Operasional Toko'},
+    {num:25, name:'Penanganan Komplain & Insiden',      fase:1,sc:11,effort:'Low',impact:'High',week:'Minggu 1 H2',  path:'04 - Penjualan & Pelanggan/25 - Penanganan Komplain & Insiden.md',cat:'Penjualan'},
+    {num:24, name:'Blok M × Ponpin Integration SOP',   fase:1,sc:9, effort:'Med',impact:'High',week:'Minggu 2 H6',  path:'03 - Supply Chain/24 - Blok M Ponpin Integration SOP.md',         cat:'Supply Chain'},
+    {num:30, name:'Rules & Code of Conduct',            fase:1,sc:9, effort:'Med',impact:'High',week:'Minggu 2 H6',  path:'06 - SDM & Disiplin/30 - Rules Operasional Store & Code of Conduct.md',cat:'SDM'},
+    {num:27, name:'Kesehatan & Higienitas Karyawan',    fase:1,sc:9, effort:'Med',impact:'High',week:'Minggu 2 H6',  path:'01 - Operasional Toko/27 - Kesehatan & Higienitas Karyawan.md',  cat:'Operasional Toko'},
+    {num:4,  name:'FIFO Monitoring Sheet',              fase:3,sc:'9★',effort:'Low',impact:'High',week:'Minggu 1 H4 ⚠️',path:'03 - Supply Chain/04 - FIFO Monitoring Sheet.md',              cat:'Supply Chain'},
+    {num:7,  name:'Grooming Standardization',           fase:2,sc:8, effort:'Low',impact:'High',week:'Minggu 2 H7',  path:'01 - Operasional Toko/07 - Grooming Standardization.md',         cat:'Operasional Toko'},
+    {num:9,  name:'Greeting Standard',                  fase:2,sc:8, effort:'Low',impact:'High',week:'Minggu 2 H7',  path:'01 - Operasional Toko/09 - Greeting Standard.md',                cat:'Operasional Toko'},
+    {num:17, name:'Menu Availability Checklist',        fase:2,sc:8, effort:'Low',impact:'High',week:'Minggu 2 H7',  path:'02 - Dapur & Produk/17 - Menu Availability Checklist.md',        cat:'Dapur & Produk'},
+    {num:22, name:'Next Day Preparation List',          fase:2,sc:8, effort:'Low',impact:'High',week:'Minggu 2 H7',  path:'02 - Dapur & Produk/22 - Next Day Preparation List.md',          cat:'Dapur & Produk'},
+    {num:20, name:'Daily Sales Report',                 fase:4,sc:'8†',effort:'Low',impact:'High',week:'Minggu 2 H7',path:'04 - Penjualan & Pelanggan/20 - Daily Sales Report.md',          cat:'Penjualan'},
+    {num:12, name:'Upselling Product',                  fase:2,sc:8, effort:'Low',impact:'High',week:'Minggu 2 H9',  path:'04 - Penjualan & Pelanggan/12 - Upselling Product.md',           cat:'Penjualan'},
+    {num:26, name:'Kalibrasi & Pemeliharaan Alat',      fase:1,sc:7, effort:'Med',impact:'Med', week:'Minggu 3–4',   path:'02 - Dapur & Produk/26 - Kalibrasi & Pemeliharaan Alat.md',     cat:'Dapur & Produk'},
+    {num:19, name:'Inventory Usage Report',             fase:3,sc:7, effort:'Med',impact:'High',week:'Minggu 3–4',   path:'03 - Supply Chain/19 - Inventory Usage Report.md',               cat:'Supply Chain'},
+    {num:28, name:'Training & Onboarding',              fase:2,sc:7, effort:'High',impact:'High',week:'Minggu 3–4',  path:'01 - Operasional Toko/28 - Training & Onboarding Karyawan.md',  cat:'Operasional Toko'},
+    {num:18, name:'Sales Summary Report',               fase:4,sc:6, effort:'Low',impact:'Med', week:'Bulan 2',      path:'04 - Penjualan & Pelanggan/18 - Sales Summary Report.md',        cat:'Penjualan'},
+    {num:21, name:'Waste Analysis Report',              fase:4,sc:6, effort:'Low',impact:'Med', week:'Bulan 2',      path:'02 - Dapur & Produk/21 - Waste Analysis Report.md',             cat:'Dapur & Produk'},
+    {num:23, name:'Petty Cash',                         fase:4,sc:6, effort:'Low',impact:'Med', week:'Bulan 2',      path:'05 - Keuangan/23 - Petty Cash.md',                               cat:'Keuangan'},
+    {num:15, name:'Plating Guide',                      fase:2,sc:6, effort:'Med',impact:'Med', week:'Bulan 2',      path:'02 - Dapur & Produk/15 - Plating Guide.md',                      cat:'Dapur & Produk'},
+    {num:3,  name:'Delivery Order',                     fase:3,sc:5, effort:'Med',impact:'Med', week:'Bulan 2',      path:'03 - Supply Chain/03 - Delivery Order.md',                       cat:'Supply Chain'},
+    {num:16, name:'Quality Control Form',               fase:4,sc:4, effort:'Med',impact:'Med', week:'Bulan 3+',     path:'02 - Dapur & Produk/16 - Quality Control Form.md',               cat:'Dapur & Produk'},
+    {num:1,  name:'Customer Feedback Form',             fase:5,sc:3, effort:'Med',impact:'Med', week:'Bulan 3+',     path:'04 - Penjualan & Pelanggan/01 - Customer Feedback Form.md',      cat:'Penjualan'},
+    {num:2,  name:'Store Performance History',          fase:5,sc:3, effort:'Med',impact:'Med', week:'Bulan 3+',     path:'04 - Penjualan & Pelanggan/02 - Store Performance History.md',  cat:'Penjualan'},
+  ];
+
+  const scoreRows = allScored.map(s=>{
+    const sc = String(s.sc);
+    const scColor = sc.startsWith('11')?'#e85d04':sc.startsWith('9')?'#fb923c':sc.startsWith('8')?'#d97706':sc==='7'||sc==='6'?'#6b7280':'#9ca3af';
+    const faseClass = `sf${s.fase}`;
+    const faseLabel = ['','Fondasi','Brand','Supply','Analitik','Optimasi'][s.fase];
+    return `<tr>
+      <td style="font-weight:700;color:var(--accent)">#${s.num}</td>
+      <td><button style="background:none;border:none;cursor:pointer;color:var(--accent);font-size:12px;font-weight:500;text-align:left;padding:0;font-family:var(--font);line-height:1.3" onclick="loadMd('${s.path.replace(/'/g,"\\'")}','${s.name.replace(/'/g,"\\'")}','${s.cat}');showPage('sop')">${s.name}</button></td>
+      <td><span class="${faseClass}">F${s.fase} ${faseLabel}</span></td>
+      <td style="font-size:11.5px;color:var(--text-muted)">${s.effort}</td>
+      <td style="font-size:11.5px;color:var(--text-muted)">${s.impact}</td>
+      <td style="font-weight:900;font-size:14px;color:${scColor}">${s.sc}</td>
+      <td style="font-size:11px;color:var(--text-muted)">${s.week}</td>
+    </tr>`;
+  }).join('');
 
   return `<div class="impl-page">
     <div class="impl-hero">
-      <h1>🚀 Panduan Implementasi SOP</h1>
-      <p>Mulai dari yang termudah, capai dampak tertinggi. Ikuti urutan ini untuk rollout SOP Aldies yang efektif di semua outlet.</p>
+      <h1>Implementasi SOP — Timeline 2 Minggu</h1>
+      <p>Analisis combined score (Fase + Effort + Impact) dari 29 SOP → urutan deploy paling optimal untuk 4 outlet Aldies.</p>
     </div>
 
     <div class="impl-stats">
-      <div class="istat"><div class="istat-num">35</div><div class="istat-label">Total SOP</div></div>
+      <div class="istat"><div class="istat-num">29</div><div class="istat-label">SOP untuk di-deploy</div></div>
+      <div class="istat"><div class="istat-num" style="color:#e85d04">9</div><div class="istat-label">Minggu 1</div></div>
+      <div class="istat"><div class="istat-num" style="color:#fb923c">11</div><div class="istat-label">Minggu 2</div></div>
       <div class="istat"><div class="istat-num" style="color:#22c55e">5</div><div class="istat-label">Sudah Aktif</div></div>
-      <div class="istat"><div class="istat-num">${p1.length}</div><div class="istat-label">Mulai minggu ini</div></div>
-      <div class="istat"><div class="istat-num">${p2.length}</div><div class="istat-label">Minggu 2–4</div></div>
     </div>
 
-    <div class="matrix-section">
-      <h2>📊 Effort × Impact Matrix</h2>
-      <div class="matrix-grid">
-        <div></div>
-        <div class="mx-header">Low Impact</div>
-        <div class="mx-header">Med Impact</div>
-        <div class="mx-header">High Impact</div>
-        <div class="mx-row-label">Low<br>Effort</div>
-        <div class="mx-cell mx-ok">Quick Win<br><small>Isi & done</small></div>
-        <div class="mx-cell mx-good">Quick Win<br><small>Prioritas 1</small></div>
-        <div class="mx-cell mx-star">⭐ PRIORITAS 1<br><small>Mulai minggu ini</small></div>
-        <div class="mx-row-label">Med<br>Effort</div>
-        <div class="mx-cell mx-later">Nanti<br><small>Rendah urgensi</small></div>
-        <div class="mx-cell mx-ok">Prioritas 3<br><small>Fase lanjutan</small></div>
-        <div class="mx-cell mx-star2">PRIORITAS 2<br><small>Minggu 2–4</small></div>
-        <div class="mx-row-label">High<br>Effort</div>
-        <div class="mx-cell mx-skip">Skip<br><small>Tidak worth it</small></div>
-        <div class="mx-cell mx-later">Plan<br><small>Jangka panjang</small></div>
-        <div class="mx-cell mx-ok">Prioritas 3<br><small>Setelah fondasi kuat</small></div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:28px">
+      <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px">Formula Combined Score</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px">
+        <span style="background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;padding:4px 10px;border-radius:6px;font-weight:600">Fase weight<br><small style="font-weight:400">F1=5 F2=4 F3=3 F4=2 F5=1</small></span>
+        <span style="font-size:18px;color:var(--text-muted);font-weight:300">+</span>
+        <span style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;padding:4px 10px;border-radius:6px;font-weight:600">Effort weight<br><small style="font-weight:400">Low=3 Med=1 High=0</small></span>
+        <span style="font-size:18px;color:var(--text-muted);font-weight:300">+</span>
+        <span style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;padding:4px 10px;border-radius:6px;font-weight:600">Impact weight<br><small style="font-weight:400">High=3 Med=1 Low=0</small></span>
+        <span style="font-size:18px;color:var(--text-muted);font-weight:300">=</span>
+        <span style="background:#e85d04;color:#fff;padding:4px 12px;border-radius:6px;font-weight:800">Max 11</span>
+      </div>
+      <div style="margin-top:10px;font-size:11.5px;color:var(--text-muted);line-height:1.6">
+        ★ <strong>FIFO #04</strong> — resmi Fase 3 (score harusnya 9), tapi bersinggungan langsung dengan food safety → dipindah ke Minggu 1 H4.<br>
+        † <strong>Daily Sales #20</strong> — Fase 4 (score 8), tapi data baru bermakna setelah Fase 1 stabil minimal 1 minggu → dipindah ke Minggu 2.
       </div>
     </div>
 
-    <div style="margin-bottom:36px">
-      <h2 style="font-size:16px;font-weight:700;margin-bottom:14px;color:var(--text)">⚡ Cara Mulai Hari Ini</h2>
-      <div class="start-steps">
-        <div class="step-card">
-          <div class="step-num">1</div>
-          <div class="step-title">Cetak Checklist</div>
-          <div class="step-desc">Buka SOP Prioritas 1, klik "🖨️ Cetak Form" → format 7 hari otomatis. Print 1 set per outlet.</div>
+    <div class="tl-section">
+      <h2>Timeline 2 Minggu</h2>
+      ${renderWeek(week1)}
+      ${renderWeek(week2)}
+    </div>
+
+    <div class="roadmap-section">
+      <h2>Setelah 2 Minggu</h2>
+      <div class="roadmap-row">
+        <div class="roadmap-col">
+          <div class="roadmap-period" style="color:#6b7280">Minggu 3–4</div>
+          <div class="roadmap-title">Score 7 — Operasional Lanjut</div>
+          <div class="roadmap-item"><span class="roadmap-dot"></span>#26 Kalibrasi Alat</div>
+          <div class="roadmap-item"><span class="roadmap-dot"></span>#19 Inventory Usage</div>
+          <div class="roadmap-item"><span class="roadmap-dot"></span>#28 Training & Onboarding</div>
         </div>
-        <div class="step-card">
-          <div class="step-num">2</div>
-          <div class="step-title">Brief Store Leader</div>
-          <div class="step-desc">Briefing 10–15 menit per outlet. Tunjukkan SOP web app, jelaskan cara pakai checklist harian.</div>
+        <div class="roadmap-col">
+          <div class="roadmap-period" style="color:#3b82f6">Bulan 2</div>
+          <div class="roadmap-title">Score 6 — Analitik Dasar</div>
+          <div class="roadmap-item"><span class="roadmap-dot"></span>#18 Sales Summary Report</div>
+          <div class="roadmap-item"><span class="roadmap-dot"></span>#21 Waste Analysis</div>
+          <div class="roadmap-item"><span class="roadmap-dot"></span>#23 Petty Cash</div>
+          <div class="roadmap-item"><span class="roadmap-dot"></span>#15 Plating Guide</div>
         </div>
-        <div class="step-card">
-          <div class="step-num">3</div>
-          <div class="step-title">Mulai Besok</div>
-          <div class="step-desc">Opening checklist diisi hari pertama. Evaluasi setelah 1 minggu — apa yang perlu disesuaikan?</div>
+        <div class="roadmap-col">
+          <div class="roadmap-period" style="color:#8b5cf6">Bulan 2–3</div>
+          <div class="roadmap-title">Score 5 — Supply Penuh</div>
+          <div class="roadmap-item"><span class="roadmap-dot"></span>#03 Delivery Order</div>
+          <div class="roadmap-item"><span class="roadmap-dot"></span>#16 Quality Control Form</div>
+        </div>
+        <div class="roadmap-col">
+          <div class="roadmap-period" style="color:#a78bfa">Bulan 3+</div>
+          <div class="roadmap-title">Score 3–4 — Optimasi</div>
+          <div class="roadmap-item"><span class="roadmap-dot"></span>#01 Customer Feedback Form</div>
+          <div class="roadmap-item"><span class="roadmap-dot"></span>#02 Store Performance History</div>
         </div>
       </div>
     </div>
 
-    <div class="priority-section">
-      <div class="priority-header p1-header">
-        <span class="priority-badge pb-p1">⚡ Prioritas 1</span>
-        <span class="priority-title">Low Effort × High/Med Impact — Mulai Minggu Ini</span>
-        <span class="priority-subtitle">${p1.length} SOP · Tinggal cetak & brief</span>
+    <div class="score-section">
+      <h2>Tabel Scoring Lengkap — 29 SOP</h2>
+      <div class="score-wrap">
+        <table class="score-tbl">
+          <thead><tr>
+            <th>#</th><th>Nama SOP</th><th>Fase</th><th>Effort</th><th>Impact</th><th>Score</th><th>Timeline</th>
+          </tr></thead>
+          <tbody>${scoreRows}</tbody>
+        </table>
       </div>
-      <div class="sop-cards">${p1.map(sopCardHtml).join('')}</div>
-    </div>
-
-    <div class="priority-section">
-      <div class="priority-header">
-        <span class="priority-badge pb-p2">🔧 Prioritas 2</span>
-        <span class="priority-title">Med Effort × High Impact — Minggu 2–4</span>
-        <span class="priority-subtitle">${p2.length} SOP · Butuh training singkat</span>
-      </div>
-      <div class="sop-cards">${p2.map(sopCardHtml).join('')}</div>
-    </div>
-
-    <div class="priority-section">
-      <div class="priority-header">
-        <span class="priority-badge pb-p3">📅 Prioritas 3</span>
-        <span class="priority-title">Fase Lanjutan — Setelah Fondasi Kuat</span>
-        <span class="priority-subtitle">${p3.length} SOP</span>
-      </div>
-      <div class="sop-cards">${p3.map(sopCardHtml).join('')}</div>
-    </div>
-
-    <div class="priority-section">
-      <div class="priority-header">
-        <span class="priority-badge" style="background:#dcfce7;color:#15803d">✅ Sudah Aktif</span>
-        <span class="priority-title">Tidak perlu rollout — sudah berjalan</span>
-      </div>
-      <div class="sop-cards">${aktif.map(sopCardHtml).join('')}</div>
+      <p style="font-size:11px;color:var(--text-muted);margin-top:8px">★ Exception: Fase 3 tapi dipercepat karena food safety overlap &nbsp;|&nbsp; † Exception: Fase 4 tapi Low Effort sehingga masuk Minggu 2</p>
     </div>
 
     <div class="freq-section">
-      <h2>🗓️ Frekuensi Penggunaan SOP</h2>
+      <h2>Frekuensi Penggunaan SOP</h2>
       <div class="freq-grid">
         <div class="freq-card">
-          <div class="freq-card-header fh-daily">🔴 Harian / Per Shift</div>
+          <div class="freq-card-header fh-daily">Harian / Per Shift</div>
           <div class="freq-card-body">
             ${[
               {n:"#08 Opening Checklist",c:"#e85d04"},
               {n:"#10 Closing Checklist",c:"#e85d04"},
-              {n:"#31 Toilet Cleaning (3×)",c:"#e85d04"},
+              {n:"#31 Toilet Cleaning (3×/hari)",c:"#e85d04"},
               {n:"#06 Store Cleaning",c:"#e85d04"},
               {n:"#05 Food Safety (suhu log)",c:"#e85d04"},
               {n:"#17 Menu Availability",c:"#e85d04"},
@@ -794,7 +1008,7 @@ function renderImplementasi() {
           </div>
         </div>
         <div class="freq-card">
-          <div class="freq-card-header fh-weekly">🔵 Mingguan</div>
+          <div class="freq-card-header fh-weekly">Mingguan</div>
           <div class="freq-card-body">
             ${[
               {n:"#21 Waste Analysis (rekap Senin)",c:"#3b82f6"},
@@ -806,7 +1020,7 @@ function renderImplementasi() {
           </div>
         </div>
         <div class="freq-card">
-          <div class="freq-card-header fh-other">🟢 Situasional / Referensi</div>
+          <div class="freq-card-header fh-other">Situasional / Referensi</div>
           <div class="freq-card-body">
             ${[
               {n:"#25 Komplain & Insiden",c:"#22c55e"},
