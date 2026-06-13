@@ -11,6 +11,7 @@
     :root {
       --sidebar-w: 280px;
       --toc-w: 220px;
+      --topnav-h: 48px;
       --accent: #e85d04;
       --accent-light: #fff3ec;
       --sidebar-bg: #111827;
@@ -21,8 +22,6 @@
       --border: #e5e7eb;
       --bg: #f9fafb;
       --content-bg: #ffffff;
-      --topbar-bg: #ffffff;
-      --radius: 8px;
       --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-scale: 1rem;
     }
@@ -32,7 +31,6 @@
       --border: #374151;
       --bg: #0f172a;
       --content-bg: #1e293b;
-      --topbar-bg: #1e293b;
       --accent-light: #431407;
     }
 
@@ -41,9 +39,52 @@
       background: var(--bg);
       color: var(--text);
       display: flex;
+      flex-direction: column;
       height: 100vh;
       overflow: hidden;
       transition: background 0.2s, color 0.2s;
+    }
+
+    /* ── TOP NAV ── */
+    .topnav {
+      height: var(--topnav-h);
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 8px;
+      flex-shrink: 0;
+      border-bottom: 1px solid #1e293b;
+      z-index: 50;
+    }
+    .topnav-logo { display: flex; align-items: center; gap: 9px; margin-right: 8px; text-decoration: none; }
+    .logo-icon { width: 30px; height: 30px; background: var(--accent); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .logo-text { color: #f9fafb; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .logo-sub { font-size: 10px; color: #6b7280; font-weight: 400; }
+
+    .page-tabs { display: flex; gap: 2px; flex: 1; }
+    .ptab {
+      padding: 6px 14px; background: none; border: none; border-radius: 6px;
+      font-size: 12.5px; font-weight: 500; color: #6b7280; cursor: pointer;
+      transition: all 0.15s; white-space: nowrap; font-family: var(--font);
+    }
+    .ptab:hover { background: #1e293b; color: #d1d5db; }
+    .ptab.active { background: var(--accent); color: #fff; font-weight: 700; }
+
+    .topnav-right { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+    .topnav-btn {
+      padding: 5px 9px; background: none; border: 1px solid #374151; border-radius: 6px;
+      color: #9ca3af; cursor: pointer; font-size: 11.5px; font-weight: 600; font-family: var(--font);
+      transition: all 0.15s; white-space: nowrap;
+    }
+    .topnav-btn:hover { border-color: #6b7280; color: #e5e7eb; }
+
+    /* ── APP BODY ── */
+    .app-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      height: calc(100vh - var(--topnav-h));
     }
 
     /* ── SIDEBAR ── */
@@ -52,48 +93,35 @@
       background: var(--sidebar-bg);
       display: flex;
       flex-direction: column;
-      height: 100vh;
+      height: 100%;
       flex-shrink: 0;
       overflow: hidden;
+      transition: width 0.2s;
     }
-    .sidebar-header { padding: 16px 16px 12px; border-bottom: 1px solid #1f2937; }
-    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-icon { width: 34px; height: 34px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
-    .logo-text { color: #f9fafb; }
-    .logo-text h1 { font-size: 14px; font-weight: 700; line-height: 1.2; }
-    .logo-text span { font-size: 10px; color: #9ca3af; }
+    body:not(.page-sop) .sidebar { display: none; }
 
-    .search-wrap { padding: 8px 12px 4px; }
+    .search-wrap { padding: 10px 12px 4px; }
     .search-wrap input {
       width: 100%; background: #1f2937; border: 1px solid #374151; border-radius: 6px;
-      padding: 7px 10px; color: #d1d5db; font-size: 12.5px; outline: none;
+      padding: 7px 10px; color: #d1d5db; font-size: 12.5px; outline: none; font-family: var(--font);
     }
     .search-wrap input::placeholder { color: #6b7280; }
     .search-wrap input:focus { border-color: var(--accent); }
 
-    /* Filter bar */
     .filter-bar { padding: 6px 12px 4px; display: flex; gap: 4px; flex-wrap: wrap; }
-    .filter-btn {
-      padding: 3px 8px; font-size: 10px; border-radius: 20px; border: 1px solid #374151;
-      background: none; color: #6b7280; cursor: pointer; transition: all 0.15s; white-space: nowrap;
-    }
+    .filter-btn { padding: 3px 8px; font-size: 10px; border-radius: 20px; border: 1px solid #374151; background: none; color: #6b7280; cursor: pointer; transition: all 0.15s; white-space: nowrap; font-family: var(--font); }
     .filter-btn:hover { border-color: var(--accent); color: #f9fafb; }
     .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
 
-    .nav-scroll { flex: 1; overflow-y: auto; padding: 4px 0 4px; }
+    .nav-scroll { flex: 1; overflow-y: auto; padding: 4px 0; }
     .nav-scroll::-webkit-scrollbar { width: 4px; }
     .nav-scroll::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
-
     .nav-index { display: block; padding: 7px 16px; color: #9ca3af; font-size: 12px; cursor: pointer; transition: color 0.15s; }
     .nav-index:hover { color: #f9fafb; }
 
-    /* Recently Viewed */
     .recent-section { border-top: 1px solid #1f2937; padding: 8px 0 4px; }
     .recent-label { padding: 4px 16px; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: #4b5563; font-weight: 700; }
-    .recent-item {
-      display: flex; align-items: center; padding: 5px 16px 5px 28px; cursor: pointer;
-      gap: 6px; transition: background 0.15s; border: none; background: none; width: 100%; text-align: left;
-    }
+    .recent-item { display: flex; align-items: center; padding: 5px 16px 5px 28px; cursor: pointer; gap: 6px; transition: background 0.15s; border: none; background: none; width: 100%; text-align: left; font-family: var(--font); }
     .recent-item:hover { background: var(--sidebar-hover); }
     .recent-item-name { font-size: 11.5px; color: #6b7280; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .recent-item:hover .recent-item-name { color: #d1d5db; }
@@ -107,8 +135,7 @@
     .cat-toggle.open { transform: rotate(90deg); }
     .cat-files { display: none; }
     .cat-files.open { display: block; }
-
-    .nav-item { display: flex; align-items: center; padding: 6px 16px 6px 40px; cursor: pointer; gap: 8px; transition: background 0.15s; border: none; background: none; width: 100%; text-align: left; }
+    .nav-item { display: flex; align-items: center; padding: 6px 16px 6px 40px; cursor: pointer; gap: 8px; transition: background 0.15s; border: none; background: none; width: 100%; text-align: left; font-family: var(--font); }
     .nav-item:hover { background: var(--sidebar-hover); }
     .nav-item.active { background: var(--sidebar-active); }
     .nav-item.active .item-name { color: #f9fafb; }
@@ -117,103 +144,84 @@
     .item-num { width: 22px; height: 22px; background: #1f2937; border-radius: 5px; font-size: 10px; font-weight: 700; color: #6b7280; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .item-name { font-size: 12.5px; color: #9ca3af; line-height: 1.3; }
 
+    .search-results { padding: 4px 0 8px; border-top: 1px solid #1f2937; }
+    .search-result-label { padding: 4px 16px; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: #4b5563; font-weight: 700; }
+    .search-result-item { display: block; padding: 6px 16px 6px 28px; cursor: pointer; transition: background 0.15s; border: none; background: none; width: 100%; text-align: left; font-family: var(--font); }
+    .search-result-item:hover { background: var(--sidebar-hover); }
+    .search-result-name { font-size: 12px; color: #9ca3af; display: block; }
+    .search-result-item:hover .search-result-name { color: #f9fafb; }
+    .search-result-snippet { font-size: 10.5px; color: #4b5563; display: block; margin-top: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
     /* ── MAIN ── */
-    .main { flex: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+    .main { flex: 1; display: flex; flex-direction: column; height: 100%; overflow: hidden; }
 
     .topbar {
-      background: var(--topbar-bg);
+      background: var(--content-bg);
       border-bottom: 1px solid var(--border);
       padding: 0 20px;
-      height: 52px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-shrink: 0;
       gap: 8px;
     }
+    body:not(.page-sop) .topbar { display: none; }
     .topbar-left { display: flex; align-items: center; gap: 8px; min-width: 0; }
     .topbar-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 
-    .back-btn {
-      display: none; align-items: center; justify-content: center;
-      width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--border);
-      background: none; cursor: pointer; color: var(--text-muted); font-size: 16px;
-      transition: all 0.15s;
-    }
+    .menu-toggle { background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 20px; padding: 4px; display: none; }
+    @media (max-width: 768px) { .menu-toggle { display: block; } }
+
+    .back-btn { display: none; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--border); background: none; cursor: pointer; color: var(--text-muted); font-size: 16px; transition: all 0.15s; }
     .back-btn:hover { background: var(--bg); color: var(--text); }
     .back-btn.visible { display: flex; }
-
     .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); min-width: 0; }
     .breadcrumb span { color: var(--text); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .breadcrumb .sep { color: var(--border); flex-shrink: 0; }
-
     .status-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
     .badge-draft { background: #dbeafe; color: #1d4ed8; }
     .badge-review { background: #fef9c3; color: #a16207; }
     .badge-aktif { background: #dcfce7; color: #15803d; }
     .badge-notexist { background: #f3f4f6; color: #6b7280; }
-
-    /* Topbar control buttons */
-    .ctrl-btn {
-      display: flex; align-items: center; justify-content: center;
-      height: 30px; min-width: 30px; padding: 0 8px;
-      border-radius: 6px; border: 1px solid var(--border);
-      background: none; cursor: pointer; color: var(--text-muted);
-      font-size: 12px; font-weight: 600; gap: 4px; transition: all 0.15s;
-      white-space: nowrap;
-    }
+    .ctrl-btn { display: flex; align-items: center; justify-content: center; height: 30px; min-width: 30px; padding: 0 8px; border-radius: 6px; border: 1px solid var(--border); background: none; cursor: pointer; color: var(--text-muted); font-size: 12px; font-weight: 600; gap: 4px; transition: all 0.15s; white-space: nowrap; font-family: var(--font); }
     .ctrl-btn:hover { background: var(--bg); color: var(--text); border-color: var(--text-muted); }
-    .ctrl-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
-    /* Content wrapper with ToC */
+    /* ── CONTENT WRAPPER ── */
     .content-wrapper { flex: 1; display: flex; overflow: hidden; }
-
     .content-scroll { flex: 1; overflow-y: auto; padding: 32px 28px 48px; }
     .content-scroll::-webkit-scrollbar { width: 6px; }
     .content-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
 
-    /* ── TOC PANEL ── */
-    .toc-panel {
-      width: var(--toc-w);
-      flex-shrink: 0;
-      overflow-y: auto;
-      border-left: 1px solid var(--border);
-      padding: 28px 0;
-      display: none;
-      background: var(--content-bg);
-    }
+    body:not(.page-sop) .content-scroll { padding: 0; }
+
+    .toc-panel { width: var(--toc-w); flex-shrink: 0; overflow-y: auto; border-left: 1px solid var(--border); padding: 28px 0; display: none; background: var(--content-bg); }
     .toc-panel.visible { display: block; }
+    body:not(.page-sop) .toc-panel { display: none !important; }
     .toc-panel::-webkit-scrollbar { width: 3px; }
     .toc-panel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
     .toc-header { padding: 0 16px 10px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
-    .toc-item {
-      display: block; padding: 5px 16px; font-size: 12px; color: var(--text-muted);
-      text-decoration: none; cursor: pointer; border-left: 2px solid transparent;
-      margin-left: -1px; transition: all 0.15s; line-height: 1.4;
-    }
+    .toc-item { display: block; padding: 5px 16px; font-size: 12px; color: var(--text-muted); text-decoration: none; cursor: pointer; border-left: 2px solid transparent; margin-left: -1px; transition: all 0.15s; line-height: 1.4; }
     .toc-item:hover { color: var(--text); background: var(--bg); }
     .toc-item.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
     .toc-item.toc-h3 { padding-left: 28px; font-size: 11px; }
 
-    /* ── WELCOME ── */
+    /* ── WELCOME / SOP INDEX ── */
     .welcome { max-width: 620px; margin: 40px auto; text-align: center; }
     .welcome-icon { font-size: 52px; margin-bottom: 16px; }
     .welcome h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
     .welcome p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
     .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
-    .stat-card { background: var(--content-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center; }
+    .stat-card { background: var(--content-bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
     .stat-num { font-size: 28px; font-weight: 700; color: var(--accent); }
     .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
-    /* ── META CARD ── */
-    .meta-card { background: var(--accent-light); border: 1px solid #fbd38d; border-radius: var(--radius); padding: 14px 18px; margin-bottom: 24px; display: flex; flex-wrap: wrap; gap: 20px; }
+    /* ── MARKDOWN BODY ── */
+    .meta-card { background: var(--accent-light); border: 1px solid #fbd38d; border-radius: 8px; padding: 14px 18px; margin-bottom: 24px; display: flex; flex-wrap: wrap; gap: 20px; }
     .meta-item { display: flex; flex-direction: column; gap: 2px; }
     .meta-key { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: #9a3412; font-weight: 600; }
     .meta-val { font-size: 13px; font-weight: 500; color: #7c2d12; }
-
-    /* ── MARKDOWN CONTENT ── */
     .md-body { max-width: 820px; font-size: var(--font-scale); }
-
     .md-body h1 { font-size: calc(var(--font-scale) * 1.55); font-weight: 700; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--accent); color: var(--text); }
     .md-body h2 { font-size: calc(var(--font-scale) * 1.13); font-weight: 700; margin: 28px 0 12px; color: var(--text); }
     .md-body h2::before { content: ''; display: inline-block; width: 4px; height: 16px; background: var(--accent); border-radius: 2px; margin-right: 8px; vertical-align: middle; }
@@ -221,18 +229,13 @@
     .md-body p { font-size: var(--font-scale); line-height: 1.7; color: #374151; margin-bottom: 12px; }
     .md-body hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
     .md-body strong { color: var(--text); }
-    .md-body em { color: var(--text-muted); }
-    .md-body code { background: #f3f4f6; border-radius: 4px; padding: 1px 6px; font-size: calc(var(--font-scale) * 0.9); font-family: 'SF Mono', 'Fira Code', monospace; color: #e85d04; }
-    .md-body pre { background: #1c1c1e; border-radius: var(--radius); padding: 16px; overflow-x: auto; margin: 12px 0 16px; }
+    .md-body code { background: #f3f4f6; border-radius: 4px; padding: 1px 6px; font-size: calc(var(--font-scale) * 0.9); font-family: 'SF Mono','Fira Code',monospace; color: #e85d04; }
+    .md-body pre { background: #1c1c1e; border-radius: 8px; padding: 16px; overflow-x: auto; margin: 12px 0 16px; }
     .md-body pre code { background: none; color: #e5e7eb; font-size: 13px; padding: 0; }
-
-    [data-theme="dark"] .md-body p,
-    [data-theme="dark"] .md-body li,
-    [data-theme="dark"] .md-body td { color: #d1d5db; }
+    [data-theme="dark"] .md-body p, [data-theme="dark"] .md-body li, [data-theme="dark"] .md-body td { color: #d1d5db; }
     [data-theme="dark"] .md-body h3 { color: #e5e7eb; }
     [data-theme="dark"] .md-body code { background: #374151; color: #fb923c; }
-
-    .md-body table { width: 100%; border-collapse: collapse; font-size: calc(var(--font-scale) * 0.93); margin: 12px 0 20px; border-radius: var(--radius); overflow: hidden; box-shadow: 0 0 0 1px var(--border); }
+    .md-body table { width: 100%; border-collapse: collapse; font-size: calc(var(--font-scale) * 0.93); margin: 12px 0 20px; border-radius: 8px; overflow: hidden; box-shadow: 0 0 0 1px var(--border); }
     .md-body th { background: #f3f4f6; font-size: calc(var(--font-scale) * 0.78); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 14px; text-align: left; color: var(--text-muted); border-bottom: 1px solid var(--border); }
     .md-body td { padding: 9px 14px; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; line-height: 1.5; }
     .md-body tr:last-child td { border-bottom: none; }
@@ -240,77 +243,181 @@
     [data-theme="dark"] .md-body th { background: #374151; }
     [data-theme="dark"] .md-body td { border-bottom-color: #374151; }
     [data-theme="dark"] .md-body tr:hover td { background: #334155; }
-
     .md-body ul { padding-left: 20px; margin-bottom: 12px; }
     .md-body li { font-size: var(--font-scale); line-height: 1.7; color: #374151; margin-bottom: 3px; }
     .md-body input[type="checkbox"] { accent-color: var(--accent); width: 15px; height: 15px; margin-right: 6px; vertical-align: middle; cursor: pointer; }
     .md-body li:has(input[type="checkbox"]) { list-style: none; margin-left: -20px; padding: 3px 0; }
-    .md-body blockquote { border-left: 3px solid var(--accent); padding: 8px 16px; margin: 12px 0; background: var(--accent-light); border-radius: 0 var(--radius) var(--radius) 0; color: #92400e; font-size: calc(var(--font-scale) * 0.96); }
-
-    /* Wiki links */
+    .md-body blockquote { border-left: 3px solid var(--accent); padding: 8px 16px; margin: 12px 0; background: var(--accent-light); border-radius: 0 8px 8px 0; color: #92400e; font-size: calc(var(--font-scale) * 0.96); }
     .wiki-link { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); font-weight: 500; cursor: pointer; transition: background 0.15s; border-radius: 3px; padding: 0 2px; }
     .wiki-link:hover { background: var(--accent-light); border-bottom-style: solid; }
     .wiki-link-broken { color: #9ca3af; border-bottom: 1px dashed #d1d5db; cursor: not-allowed; border-radius: 3px; padding: 0 2px; }
-
-    /* Loading */
     .loading { display: flex; align-items: center; justify-content: center; height: 200px; color: var(--text-muted); font-size: 14px; gap: 10px; }
     .spinner { width: 20px; height: 20px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Full-text search results */
-    .search-results { padding: 4px 0 8px; border-top: 1px solid #1f2937; }
-    .search-result-label { padding: 4px 16px; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: #4b5563; font-weight: 700; }
-    .search-result-item { display: block; padding: 6px 16px 6px 28px; cursor: pointer; transition: background 0.15s; border: none; background: none; width: 100%; text-align: left; }
-    .search-result-item:hover { background: var(--sidebar-hover); }
-    .search-result-name { font-size: 12px; color: #9ca3af; display: block; }
-    .search-result-item:hover .search-result-name { color: #f9fafb; }
-    .search-result-snippet { font-size: 10.5px; color: #4b5563; display: block; margin-top: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .search-highlight { background: #92400e; color: #fef3c7; border-radius: 2px; padding: 0 1px; }
+    /* ── PRINT FORM BUTTON ── */
+    .h1-with-btn { display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--accent); }
+    .h1-with-btn h1 { flex: 1; border-bottom: none !important; margin-bottom: 0 !important; padding-bottom: 0 !important; }
+    .print-form-btn { flex-shrink: 0; display: flex; align-items: center; gap: 5px; padding: 6px 12px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; margin-top: 6px; transition: opacity 0.15s; font-family: var(--font); }
+    .print-form-btn:hover { opacity: 0.82; }
 
-    /* Mobile */
-    .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 20px; padding: 4px; }
+    /* ── IMPLEMENTASI PAGE ── */
+    .impl-page { max-width: 1000px; margin: 0 auto; padding: 36px 32px 64px; }
+    .impl-hero { margin-bottom: 32px; }
+    .impl-hero h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; color: var(--text); }
+    .impl-hero p { font-size: 14px; color: var(--text-muted); line-height: 1.6; max-width: 600px; }
+    .impl-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 36px; }
+    .istat { background: var(--content-bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+    .istat-num { font-size: 26px; font-weight: 800; color: var(--accent); }
+    .istat-label { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+    /* Effort-Impact Matrix */
+    .matrix-section { margin-bottom: 40px; }
+    .matrix-section h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--text); }
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: 80px repeat(3, 1fr);
+      grid-template-rows: 32px repeat(3, 80px);
+      gap: 4px;
+      max-width: 640px;
+    }
+    .mx-header { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .mx-row-label { display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; font-size: 11px; font-weight: 700; color: var(--text-muted); text-align: right; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.3; }
+    .mx-cell { border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 11px; font-weight: 600; line-height: 1.4; padding: 8px; }
+    .mx-skip  { background: #f1f5f9; color: #94a3b8; }
+    .mx-later { background: #f0fdf4; color: #4ade80; }
+    .mx-ok    { background: #fefce8; color: #ca8a04; }
+    .mx-good  { background: #fff7ed; color: #ea580c; }
+    .mx-star  { background: #e85d04; color: #fff; }
+    .mx-star2 { background: #fb923c; color: #fff; }
+    [data-theme="dark"] .mx-skip  { background: #1e293b; color: #475569; }
+    [data-theme="dark"] .mx-later { background: #14532d44; color: #4ade80; }
+    [data-theme="dark"] .mx-ok    { background: #41330044; color: #fbbf24; }
+    [data-theme="dark"] .mx-good  { background: #431407; color: #fb923c; }
+    [data-theme="dark"] .mx-star  { background: #c2410c; color: #fff; }
+    [data-theme="dark"] .mx-star2 { background: #9a3412; color: #fff; }
+
+    /* How to Start */
+    .start-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+    .step-card { background: var(--content-bg); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .step-num { width: 28px; height: 28px; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; margin-bottom: 10px; }
+    .step-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+    .step-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+    /* Priority sections */
+    .priority-section { margin-bottom: 36px; }
+    .priority-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+    .p1-header { border-bottom-color: var(--accent); }
+    .priority-badge { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+    .pb-p1 { background: var(--accent); color: #fff; }
+    .pb-p2 { background: #fb923c; color: #fff; }
+    .pb-p3 { background: #e5e7eb; color: #6b7280; }
+    .priority-title { font-size: 15px; font-weight: 700; color: var(--text); }
+    .priority-subtitle { font-size: 12px; color: var(--text-muted); margin-left: auto; }
+
+    .sop-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+    .sop-card {
+      background: var(--content-bg); border: 1px solid var(--border); border-radius: 10px;
+      padding: 14px; cursor: pointer; transition: all 0.15s; text-align: left;
+      border-left: 3px solid transparent; font-family: var(--font);
+    }
+    .sop-card:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(232,93,4,0.12); transform: translateY(-1px); }
+    .sop-card-p1 { border-left-color: var(--accent); }
+    .sop-card-p2 { border-left-color: #fb923c; }
+    .sop-card-p3 { border-left-color: #d1d5db; }
+    .sop-card-aktif { border-left-color: #22c55e; opacity: 0.8; }
+    .sc-num { font-size: 10px; font-weight: 800; color: var(--accent); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .sc-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
+    .sc-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+    .sc-tag { font-size: 9.5px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+    .tag-effort-low  { background: #dcfce7; color: #15803d; }
+    .tag-effort-med  { background: #fef9c3; color: #92400e; }
+    .tag-effort-high { background: #fee2e2; color: #dc2626; }
+    .tag-impact-high { background: #fce7f3; color: #be185d; }
+    .tag-impact-med  { background: #ede9fe; color: #6d28d9; }
+    .tag-freq        { background: #f3f4f6; color: #6b7280; }
+
+    /* Freq table */
+    .freq-section { margin-bottom: 36px; }
+    .freq-section h2 { font-size: 16px; font-weight: 700; margin-bottom: 14px; color: var(--text); }
+    .freq-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .freq-card { background: var(--content-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .freq-card-header { padding: 10px 14px; font-size: 12px; font-weight: 700; }
+    .fh-daily { background: #fff7ed; color: #c2410c; }
+    .fh-weekly { background: #eff6ff; color: #1d4ed8; }
+    .fh-other { background: #f0fdf4; color: #15803d; }
+    .freq-card-body { padding: 10px 14px; }
+    .freq-item { font-size: 11.5px; color: var(--text-muted); padding: 3px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 6px; }
+    .freq-item:last-child { border-bottom: none; }
+    .freq-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── PANDUAN PAGE ── */
+    .panduan-page { max-width: 820px; margin: 0 auto; padding: 36px 32px 64px; }
+    .panduan-page h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; color: var(--text); }
+    .panduan-page .subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 36px; }
+    .panduan-section { margin-bottom: 36px; }
+    .panduan-section h2 { font-size: 16px; font-weight: 700; margin-bottom: 14px; color: var(--text); display: flex; align-items: center; gap: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .panduan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .panduan-card { background: var(--content-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+    .pc-icon { font-size: 22px; margin-bottom: 6px; }
+    .pc-title { font-size: 12px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+    .pc-desc { font-size: 11.5px; color: var(--text-muted); line-height: 1.5; }
+    .status-row { display: flex; flex-direction: column; gap: 8px; }
+    .status-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; background: var(--content-bg); border: 1px solid var(--border); border-radius: 8px; }
+    .status-item .status-badge { flex-shrink: 0; margin-top: 1px; }
+    .status-item-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+    .fase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+    .fase-card { border-radius: 8px; padding: 12px; }
+    .f1 { background: #fff7ed; border: 1px solid #fed7aa; }
+    .f2 { background: #fffbeb; border: 1px solid #fde68a; }
+    .f3 { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .f4 { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .f5 { background: #faf5ff; border: 1px solid #ddd6fe; }
+    .fase-num { font-size: 11px; font-weight: 800; margin-bottom: 3px; }
+    .fase-label { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .fase-desc { font-size: 11px; color: var(--text-muted); }
+    .shortcut-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .shortcut-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--content-bg); border: 1px solid var(--border); border-radius: 6px; }
+    .shortcut-key { background: #1f2937; color: #e5e7eb; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-family: monospace; white-space: nowrap; }
+    .shortcut-desc { font-size: 12px; color: var(--text-muted); }
+    .quickref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+    .qr-item { display: flex; gap: 10px; padding: 12px; background: var(--content-bg); border: 1px solid var(--border); border-radius: 8px; align-items: flex-start; }
+    .qr-num { width: 22px; height: 22px; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .qr-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+    .qr-text strong { color: var(--text); display: block; margin-bottom: 2px; }
+
+    /* ── MOBILE ── */
+    .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 99; }
+    .overlay.open { display: block; }
     @media (max-width: 768px) {
-      .sidebar { position: fixed; left: -100%; z-index: 100; transition: left 0.25s; box-shadow: 4px 0 20px rgba(0,0,0,0.3); }
+      .sidebar { position: fixed; left: -100%; top: var(--topnav-h); height: calc(100% - var(--topnav-h)); z-index: 100; transition: left 0.25s; box-shadow: 4px 0 20px rgba(0,0,0,0.3); }
       .sidebar.open { left: 0; }
-      .menu-toggle { display: block; }
-      .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 99; }
-      .overlay.open { display: block; }
       .content-scroll { padding: 20px 16px 40px; }
       .topbar { padding: 0 12px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .impl-stats { grid-template-columns: repeat(2, 1fr); }
+      .start-steps { grid-template-columns: 1fr; }
+      .freq-grid { grid-template-columns: 1fr; }
       .toc-panel { display: none !important; }
-      .ctrl-btn span { display: none; }
+      .ptab span { display: none; }
+      body:not(.page-sop) .content-scroll { padding: 0; }
+      .impl-page, .panduan-page { padding: 20px 16px 48px; }
+      .shortcut-grid { grid-template-columns: 1fr; }
+      .matrix-grid { display: none; }
     }
-
-    /* ── PRINT FORM BUTTON ── */
-    .h1-with-btn {
-      display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap;
-      margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--accent);
-    }
-    .h1-with-btn h1 { flex: 1; border-bottom: none !important; margin-bottom: 0 !important; padding-bottom: 0 !important; }
-    .print-form-btn {
-      flex-shrink: 0; display: flex; align-items: center; gap: 5px;
-      padding: 6px 12px; background: var(--accent); color: #fff;
-      border: none; border-radius: 6px; font-size: 12px; font-weight: 600;
-      cursor: pointer; white-space: nowrap; margin-top: 6px; transition: opacity 0.15s;
-      font-family: var(--font);
-    }
-    .print-form-btn:hover { opacity: 0.82; }
 
     /* ── PRINT ── */
     @media print {
-      .sidebar, .toc-panel, .overlay, .topbar { display: none !important; }
+      .topnav, .sidebar, .toc-panel, .overlay, .topbar { display: none !important; }
       body { overflow: auto; height: auto; display: block; }
+      .app-body { display: block; height: auto; overflow: visible; }
       .main { height: auto; display: block; }
       .content-wrapper { display: block; overflow: visible; }
       .content-scroll { overflow: visible; padding: 0; }
       .md-body { max-width: 100%; }
-      .meta-card { break-inside: avoid; }
-      .md-body table { break-inside: avoid; }
+      .meta-card, .md-body table { break-inside: avoid; }
       .md-body h2, .md-body h3 { break-after: avoid; }
       .print-form-btn { display: none !important; }
-
-      /* Form-only print mode — hide everything except tagged form elements */
       body.print-form-only .meta-card { display: none !important; }
       body.print-form-only .md-body > p { display: none !important; }
       body.print-form-only .md-body > blockquote { display: none !important; }
@@ -320,74 +427,77 @@
       body.print-form-only .md-body h3:not([data-fh]) { display: none !important; }
       body.print-form-only .md-body > ul:not([data-form]) { display: none !important; }
       body.print-form-only .md-body table:not([data-form]) { display: none !important; }
-      body.print-form-only .md-body table[data-form] { break-inside: auto; }
-      body.print-form-only .md-body table[data-form] td { min-height: 26px; }
     }
   </style>
 </head>
-<body>
+<body class="page-sop">
 
-<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+<!-- TOP NAV -->
+<div class="topnav">
+  <button class="menu-toggle" onclick="toggleSidebar()" style="background:none;border:none;cursor:pointer;color:#9ca3af;font-size:20px;padding:4px;margin-right:4px">☰</button>
+  <div class="topnav-logo">
+    <div class="logo-icon">🌭</div>
+    <div class="logo-text">SOP Aldies</div>
+  </div>
+  <nav class="page-tabs">
+    <button class="ptab active" id="ptab-sop" onclick="showPage('sop')"><span>📋 </span>SOP</button>
+    <button class="ptab" id="ptab-implementasi" onclick="showPage('implementasi')"><span>🚀 </span>Implementasi</button>
+    <button class="ptab" id="ptab-panduan" onclick="showPage('panduan')"><span>📖 </span>Panduan</button>
+  </nav>
+  <div class="topnav-right">
+    <button class="topnav-btn" onclick="changeFontSize(-1)" title="Perkecil teks">A−</button>
+    <button class="topnav-btn" onclick="changeFontSize(1)" title="Perbesar teks">A+</button>
+    <button class="topnav-btn" id="dark-btn" onclick="toggleDark()" title="Dark mode">🌙</button>
+  </div>
+</div>
 
-<!-- SIDEBAR -->
-<nav class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <div class="logo">
-      <div class="logo-icon">🌭</div>
-      <div class="logo-text">
-        <h1>SOP Aldies</h1>
-        <span>Standard Operating Procedure</span>
+<!-- APP BODY -->
+<div class="app-body">
+  <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="search-wrap">
+      <input type="text" id="search" placeholder="🔍 Cari SOP atau konten..." oninput="handleSearch(this.value)">
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="setFilter(this,'all')">Semua</button>
+      <button class="filter-btn" onclick="setFilter(this,'Fase 1')">Fase 1</button>
+      <button class="filter-btn" onclick="setFilter(this,'Fase 2')">Fase 2</button>
+      <button class="filter-btn" onclick="setFilter(this,'Fase 3')">Fase 3</button>
+      <button class="filter-btn" onclick="setFilter(this,'Induk')">Induk</button>
+    </div>
+    <div class="nav-scroll" id="nav-scroll">
+      <a class="nav-index" onclick="showPage('sop')">📋 Master Index</a>
+      <div id="nav-tree"></div>
+      <div id="search-results-panel" style="display:none"></div>
+      <div class="recent-section" id="recent-section" style="display:none">
+        <div class="recent-label">🕐 Terakhir Dibuka</div>
+        <div id="recent-list"></div>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <div class="search-wrap">
-    <input type="text" id="search" placeholder="🔍 Cari SOP atau konten..." oninput="handleSearch(this.value)">
-  </div>
-
-  <div class="filter-bar" id="filter-bar">
-    <button class="filter-btn active" onclick="setFilter(this,'all')">Semua</button>
-    <button class="filter-btn" onclick="setFilter(this,'Fase 1')">Fase 1</button>
-    <button class="filter-btn" onclick="setFilter(this,'Fase 2')">Fase 2</button>
-    <button class="filter-btn" onclick="setFilter(this,'Fase 3')">Fase 3</button>
-    <button class="filter-btn" onclick="setFilter(this,'Induk')">Induk</button>
-  </div>
-
-  <div class="nav-scroll" id="nav-scroll">
-    <a class="nav-index" onclick="loadIndex()">📋 Master Index</a>
-    <div id="nav-tree"></div>
-    <div id="search-results-panel" style="display:none"></div>
-    <div class="recent-section" id="recent-section" style="display:none">
-      <div class="recent-label">🕐 Terakhir Dibuka</div>
-      <div id="recent-list"></div>
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar" id="sop-topbar">
+      <div class="topbar-left">
+        <button class="back-btn" id="back-btn" onclick="goBack()" title="Kembali (Alt+←)">←</button>
+        <div class="breadcrumb" id="breadcrumb"><span>SOP Aldies</span></div>
+      </div>
+      <div class="topbar-right">
+        <span id="status-badge"></span>
+        <button class="ctrl-btn" onclick="printDoc()" title="Print / Save PDF">🖨️ <span>Print</span></button>
+      </div>
     </div>
-  </div>
-</nav>
-
-<!-- MAIN -->
-<div class="main">
-  <div class="topbar">
-    <div class="topbar-left">
-      <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-      <button class="back-btn" id="back-btn" onclick="goBack()" title="Kembali (Alt+←)">←</button>
-      <div class="breadcrumb" id="breadcrumb"><span>SOP Aldies</span></div>
-    </div>
-    <div class="topbar-right">
-      <span id="status-badge"></span>
-      <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Perkecil teks">A−</button>
-      <button class="ctrl-btn" onclick="changeFontSize(1)" title="Perbesar teks">A+</button>
-      <button class="ctrl-btn" id="dark-btn" onclick="toggleDark()" title="Dark mode">🌙</button>
-      <button class="ctrl-btn" onclick="printDoc()" title="Print / Save PDF">🖨️ <span>Print</span></button>
-    </div>
-  </div>
-
-  <div class="content-wrapper">
-    <div class="content-scroll" id="content-scroll">
-      <div id="content-area"></div>
-    </div>
-    <div class="toc-panel" id="toc-panel">
-      <div class="toc-header">Daftar Isi</div>
-      <div id="toc-list"></div>
+    <div class="content-wrapper">
+      <div class="content-scroll" id="content-scroll">
+        <div id="content-area"></div>
+      </div>
+      <div class="toc-panel" id="toc-panel">
+        <div class="toc-header">Daftar Isi</div>
+        <div id="toc-list"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -466,56 +576,353 @@ const navData = [
   }
 ];
 
-// ── STATE ────────────────────────────────────────────────────
+// ── SCORING DATA ──────────────────────────────────────────────
+const sopScoring = [
+  // Priority 1 — Low Effort
+  { num:8,  name:"Opening Checklist Report",      path:"01 - Operasional Toko/08 - Opening Checklist Report.md",          cat:"Operasional Toko", effort:"low", impact:"high", freq:"Harian",       p:1 },
+  { num:10, name:"Closing Checklist Report",       path:"01 - Operasional Toko/10 - Closing Checklist Report.md",          cat:"Operasional Toko", effort:"low", impact:"high", freq:"Harian",       p:1 },
+  { num:31, name:"Toilet Cleaning SOP",            path:"01 - Operasional Toko/31 - Toilet Cleaning SOP.md",               cat:"Operasional Toko", effort:"low", impact:"high", freq:"3× sehari",    p:1 },
+  { num:6,  name:"Store Cleaning Checklist",       path:"01 - Operasional Toko/06 - Store Cleaning Checklist.md",          cat:"Operasional Toko", effort:"low", impact:"high", freq:"Harian",       p:1 },
+  { num:5,  name:"Food Safety Checklist",          path:"02 - Dapur & Produk/05 - Food Safety Checklist.md",               cat:"Dapur & Produk",   effort:"low", impact:"high", freq:"Harian",       p:1 },
+  { num:14, name:"Cooking Time Standard",          path:"02 - Dapur & Produk/14 - Cooking Time Standard.md",               cat:"Dapur & Produk",   effort:"low", impact:"high", freq:"Referensi",    p:1 },
+  { num:4,  name:"FIFO Monitoring Sheet",          path:"03 - Supply Chain/04 - FIFO Monitoring Sheet.md",                 cat:"Supply Chain",     effort:"low", impact:"high", freq:"Harian",       p:1 },
+  { num:20, name:"Daily Sales Report",             path:"04 - Penjualan & Pelanggan/20 - Daily Sales Report.md",           cat:"Penjualan",        effort:"low", impact:"high", freq:"Harian",       p:1 },
+  { num:25, name:"Penanganan Komplain & Insiden",  path:"04 - Penjualan & Pelanggan/25 - Penanganan Komplain & Insiden.md",cat:"Penjualan",        effort:"low", impact:"high", freq:"Situasional",  p:1 },
+  { num:29, name:"Emergency Response",             path:"01 - Operasional Toko/29 - Emergency Response.md",                cat:"Operasional Toko", effort:"low", impact:"high", freq:"Referensi",    p:1 },
+  { num:7,  name:"Grooming Standardization",       path:"01 - Operasional Toko/07 - Grooming Standardization.md",          cat:"Operasional Toko", effort:"low", impact:"med",  freq:"Per shift",    p:1 },
+  { num:9,  name:"Greeting Standard",              path:"01 - Operasional Toko/09 - Greeting Standard.md",                 cat:"Operasional Toko", effort:"low", impact:"med",  freq:"Setiap tamu",  p:1 },
+  { num:17, name:"Menu Availability Checklist",    path:"02 - Dapur & Produk/17 - Menu Availability Checklist.md",         cat:"Dapur & Produk",   effort:"low", impact:"med",  freq:"Harian",       p:1 },
+  { num:22, name:"Next Day Preparation List",      path:"02 - Dapur & Produk/22 - Next Day Preparation List.md",           cat:"Dapur & Produk",   effort:"low", impact:"med",  freq:"Harian",       p:1 },
+  // Priority 2 — Medium Effort
+  { num:12, name:"Upselling Product",              path:"04 - Penjualan & Pelanggan/12 - Upselling Product.md",            cat:"Penjualan",        effort:"med", impact:"high", freq:"Harian",       p:2 },
+  { num:18, name:"Sales Summary Report",           path:"04 - Penjualan & Pelanggan/18 - Sales Summary Report.md",         cat:"Penjualan",        effort:"med", impact:"high", freq:"Mingguan",     p:2 },
+  { num:19, name:"Inventory Usage Report",         path:"03 - Supply Chain/19 - Inventory Usage Report.md",                cat:"Supply Chain",     effort:"med", impact:"high", freq:"Mingguan",     p:2 },
+  { num:21, name:"Waste Analysis Report",          path:"02 - Dapur & Produk/21 - Waste Analysis Report.md",               cat:"Dapur & Produk",   effort:"med", impact:"high", freq:"Harian+Rekap", p:2 },
+  { num:23, name:"Petty Cash",                     path:"05 - Keuangan/23 - Petty Cash.md",                                cat:"Keuangan",         effort:"med", impact:"high", freq:"Per transaksi", p:2 },
+  { num:24, name:"Blok M × Ponpin Integration",   path:"03 - Supply Chain/24 - Blok M Ponpin Integration SOP.md",         cat:"Supply Chain",     effort:"med", impact:"high", freq:"Situasional",  p:2 },
+  { num:30, name:"Rules & Code of Conduct",        path:"06 - SDM & Disiplin/30 - Rules Operasional Store & Code of Conduct.md",cat:"SDM",        effort:"med", impact:"high", freq:"Referensi",    p:2 },
+  { num:27, name:"Kesehatan & Higienitas",         path:"01 - Operasional Toko/27 - Kesehatan & Higienitas Karyawan.md",   cat:"Operasional Toko", effort:"med", impact:"high", freq:"Per karyawan", p:2 },
+  // Priority 3
+  { num:26, name:"Kalibrasi & Pemeliharaan Alat",  path:"02 - Dapur & Produk/26 - Kalibrasi & Pemeliharaan Alat.md",       cat:"Dapur & Produk",   effort:"med", impact:"med",  freq:"Bulanan",      p:3 },
+  { num:15, name:"Plating Guide",                  path:"02 - Dapur & Produk/15 - Plating Guide.md",                       cat:"Dapur & Produk",   effort:"med", impact:"med",  freq:"Referensi",    p:3 },
+  { num:16, name:"Quality Control Form",           path:"02 - Dapur & Produk/16 - Quality Control Form.md",                cat:"Dapur & Produk",   effort:"med", impact:"med",  freq:"Periodik",     p:3 },
+  { num:1,  name:"Customer Feedback Form",         path:"04 - Penjualan & Pelanggan/01 - Customer Feedback Form.md",       cat:"Penjualan",        effort:"med", impact:"med",  freq:"Situasional",  p:3 },
+  { num:2,  name:"Store Performance History",      path:"04 - Penjualan & Pelanggan/02 - Store Performance History.md",    cat:"Penjualan",        effort:"med", impact:"med",  freq:"Bulanan",      p:3 },
+  { num:3,  name:"Delivery Order",                 path:"03 - Supply Chain/03 - Delivery Order.md",                        cat:"Supply Chain",     effort:"med", impact:"med",  freq:"Per DO",        p:3 },
+  { num:28, name:"Training & Onboarding",          path:"01 - Operasional Toko/28 - Training & Onboarding Karyawan.md",    cat:"Operasional Toko", effort:"high",impact:"high", freq:"Per karyawan", p:3 },
+  // Sudah Aktif
+  { num:"F1",name:"Opening Outlet (SOP Induk)",    path:"00 - SOP Induk/SOP-OPS-01 - Opening Outlet.md",                   cat:"SOP Induk",        effort:"-",   impact:"high", freq:"Referensi",    p:0 },
+  { num:"F2",name:"Closing Outlet (SOP Induk)",    path:"00 - SOP Induk/SOP-OPS-02 - Closing Outlet.md",                   cat:"SOP Induk",        effort:"-",   impact:"high", freq:"Referensi",    p:0 },
+  { num:"F3",name:"Operasional Dapur (SOP Induk)", path:"00 - SOP Induk/SOP-OPS-03 - Operasional Dapur.md",                cat:"SOP Induk",        effort:"-",   impact:"high", freq:"Referensi",    p:0 },
+  { num:"F4",name:"Pelayanan Pelanggan (SOP Induk)",path:"00 - SOP Induk/SOP-OPS-04 - Pelayanan Pelanggan.md",              cat:"SOP Induk",        effort:"-",   impact:"high", freq:"Referensi",    p:0 },
+  { num:13, name:"Standard Recipe Book",           path:"02 - Dapur & Produk/13 - Standard Recipe Book.md",                cat:"Dapur & Produk",   effort:"-",   impact:"high", freq:"Referensi",    p:0 },
+];
+
+// ── STATE ─────────────────────────────────────────────────────
 let activeBtn = null;
 let navHistory = [];
 let currentPath = null;
 let activeFilter = 'all';
-let contentIndex = {};  // path → rawText for full-text search
+let contentIndex = {};
 let fontSizeLevel = parseInt(localStorage.getItem('sop-font') || '0');
 let isDark = localStorage.getItem('sop-dark') === '1';
+let currentPage = 'sop';
 
-// ── WIKI LINK RESOLVER ───────────────────────────────────────
+// ── WIKI LINK RESOLVER ────────────────────────────────────────
 const linkMap = {};
 navData.forEach(cat => {
   cat.files.forEach(f => {
     const filename = f.path.split('/').pop().replace('.md', '');
-    [filename.toLowerCase(), f.name.toLowerCase()].forEach(k => {
-      linkMap[k] = { path: f.path, name: f.name, cat: cat.label };
-    });
+    [filename.toLowerCase(), f.name.toLowerCase()].forEach(k => { linkMap[k] = { path: f.path, name: f.name, cat: cat.label }; });
     const bare = filename.replace(/^\d+ - /i, '').replace(/^SOP-[A-Z]+-\d+ - /i, '');
     if (bare) linkMap[bare.toLowerCase()] = { path: f.path, name: f.name, cat: cat.label };
   });
 });
-
 function resolveWikiLink(target) {
   const t = target.trim().toLowerCase();
   if (linkMap[t]) return linkMap[t];
-  for (const [key, val] of Object.entries(linkMap)) {
-    if (key.includes(t) || t.includes(key)) return val;
-  }
+  for (const [key, val] of Object.entries(linkMap)) { if (key.includes(t) || t.includes(key)) return val; }
   return null;
 }
 
-// ── BUILD NAV ────────────────────────────────────────────────
+// ── PAGE NAVIGATION ───────────────────────────────────────────
+function showPage(page) {
+  currentPage = page;
+  document.body.className = `page-${page}`;
+  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+  document.getElementById(`ptab-${page}`).classList.add('active');
+  document.getElementById('toc-panel').classList.remove('visible');
+  document.getElementById('content-scroll').scrollTop = 0;
+
+  if (page === 'implementasi') {
+    history.replaceState(null, '', '#__impl');
+    document.getElementById('content-area').innerHTML = renderImplementasi();
+  } else if (page === 'panduan') {
+    history.replaceState(null, '', '#__panduan');
+    document.getElementById('content-area').innerHTML = renderPanduan();
+  } else {
+    loadIndex();
+  }
+}
+
+function sopCardHtml(s) {
+  const pClass = s.p === 1 ? 'sop-card-p1' : s.p === 2 ? 'sop-card-p2' : s.p === 0 ? 'sop-card-aktif' : 'sop-card-p3';
+  const eTag   = s.effort === 'low' ? '<span class="sc-tag tag-effort-low">Low Effort</span>' : s.effort === 'med' ? '<span class="sc-tag tag-effort-med">Med Effort</span>' : s.effort === 'high' ? '<span class="sc-tag tag-effort-high">High Effort</span>' : '<span class="sc-tag tag-effort-low">✅ Aktif</span>';
+  const iTag   = s.impact === 'high' ? '<span class="sc-tag tag-impact-high">High Impact</span>' : '<span class="sc-tag tag-impact-med">Med Impact</span>';
+  return `<button class="sop-card ${pClass}" onclick="loadMd('${s.path.replace(/'/g,"\\'")}','${s.name.replace(/'/g,"\\'")}','${s.cat}');showPage('sop')">
+    <div class="sc-num">#${s.num} · ${s.cat}</div>
+    <div class="sc-name">${s.name}</div>
+    <div class="sc-tags">${eTag}${iTag}<span class="sc-tag tag-freq">${s.freq}</span></div>
+  </button>`;
+}
+
+function renderImplementasi() {
+  const p1 = sopScoring.filter(s => s.p === 1);
+  const p2 = sopScoring.filter(s => s.p === 2);
+  const p3 = sopScoring.filter(s => s.p === 3);
+  const aktif = sopScoring.filter(s => s.p === 0);
+
+  return `<div class="impl-page">
+    <div class="impl-hero">
+      <h1>🚀 Panduan Implementasi SOP</h1>
+      <p>Mulai dari yang termudah, capai dampak tertinggi. Ikuti urutan ini untuk rollout SOP Aldies yang efektif di semua outlet.</p>
+    </div>
+
+    <div class="impl-stats">
+      <div class="istat"><div class="istat-num">35</div><div class="istat-label">Total SOP</div></div>
+      <div class="istat"><div class="istat-num" style="color:#22c55e">5</div><div class="istat-label">Sudah Aktif</div></div>
+      <div class="istat"><div class="istat-num">${p1.length}</div><div class="istat-label">Mulai minggu ini</div></div>
+      <div class="istat"><div class="istat-num">${p2.length}</div><div class="istat-label">Minggu 2–4</div></div>
+    </div>
+
+    <div class="matrix-section">
+      <h2>📊 Effort × Impact Matrix</h2>
+      <div class="matrix-grid">
+        <div></div>
+        <div class="mx-header">Low Impact</div>
+        <div class="mx-header">Med Impact</div>
+        <div class="mx-header">High Impact</div>
+        <div class="mx-row-label">Low<br>Effort</div>
+        <div class="mx-cell mx-ok">Quick Win<br><small>Isi & done</small></div>
+        <div class="mx-cell mx-good">Quick Win<br><small>Prioritas 1</small></div>
+        <div class="mx-cell mx-star">⭐ PRIORITAS 1<br><small>Mulai minggu ini</small></div>
+        <div class="mx-row-label">Med<br>Effort</div>
+        <div class="mx-cell mx-later">Nanti<br><small>Rendah urgensi</small></div>
+        <div class="mx-cell mx-ok">Prioritas 3<br><small>Fase lanjutan</small></div>
+        <div class="mx-cell mx-star2">PRIORITAS 2<br><small>Minggu 2–4</small></div>
+        <div class="mx-row-label">High<br>Effort</div>
+        <div class="mx-cell mx-skip">Skip<br><small>Tidak worth it</small></div>
+        <div class="mx-cell mx-later">Plan<br><small>Jangka panjang</small></div>
+        <div class="mx-cell mx-ok">Prioritas 3<br><small>Setelah fondasi kuat</small></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:36px">
+      <h2 style="font-size:16px;font-weight:700;margin-bottom:14px;color:var(--text)">⚡ Cara Mulai Hari Ini</h2>
+      <div class="start-steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-title">Cetak Checklist</div>
+          <div class="step-desc">Buka SOP Prioritas 1, klik "🖨️ Cetak Form" → format 7 hari otomatis. Print 1 set per outlet.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-title">Brief Store Leader</div>
+          <div class="step-desc">Briefing 10–15 menit per outlet. Tunjukkan SOP web app, jelaskan cara pakai checklist harian.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-title">Mulai Besok</div>
+          <div class="step-desc">Opening checklist diisi hari pertama. Evaluasi setelah 1 minggu — apa yang perlu disesuaikan?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="priority-section">
+      <div class="priority-header p1-header">
+        <span class="priority-badge pb-p1">⚡ Prioritas 1</span>
+        <span class="priority-title">Low Effort × High/Med Impact — Mulai Minggu Ini</span>
+        <span class="priority-subtitle">${p1.length} SOP · Tinggal cetak & brief</span>
+      </div>
+      <div class="sop-cards">${p1.map(sopCardHtml).join('')}</div>
+    </div>
+
+    <div class="priority-section">
+      <div class="priority-header">
+        <span class="priority-badge pb-p2">🔧 Prioritas 2</span>
+        <span class="priority-title">Med Effort × High Impact — Minggu 2–4</span>
+        <span class="priority-subtitle">${p2.length} SOP · Butuh training singkat</span>
+      </div>
+      <div class="sop-cards">${p2.map(sopCardHtml).join('')}</div>
+    </div>
+
+    <div class="priority-section">
+      <div class="priority-header">
+        <span class="priority-badge pb-p3">📅 Prioritas 3</span>
+        <span class="priority-title">Fase Lanjutan — Setelah Fondasi Kuat</span>
+        <span class="priority-subtitle">${p3.length} SOP</span>
+      </div>
+      <div class="sop-cards">${p3.map(sopCardHtml).join('')}</div>
+    </div>
+
+    <div class="priority-section">
+      <div class="priority-header">
+        <span class="priority-badge" style="background:#dcfce7;color:#15803d">✅ Sudah Aktif</span>
+        <span class="priority-title">Tidak perlu rollout — sudah berjalan</span>
+      </div>
+      <div class="sop-cards">${aktif.map(sopCardHtml).join('')}</div>
+    </div>
+
+    <div class="freq-section">
+      <h2>🗓️ Frekuensi Penggunaan SOP</h2>
+      <div class="freq-grid">
+        <div class="freq-card">
+          <div class="freq-card-header fh-daily">🔴 Harian / Per Shift</div>
+          <div class="freq-card-body">
+            ${[
+              {n:"#08 Opening Checklist",c:"#e85d04"},
+              {n:"#10 Closing Checklist",c:"#e85d04"},
+              {n:"#31 Toilet Cleaning (3×)",c:"#e85d04"},
+              {n:"#06 Store Cleaning",c:"#e85d04"},
+              {n:"#05 Food Safety (suhu log)",c:"#e85d04"},
+              {n:"#17 Menu Availability",c:"#e85d04"},
+              {n:"#22 Next Day Prep",c:"#e85d04"},
+              {n:"#20 Daily Sales Report",c:"#e85d04"},
+              {n:"#07 Grooming (per shift)",c:"#e85d04"},
+              {n:"#04 FIFO (cek harian)",c:"#e85d04"},
+            ].map(x=>`<div class="freq-item"><span class="freq-dot" style="background:${x.c}"></span>${x.n}</div>`).join('')}
+          </div>
+        </div>
+        <div class="freq-card">
+          <div class="freq-card-header fh-weekly">🔵 Mingguan</div>
+          <div class="freq-card-body">
+            ${[
+              {n:"#21 Waste Analysis (rekap Senin)",c:"#3b82f6"},
+              {n:"#18 Sales Summary",c:"#3b82f6"},
+              {n:"#19 Inventory Usage",c:"#3b82f6"},
+              {n:"#26 Kalibrasi Alat",c:"#3b82f6"},
+              {n:"#23 Petty Cash (audit mingguan)",c:"#3b82f6"},
+            ].map(x=>`<div class="freq-item"><span class="freq-dot" style="background:${x.c}"></span>${x.n}</div>`).join('')}
+          </div>
+        </div>
+        <div class="freq-card">
+          <div class="freq-card-header fh-other">🟢 Situasional / Referensi</div>
+          <div class="freq-card-body">
+            ${[
+              {n:"#25 Komplain & Insiden",c:"#22c55e"},
+              {n:"#29 Emergency Response",c:"#22c55e"},
+              {n:"#03 Delivery Order (per DO)",c:"#22c55e"},
+              {n:"#04 FIFO (per penerimaan stok)",c:"#22c55e"},
+              {n:"#24 Blok M×Ponpin (trigger)",c:"#22c55e"},
+              {n:"#23 Petty Cash (per transaksi)",c:"#22c55e"},
+              {n:"#28 Onboarding (karyawan baru)",c:"#22c55e"},
+            ].map(x=>`<div class="freq-item"><span class="freq-dot" style="background:${x.c}"></span>${x.n}</div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderPanduan() {
+  return `<div class="panduan-page">
+    <h1>📖 Panduan SOP Aldies</h1>
+    <p class="subtitle">Semua yang perlu kamu tahu untuk menggunakan sistem SOP ini — dari onboarding crew baru sampai Store Leader.</p>
+
+    <div class="panduan-section">
+      <h2>🌭 Apa itu SOP Aldies?</h2>
+      <div class="panduan-grid">
+        <div class="panduan-card"><div class="pc-icon">📋</div><div class="pc-title">Standard Operating Procedure</div><div class="pc-desc">Dokumen yang menjelaskan cara kerja yang benar dan konsisten di semua outlet Aldies.</div></div>
+        <div class="panduan-card"><div class="pc-icon">🎯</div><div class="pc-title">Tujuan Utama</div><div class="pc-desc">Menjaga kualitas produk & pelayanan tetap sama — tidak bergantung pada satu orang.</div></div>
+        <div class="panduan-card"><div class="pc-icon">📍</div><div class="pc-title">Berlaku Di Mana</div><div class="pc-desc">Semua outlet aktif: Pondok Pinang, Blok M, BSD, dan outlet baru ke depannya.</div></div>
+        <div class="panduan-card"><div class="pc-icon">👥</div><div class="pc-title">Siapa yang Pakai</div><div class="pc-desc">Semua crew harian, Store Leader untuk cek & brief, Manager untuk audit & review.</div></div>
+      </div>
+    </div>
+
+    <div class="panduan-section">
+      <h2>🚦 Status Dokumen</h2>
+      <div class="status-row">
+        <div class="status-item"><span class="status-badge badge-aktif">✅ Aktif</span><span class="status-item-desc">Final — sudah divalidasi lapangan dan berlaku operasional. Wajib diikuti.</span></div>
+        <div class="status-item"><span class="status-badge badge-review">🔄 Review</span><span class="status-item-desc">Sedang diuji coba di lapangan. Ikuti, tapi catat feedback untuk perbaikan.</span></div>
+        <div class="status-item"><span class="status-badge badge-draft">📝 Draft</span><span class="status-item-desc">Sudah ada konten, belum divalidasi lapangan. Gunakan sebagai panduan awal.</span></div>
+        <div class="status-item"><span class="status-badge badge-notexist">⬜ Not Exist</span><span class="status-item-desc">Belum dibuat. Masih dalam rencana pembuatan.</span></div>
+      </div>
+    </div>
+
+    <div class="panduan-section">
+      <h2>📊 Fase Prioritas</h2>
+      <div class="fase-grid">
+        <div class="fase-card f1"><div class="fase-num" style="color:#c2410c">Fase 1</div><div class="fase-label">Fondasi Ops</div><div class="fase-desc">Safety, kebersihan, buka-tutup. Tidak bisa beroperasi tanpa ini.</div></div>
+        <div class="fase-card f2"><div class="fase-num" style="color:#b45309">Fase 2</div><div class="fase-label">Standar Brand</div><div class="fase-desc">Grooming, greeting, plating. Konsistensi pengalaman customer.</div></div>
+        <div class="fase-card f3"><div class="fase-num" style="color:#15803d">Fase 3</div><div class="fase-label">Supply Chain</div><div class="fase-desc">FIFO, inventory, delivery. Kendali bahan baku dan stok.</div></div>
+        <div class="fase-card f4"><div class="fase-num" style="color:#1d4ed8">Fase 4</div><div class="fase-label">Analitik</div><div class="fase-desc">Sales report, waste, QC. Data untuk keputusan bisnis.</div></div>
+        <div class="fase-card f5"><div class="fase-num" style="color:#6d28d9">Fase 5</div><div class="fase-label">Optimasi</div><div class="fase-desc">Feedback loop, performance history. Continuous improvement.</div></div>
+      </div>
+    </div>
+
+    <div class="panduan-section">
+      <h2>💻 Cara Gunakan Web App Ini</h2>
+      <div class="panduan-grid">
+        <div class="panduan-card"><div class="pc-icon">🔍</div><div class="pc-title">Cari SOP</div><div class="pc-desc">Ketik di kotak pencarian sidebar. Mencari nama SOP <strong>dan isi konten</strong> secara bersamaan.</div></div>
+        <div class="panduan-card"><div class="pc-icon">🏷️</div><div class="pc-title">Filter Fase</div><div class="pc-desc">Klik tombol "Fase 1", "Fase 2", dll di sidebar untuk menyaring SOP berdasarkan prioritas.</div></div>
+        <div class="panduan-card"><div class="pc-icon">🔗</div><div class="pc-title">Wiki Link</div><div class="pc-desc">Teks oranye bergaris putus-putus di dalam SOP = link ke SOP lain. Klik untuk pindah dokumen.</div></div>
+        <div class="panduan-card"><div class="pc-icon">🖨️</div><div class="pc-title">Cetak Form</div><div class="pc-desc">Tombol "🖨️ Cetak Form" di judul SOP → cetak checklist format 7 hari (Senin–Minggu) siap pakai.</div></div>
+        <div class="panduan-card"><div class="pc-icon">🌙</div><div class="pc-title">Dark Mode</div><div class="pc-desc">Klik 🌙 di pojok kanan atas. Preferensi tersimpan otomatis untuk kunjungan berikutnya.</div></div>
+        <div class="panduan-card"><div class="pc-icon">🔖</div><div class="pc-title">Bookmark SOP</div><div class="pc-desc">URL berubah setiap buka SOP. Simpan URL untuk akses langsung ke dokumen tersebut.</div></div>
+      </div>
+    </div>
+
+    <div class="panduan-section">
+      <h2>⌨️ Keyboard Shortcuts</h2>
+      <div class="shortcut-grid">
+        <div class="shortcut-item"><span class="shortcut-key">/</span><span class="shortcut-desc">Fokus ke kotak pencarian</span></div>
+        <div class="shortcut-item"><span class="shortcut-key">Alt + ←</span><span class="shortcut-desc">Kembali ke SOP sebelumnya</span></div>
+        <div class="shortcut-item"><span class="shortcut-key">Esc</span><span class="shortcut-desc">Keluar dari kotak pencarian</span></div>
+        <div class="shortcut-item"><span class="shortcut-key">A− / A+</span><span class="shortcut-desc">Atur ukuran teks (4 level)</span></div>
+      </div>
+    </div>
+
+    <div class="panduan-section">
+      <h2>🆕 Quick Reference — Crew Baru (10 Hal Pertama)</h2>
+      <div class="quickref-grid">
+        <div class="qr-item"><div class="qr-num">1</div><div class="qr-text"><strong>Baca SOP Induk dulu</strong>Buka tab SOP → kategori "00 SOP Induk" → baca F1–F4 sebelum shift pertama.</div></div>
+        <div class="qr-item"><div class="qr-num">2</div><div class="qr-text"><strong>Pakai topi crew</strong>Wajib sejak masuk pintu sampai selesai shift. Lihat #07 Grooming.</div></div>
+        <div class="qr-item"><div class="qr-num">3</div><div class="qr-text"><strong>Isi checklist opening/closing</strong>Setiap hari. Form sudah disiapkan Store Leader — centang, tanda tangan, serahkan.</div></div>
+        <div class="qr-item"><div class="qr-num">4</div><div class="qr-text"><strong>FIFO selalu</strong>Stok lama di depan, stok baru di belakang. Lihat #04. Berlaku untuk semua bahan.</div></div>
+        <div class="qr-item"><div class="qr-num">5</div><div class="qr-text"><strong>Ada komplain customer</strong>Minta maaf dulu, jangan debat. Lapor Store Leader segera. Lihat #25.</div></div>
+        <div class="qr-item"><div class="qr-num">6</div><div class="qr-text"><strong>Ada darurat / kecelakaan</strong>Panggil Store Leader + lihat #29 Emergency Response. Jangan panik.</div></div>
+        <div class="qr-item"><div class="qr-num">7</div><div class="qr-text"><strong>Suhu bahan protein</strong>Patty, sosis, nugget harus ≤8°C saat diterima. Jika lebih — tolak dan foto. #04.</div></div>
+        <div class="qr-item"><div class="qr-num">8</div><div class="qr-text"><strong>Tidak tahu cara masak</strong>Cek #13 Standard Recipe Book dan #14 Cooking Time Standard. Jangan tebak-tebakan.</div></div>
+        <div class="qr-item"><div class="qr-num">9</div><div class="qr-text"><strong>Ada pelanggaran aturan</strong>Lihat #30 Rules & CoC. Sistem sanksi berjenjang: TL → SP1 → SP2 → SP3.</div></div>
+        <div class="qr-item"><div class="qr-num">10</div><div class="qr-text"><strong>Tidak yakin?</strong>Tanya Store Leader dulu. Lebih baik bertanya daripada salah dan merusak produk atau bahan.</div></div>
+      </div>
+    </div>
+
+    <div class="panduan-section">
+      <h2>📞 Eskalasi & PIC</h2>
+      <div class="panduan-grid">
+        <div class="panduan-card"><div class="pc-icon">👷</div><div class="pc-title">Crew Harian</div><div class="pc-desc">Isi checklist, jalankan SOP, laporkan masalah ke Store Leader langsung.</div></div>
+        <div class="panduan-card"><div class="pc-icon">🏪</div><div class="pc-title">Store Leader</div><div class="pc-desc">Brief harian, cek checklist, validasi operasional outlet. Eskalasi ke Manager.</div></div>
+        <div class="panduan-card"><div class="pc-icon">📦</div><div class="pc-title">SCM / Ponpin</div><div class="pc-desc">PIC supply chain: penerimaan bahan, FIFO, koordinasi Blok M × Ponpin.</div></div>
+        <div class="panduan-card"><div class="pc-icon">👔</div><div class="pc-title">Manager / Owner</div><div class="pc-desc">Review mingguan, audit SOP, keputusan sanksi SP, update versi SOP.</div></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── BUILD NAV ─────────────────────────────────────────────────
 function buildNav() {
   const tree = document.getElementById('nav-tree');
   navData.forEach(cat => {
     const wrap = document.createElement('div');
     wrap.className = 'nav-category';
     wrap.dataset.cat = cat.id;
-
     const header = document.createElement('div');
     header.className = 'cat-header';
-    header.innerHTML = `
-      <div class="cat-num">${cat.id}</div>
-      <div class="cat-label">${cat.label}${cat.badge ? ` <span style="font-size:9px;background:var(--accent);color:#fff;padding:1px 5px;border-radius:3px;margin-left:4px">${cat.badge}</span>` : ''}</div>
-      <span class="cat-toggle open">›</span>`;
+    header.innerHTML = `<div class="cat-num">${cat.id}</div><div class="cat-label">${cat.label}${cat.badge?` <span style="font-size:9px;background:var(--accent);color:#fff;padding:1px 5px;border-radius:3px;margin-left:4px">${cat.badge}</span>`:''}</div><span class="cat-toggle open">›</span>`;
     header.onclick = () => toggleCat(wrap);
-
     const files = document.createElement('div');
     files.className = 'cat-files open';
-
     cat.files.forEach(f => {
       const btn = document.createElement('button');
       btn.className = 'nav-item';
@@ -526,21 +933,17 @@ function buildNav() {
       btn.onclick = () => { loadMd(f.path, f.name, cat.label); closeSidebar(); };
       files.appendChild(btn);
     });
-
     wrap.appendChild(header);
     wrap.appendChild(files);
     tree.appendChild(wrap);
   });
 }
-
 function toggleCat(wrap) {
-  const files = wrap.querySelector('.cat-files');
-  const toggle = wrap.querySelector('.cat-toggle');
-  files.classList.toggle('open');
-  toggle.classList.toggle('open');
+  wrap.querySelector('.cat-files').classList.toggle('open');
+  wrap.querySelector('.cat-toggle').classList.toggle('open');
 }
 
-// ── FILTER ───────────────────────────────────────────────────
+// ── FILTER ────────────────────────────────────────────────────
 function setFilter(btn, value) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -548,113 +951,70 @@ function setFilter(btn, value) {
   handleSearch(document.getElementById('search').value);
 }
 
-// ── SEARCH (name + full-text) ─────────────────────────────────
+// ── SEARCH ────────────────────────────────────────────────────
 function handleSearch(q) {
   const query = q.toLowerCase().trim();
   const resultsPanel = document.getElementById('search-results-panel');
   const navTree = document.getElementById('nav-tree');
-
-  // Filter sidebar nav items
   document.querySelectorAll('.nav-item').forEach(btn => {
-    const nameMatch = !query || btn.dataset.name.includes(query);
-    const filterMatch = activeFilter === 'all' || btn.dataset.priority === activeFilter;
-    btn.classList.toggle('hidden', !(nameMatch && filterMatch));
+    btn.classList.toggle('hidden', !((!query || btn.dataset.name.includes(query)) && (activeFilter === 'all' || btn.dataset.priority === activeFilter)));
   });
   document.querySelectorAll('.nav-category').forEach(cat => {
     const visible = [...cat.querySelectorAll('.nav-item')].some(b => !b.classList.contains('hidden'));
     cat.style.display = visible ? '' : 'none';
-    if (query && visible) {
-      cat.querySelector('.cat-files').classList.add('open');
-      cat.querySelector('.cat-toggle').classList.add('open');
-    }
+    if (query && visible) { cat.querySelector('.cat-files').classList.add('open'); cat.querySelector('.cat-toggle').classList.add('open'); }
   });
-
-  // Full-text search results
   if (query.length >= 2 && Object.keys(contentIndex).length > 0) {
     const matches = [];
     Object.entries(contentIndex).forEach(([path, text]) => {
       const idx = text.toLowerCase().indexOf(query);
       if (idx !== -1) {
         const f = findFileByPath(path);
-        if (!f) return;
-        const filterOk = activeFilter === 'all' || f.priority === activeFilter;
-        if (!filterOk) return;
+        if (!f || (activeFilter !== 'all' && f.priority !== activeFilter)) return;
         const snippet = text.slice(Math.max(0, idx - 30), idx + 60).replace(/\n/g, ' ');
-        matches.push({ path, name: f.name, cat: f.catLabel, snippet, idx });
+        matches.push({ path, name: f.name, cat: f.catLabel, snippet });
       }
     });
     if (matches.length > 0) {
       navTree.style.display = 'none';
       resultsPanel.style.display = 'block';
-      resultsPanel.innerHTML = `
-        <div class="search-results">
-          <div class="search-result-label">🔍 ${matches.length} hasil dalam konten</div>
-          ${matches.slice(0,8).map(m => `
-            <button class="search-result-item" onclick="loadMd('${m.path.replace(/'/g,"\\'")}','${m.name.replace(/'/g,"\\'")}','${m.cat.replace(/'/g,"\\'")}');closeSidebar()">
-              <span class="search-result-name">${m.name}</span>
-              <span class="search-result-snippet">...${escHtml(m.snippet)}...</span>
-            </button>`).join('')}
-        </div>`;
+      resultsPanel.innerHTML = `<div class="search-results"><div class="search-result-label">🔍 ${matches.length} hasil dalam konten</div>${matches.slice(0,8).map(m=>`<button class="search-result-item" onclick="loadMd('${m.path.replace(/'/g,"\\'")}','${m.name.replace(/'/g,"\\'")}','${m.cat.replace(/'/g,"\\'")}');closeSidebar()"><span class="search-result-name">${m.name}</span><span class="search-result-snippet">...${escHtml(m.snippet)}...</span></button>`).join('')}</div>`;
       return;
     }
   }
-
-  // Hide full-text results if not enough query or no matches
   navTree.style.display = '';
   resultsPanel.style.display = 'none';
 }
 
 function findFileByPath(path) {
-  for (const cat of navData) {
-    for (const f of cat.files) {
-      if (f.path === path) return { ...f, catLabel: cat.label };
-    }
-  }
+  for (const cat of navData) { for (const f of cat.files) { if (f.path === path) return { ...f, catLabel: cat.label }; } }
   return null;
 }
-
-function escHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 // ── RECENTLY VIEWED ───────────────────────────────────────────
-function getRecent() {
-  try { return JSON.parse(localStorage.getItem('sop-recent') || '[]'); } catch { return []; }
-}
+function getRecent() { try { return JSON.parse(localStorage.getItem('sop-recent') || '[]'); } catch { return []; } }
 function addRecent(path, name, cat) {
   let r = getRecent().filter(x => x.path !== path);
-  r.unshift({ path, name, cat });
-  r = r.slice(0, 5);
-  localStorage.setItem('sop-recent', JSON.stringify(r));
-  renderRecent();
+  r.unshift({ path, name, cat }); r = r.slice(0, 5);
+  localStorage.setItem('sop-recent', JSON.stringify(r)); renderRecent();
 }
 function renderRecent() {
   const r = getRecent();
   const section = document.getElementById('recent-section');
-  const list = document.getElementById('recent-list');
   if (!r.length) { section.style.display = 'none'; return; }
   section.style.display = 'block';
-  list.innerHTML = r.map(x => `
-    <button class="recent-item" onclick="loadMd('${x.path.replace(/'/g,"\\'")}','${x.name.replace(/'/g,"\\'")}','${x.cat.replace(/'/g,"\\'")}');closeSidebar()">
-      <span class="recent-item-name">↩ ${escHtml(x.name)}</span>
-    </button>`).join('');
+  document.getElementById('recent-list').innerHTML = r.map(x => `<button class="recent-item" onclick="loadMd('${x.path.replace(/'/g,"\\'")}','${x.name.replace(/'/g,"\\'")}','${x.cat.replace(/'/g,"\\'")}');closeSidebar()"><span class="recent-item-name">↩ ${escHtml(x.name)}</span></button>`).join('');
 }
 
-// ── FRONTMATTER PARSER ───────────────────────────────────────
+// ── FRONTMATTER / META ────────────────────────────────────────
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return { meta: {}, body: raw };
   const meta = {};
-  match[1].split('\n').forEach(line => {
-    const idx = line.indexOf(':');
-    if (idx > 0) {
-      meta[line.slice(0, idx).trim()] = line.slice(idx + 1).trim();
-    }
-  });
+  match[1].split('\n').forEach(line => { const idx = line.indexOf(':'); if (idx > 0) meta[line.slice(0,idx).trim()] = line.slice(idx+1).trim(); });
   return { meta, body: raw.slice(match[0].length).trim() };
 }
-
-// ── STATUS BADGE ─────────────────────────────────────────────
 function statusBadge(status) {
   if (!status) return '';
   const s = status.toLowerCase();
@@ -665,8 +1025,6 @@ function statusBadge(status) {
   if (s.includes('not'))    { cls = 'badge-notexist'; label = '⬜ Not Exist'; }
   return `<span class="status-badge ${cls}">${label}</span>`;
 }
-
-// ── META CARD ────────────────────────────────────────────────
 function metaCard(meta) {
   const fields = [['PIC',meta.pic],['Frekuensi',meta.frekuensi],['Waktu',meta.waktu_pengerjaan],['Versi',meta.versi],['Update',meta.terakhir_diperbarui]].filter(([,v])=>v);
   if (!fields.length) return '';
@@ -678,48 +1036,29 @@ function buildToC(contentEl) {
   const headings = [...contentEl.querySelectorAll('h2, h3')];
   const panel = document.getElementById('toc-panel');
   const list = document.getElementById('toc-list');
-
   if (headings.length < 3) { panel.classList.remove('visible'); return; }
-
-  // Assign IDs to headings
   headings.forEach((h, i) => { if (!h.id) h.id = 'toc-' + i; });
-
-  list.innerHTML = headings.map(h => {
-    const cls = h.tagName === 'H3' ? 'toc-item toc-h3' : 'toc-item';
-    return `<a class="${cls}" href="#${h.id}" onclick="tocClick(event,'${h.id}')">${escHtml(h.textContent)}</a>`;
-  }).join('');
-
+  list.innerHTML = headings.map(h => `<a class="${h.tagName==='H3'?'toc-item toc-h3':'toc-item'}" href="#${h.id}" onclick="tocClick(event,'${h.id}')">${escHtml(h.textContent)}</a>`).join('');
   panel.classList.add('visible');
-
-  // Highlight active heading on scroll
   const scroll = document.getElementById('content-scroll');
   scroll.onscroll = () => {
     let active = headings[0];
     headings.forEach(h => { if (h.getBoundingClientRect().top < 120) active = h; });
-    list.querySelectorAll('.toc-item').forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + (active && active.id));
-    });
+    list.querySelectorAll('.toc-item').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + (active && active.id)));
   };
 }
-
 function tocClick(e, id) {
   e.preventDefault();
   const el = document.getElementById(id);
-  if (el) {
-    document.getElementById('content-scroll').scrollTo({ top: el.offsetTop - 20, behavior: 'smooth' });
-  }
+  if (el) document.getElementById('content-scroll').scrollTo({ top: el.offsetTop - 20, behavior: 'smooth' });
 }
 
-// ── NAVIGATION HISTORY ────────────────────────────────────────
+// ── HISTORY / HASH ────────────────────────────────────────────
 function pushHistory(path) {
-  if (currentPath && currentPath !== path) {
-    navHistory.push(currentPath);
-    if (navHistory.length > 30) navHistory.shift();
-  }
+  if (currentPath && currentPath !== path) { navHistory.push(currentPath); if (navHistory.length > 30) navHistory.shift(); }
   currentPath = path;
   document.getElementById('back-btn').classList.toggle('visible', navHistory.length > 0);
 }
-
 function goBack() {
   const prev = navHistory.pop();
   if (!prev) return;
@@ -727,54 +1066,27 @@ function goBack() {
   if (f) { currentPath = null; loadMd(prev, f.name, f.catLabel); }
   document.getElementById('back-btn').classList.toggle('visible', navHistory.length > 0);
 }
+function setHash(path) { history.replaceState(null, '', '#' + encodeURIComponent(path)); }
+function readHash() { const h = location.hash.slice(1); if (!h) return null; try { return decodeURIComponent(h); } catch { return null; } }
 
-// ── URL HASH ROUTING ──────────────────────────────────────────
-function setHash(path) {
-  history.replaceState(null, '', '#' + encodeURIComponent(path));
-}
-
-function readHash() {
-  const h = location.hash.slice(1);
-  if (!h) return null;
-  try { return decodeURIComponent(h); } catch { return null; }
-}
-
-// ── DARK MODE ─────────────────────────────────────────────────
+// ── DARK MODE / FONT ──────────────────────────────────────────
 function applyDark() {
   document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
   document.getElementById('dark-btn').textContent = isDark ? '☀️' : '🌙';
 }
-
-function toggleDark() {
-  isDark = !isDark;
-  localStorage.setItem('sop-dark', isDark ? '1' : '0');
-  applyDark();
-}
-
-// ── FONT SIZE ─────────────────────────────────────────────────
+function toggleDark() { isDark = !isDark; localStorage.setItem('sop-dark', isDark?'1':'0'); applyDark(); }
 const fontSizes = ['0.875rem', '1rem', '1.0625rem', '1.125rem'];
-
-function applyFontSize() {
-  document.documentElement.style.setProperty('--font-scale', fontSizes[fontSizeLevel]);
-}
-
-function changeFontSize(dir) {
-  fontSizeLevel = Math.max(0, Math.min(3, fontSizeLevel + dir));
-  localStorage.setItem('sop-font', fontSizeLevel);
-  applyFontSize();
-}
+function applyFontSize() { document.documentElement.style.setProperty('--font-scale', fontSizes[fontSizeLevel]); }
+function changeFontSize(dir) { fontSizeLevel = Math.max(0, Math.min(3, fontSizeLevel + dir)); localStorage.setItem('sop-font', fontSizeLevel); applyFontSize(); }
 
 // ── PRINT ─────────────────────────────────────────────────────
 function printDoc() { window.print(); }
-
 function printForm() {
   const mdBody = document.querySelector('.md-body');
   if (!mdBody) return;
-
   const sopName = mdBody.querySelector('h1')?.textContent?.trim() || 'Form SOP';
   const days = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
   const sections = [];
-
   mdBody.querySelectorAll('[data-form]').forEach(el => {
     let sectionTitle = '';
     let prev = el.previousElementSibling;
@@ -784,95 +1096,26 @@ function printForm() {
       prev = prev.previousElementSibling;
     }
     if (el.tagName === 'UL' && el.querySelector('input[type="checkbox"]')) {
-      const items = [...el.querySelectorAll('li')].map(li =>
-        (li.innerText || li.textContent).replace(/^\s*/, '').replace(/^[☐✓✅]\s*/, '').trim()
-      ).filter(Boolean);
+      const items = [...el.querySelectorAll('li')].map(li => (li.innerText||li.textContent).replace(/^\s*/,'').replace(/^[☐✓✅]\s*/,'').trim()).filter(Boolean);
       if (items.length) sections.push({ type: 'checklist', title: sectionTitle, items });
     } else if (el.tagName === 'TABLE') {
       sections.push({ type: 'table', title: sectionTitle, html: el.outerHTML });
     }
   });
-
   if (!sections.length) { window.print(); return; }
-
   let content = '';
   sections.forEach(sec => {
     if (sec.title) content += `<h2>${sec.title}</h2>`;
     if (sec.type === 'checklist') {
-      content += `
-        <table class="wk">
-          <thead><tr>
-            <th class="col-item">Item Checklist</th>
-            ${days.map(d => `<th class="col-day">${d}</th>`).join('')}
-          </tr></thead>
-          <tbody>
-            ${sec.items.map((item, i) => `
-              <tr class="${i % 2 === 1 ? 'alt' : ''}">
-                <td class="cell-item">${item}</td>
-                ${days.map(() => '<td class="cell-chk"><div class="box"></div></td>').join('')}
-              </tr>`).join('')}
-          </tbody>
-        </table>
-        <div class="sig-row">
-          <span>PIC: ________________________________</span>
-          <span>Tanda tangan: ________________________________</span>
-        </div>`;
+      content += `<table class="wk"><thead><tr><th class="col-item">Item Checklist</th>${days.map(d=>`<th class="col-day">${d}</th>`).join('')}</tr></thead><tbody>${sec.items.map((item,i)=>`<tr class="${i%2===1?'alt':''}"><td class="cell-item">${item}</td>${days.map(()=>'<td class="cell-chk"><div class="box"></div></td>').join('')}</tr>`).join('')}</tbody></table><div class="sig-row"><span>PIC: ________________________________</span><span>Tanda tangan: ________________________________</span></div>`;
     } else {
-      content += `<div class="tbl-wrap">${sec.html}</div>
-        <p class="copy-note">* Fotokopi form ini × 7 untuk penggunaan harian selama seminggu</p>`;
+      content += `<div class="tbl-wrap">${sec.html}</div><p class="copy-note">* Fotokopi form ini × 7 untuk penggunaan harian selama seminggu</p>`;
     }
   });
-
-  const html = `<!DOCTYPE html>
-<html lang="id"><head>
-<meta charset="UTF-8">
-<title>${sopName} — Form 7 Hari</title>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, 'Segoe UI', Arial, sans-serif; font-size: 11pt; color: #111; background: #fff; padding: 14mm 12mm; }
-  .ph { margin-bottom: 12px; padding-bottom: 10px; border-bottom: 2.5px solid #e85d04; }
-  .ph h1 { font-size: 15pt; font-weight: 700; margin-bottom: 8px; }
-  .meta { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 9.5pt; color: #444; }
-  .meta span { display: flex; align-items: center; gap: 4px; }
-  .field { display: inline-block; min-width: 110px; border-bottom: 1px solid #999; }
-  h2 { font-size: 11.5pt; font-weight: 700; margin: 14px 0 6px; border-left: 3px solid #e85d04; padding-left: 8px; }
-  table.wk { width: 100%; border-collapse: collapse; margin-bottom: 6px; }
-  table.wk th { background: #1f2937; color: #fff; font-size: 8pt; font-weight: 700; padding: 6px 3px; text-align: center; border: 1px solid #374151; }
-  table.wk th.col-item { text-align: left; padding-left: 8px; width: 34%; }
-  table.wk th.col-day { width: calc(66% / 7); }
-  table.wk td { border: 1px solid #d1d5db; padding: 4px 3px; vertical-align: middle; }
-  table.wk tr.alt td { background: #f8f8f8; }
-  table.wk td.cell-item { font-size: 9pt; padding-left: 8px; line-height: 1.4; }
-  table.wk td.cell-chk { text-align: center; }
-  table.wk .box { width: 17px; height: 17px; border: 1.5px solid #374151; border-radius: 2px; margin: 0 auto; }
-  .tbl-wrap table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 6px 0; }
-  .tbl-wrap th { background: #f3f4f6; font-size: 8pt; font-weight: 700; padding: 6px 8px; border: 1px solid #d1d5db; }
-  .tbl-wrap td { padding: 5px 8px; border: 1px solid #d1d5db; min-height: 20px; }
-  .copy-note { font-size: 8.5pt; color: #888; font-style: italic; margin: 4px 0 12px; }
-  .sig-row { display: flex; gap: 32px; margin: 8px 0 14px; font-size: 9.5pt; color: #444; }
-  @media print {
-    body { padding: 8mm 8mm; }
-    h2 { break-after: avoid; }
-    table.wk { break-inside: avoid; }
-  }
-</style>
-</head><body>
-  <div class="ph">
-    <h1>${sopName}</h1>
-    <div class="meta">
-      <span>Outlet: <span class="field">&nbsp;</span></span>
-      <span>Minggu ke-: <span class="field" style="min-width:30px">&nbsp;</span></span>
-      <span>Periode: <span class="field">&nbsp;</span> s/d <span class="field">&nbsp;</span></span>
-    </div>
-  </div>
-  ${content}
-  <script>window.onload=function(){setTimeout(function(){window.print();},250);}<\/script>
-</body></html>`;
-
+  const html = `<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><title>${sopName} — Form 7 Hari</title><style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,'Segoe UI',Arial,sans-serif;font-size:11pt;color:#111;background:#fff;padding:14mm 12mm}.ph{margin-bottom:12px;padding-bottom:10px;border-bottom:2.5px solid #e85d04}.ph h1{font-size:15pt;font-weight:700;margin-bottom:8px}.meta{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:9.5pt;color:#444}.field{display:inline-block;min-width:110px;border-bottom:1px solid #999}h2{font-size:11.5pt;font-weight:700;margin:14px 0 6px;border-left:3px solid #e85d04;padding-left:8px}table.wk{width:100%;border-collapse:collapse;margin-bottom:6px}table.wk th{background:#1f2937;color:#fff;font-size:8pt;font-weight:700;padding:6px 3px;text-align:center;border:1px solid #374151}table.wk th.col-item{text-align:left;padding-left:8px;width:34%}table.wk th.col-day{width:calc(66%/7)}table.wk td{border:1px solid #d1d5db;padding:4px 3px;vertical-align:middle}table.wk tr.alt td{background:#f8f8f8}table.wk td.cell-item{font-size:9pt;padding-left:8px;line-height:1.4}table.wk td.cell-chk{text-align:center}table.wk .box{width:17px;height:17px;border:1.5px solid #374151;border-radius:2px;margin:0 auto}.tbl-wrap table{width:100%;border-collapse:collapse;font-size:9pt;margin:6px 0}.tbl-wrap th{background:#f3f4f6;font-size:8pt;font-weight:700;padding:6px 8px;border:1px solid #d1d5db}.tbl-wrap td{padding:5px 8px;border:1px solid #d1d5db;min-height:20px}.copy-note{font-size:8.5pt;color:#888;font-style:italic;margin:4px 0 12px}.sig-row{display:flex;gap:32px;margin:8px 0 14px;font-size:9.5pt;color:#444}@media print{body{padding:8mm}h2{break-after:avoid}table.wk{break-inside:avoid}}</style></head><body><div class="ph"><h1>${sopName}</h1><div class="meta"><span>Outlet: <span class="field">&nbsp;</span></span><span>Minggu ke-: <span class="field" style="min-width:30px">&nbsp;</span></span><span>Periode: <span class="field">&nbsp;</span> s/d <span class="field">&nbsp;</span></span></div></div>${content}<script>window.onload=function(){setTimeout(function(){window.print();},250);}<\/script></body></html>`;
   const win = window.open('', '_blank', 'width=980,height=740');
   if (!win) { alert('Pop-up diblokir browser. Izinkan pop-up lalu coba lagi.'); return; }
-  win.document.write(html);
-  win.document.close();
+  win.document.write(html); win.document.close();
 }
 
 // ── DETECT & INJECT FORM PRINT BUTTON ────────────────────────
@@ -880,33 +1123,16 @@ function detectAndInjectFormBtn(area) {
   const mdBody = area.querySelector('.md-body');
   if (!mdBody) return;
   let hasForm = false;
-
-  // Tag form tables: tables where ≥2 td cells are empty or contain only underscores/dashes
   mdBody.querySelectorAll('table').forEach(tbl => {
     const tds = [...tbl.querySelectorAll('td')];
-    const emptyCount = tds.filter(td => {
-      const t = td.textContent.trim();
-      return !t || /^[_\-\s]*$/.test(t);
-    }).length;
-    if (emptyCount >= 2) {
-      tbl.dataset.form = 'true';
-      hasForm = true;
-      tagPrecedingHeading(tbl);
+    if (tds.filter(td => { const t = td.textContent.trim(); return !t || /^[_\-\s]*$/.test(t); }).length >= 2) {
+      tbl.dataset.form = 'true'; hasForm = true; tagPrecedingHeading(tbl);
     }
   });
-
-  // Tag checklist sections
   mdBody.querySelectorAll('ul').forEach(ul => {
-    if (ul.querySelector('input[type="checkbox"]')) {
-      ul.dataset.form = 'true';
-      hasForm = true;
-      tagPrecedingHeading(ul);
-    }
+    if (ul.querySelector('input[type="checkbox"]')) { ul.dataset.form = 'true'; hasForm = true; tagPrecedingHeading(ul); }
   });
-
   if (!hasForm) return;
-
-  // Inject button next to H1
   const h1 = mdBody.querySelector('h1');
   if (!h1) return;
   const wrapper = document.createElement('div');
@@ -920,183 +1146,121 @@ function detectAndInjectFormBtn(area) {
   btn.onclick = printForm;
   wrapper.appendChild(btn);
 }
-
 function tagPrecedingHeading(el) {
   let prev = el.previousElementSibling;
   while (prev) {
-    const tag = prev.tagName;
-    if (tag === 'H2' || tag === 'H3') { prev.dataset.fh = 'true'; return; }
-    if (tag === 'TABLE' || tag === 'UL') return; // stop at another block
+    if (['H2','H3'].includes(prev.tagName)) { prev.dataset.fh = 'true'; return; }
+    if (prev.tagName === 'TABLE' || prev.tagName === 'UL') return;
     prev = prev.previousElementSibling;
   }
 }
 
-// ── LOAD MD ──────────────────────────────────────────────────
+// ── LOAD MD ───────────────────────────────────────────────────
 async function loadMd(path, name, category) {
+  document.body.className = 'page-sop';
+  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+  document.getElementById('ptab-sop').classList.add('active');
   pushHistory(path);
   setHash(path);
   addRecent(path, name, category);
-
   if (activeBtn) activeBtn.classList.remove('active');
   activeBtn = document.querySelector(`[data-path="${path}"]`);
   if (activeBtn) activeBtn.classList.add('active');
-
-  document.getElementById('breadcrumb').innerHTML =
-    `<span style="color:var(--text-muted);font-weight:400">${category}</span><span class="sep">›</span><span>${name}</span>`;
-
+  document.getElementById('breadcrumb').innerHTML = `<span style="color:var(--text-muted);font-weight:400">${category}</span><span class="sep">›</span><span>${name}</span>`;
   const area = document.getElementById('content-area');
   area.innerHTML = `<div class="loading"><div class="spinner"></div> Memuat dokumen...</div>`;
   document.getElementById('status-badge').innerHTML = '';
   document.getElementById('toc-panel').classList.remove('visible');
   document.getElementById('content-scroll').scrollTop = 0;
-  if (document.getElementById('content-scroll').onscroll)
-    document.getElementById('content-scroll').onscroll = null;
-
+  if (document.getElementById('content-scroll').onscroll) document.getElementById('content-scroll').onscroll = null;
   try {
     const encodedPath = path.split('/').map(s => encodeURIComponent(s)).join('/');
     const res = await fetch(encodedPath);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const raw = await res.text();
-    contentIndex[path] = raw; // index for full-text search
-
+    contentIndex[path] = raw;
     const { meta, body } = parseFrontmatter(raw);
-
     const cleanBody = body
       .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, target, label) => {
         const displayText = label || target;
         const resolved = resolveWikiLink(target);
-        if (resolved) {
-          return `<a class="wiki-link" data-path="${resolved.path}" data-cat="${resolved.cat}" data-name="${resolved.name}" href="#">${displayText}</a>`;
-        }
+        if (resolved) return `<a class="wiki-link" data-path="${resolved.path}" data-cat="${resolved.cat}" data-name="${resolved.name}" href="#">${displayText}</a>`;
         return `<span class="wiki-link-broken" title="Dokumen tidak ditemukan: ${target}">${displayText}</span>`;
       })
       .replace(/^> \[!.*?\]\s*/gm, '> ');
-
     document.getElementById('status-badge').innerHTML = statusBadge(meta.status);
     area.innerHTML = `<div class="md-body">${metaCard(meta)}${marked.parse(cleanBody)}</div>`;
-
-    // Wiki-link clicks
     area.querySelectorAll('a.wiki-link').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        loadMd(link.dataset.path, link.dataset.name, link.dataset.cat);
-      });
+      link.addEventListener('click', e => { e.preventDefault(); loadMd(link.dataset.path, link.dataset.name, link.dataset.cat); });
     });
-
-    // Checkboxes
     area.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.removeAttribute('disabled'));
-
-    // Detect form elements and inject print button
     detectAndInjectFormBtn(area);
-
-    // Table of Contents (after DOM mutations from detectAndInjectFormBtn)
     buildToC(area);
-
   } catch (err) {
-    area.innerHTML = `
-      <div style="text-align:center;padding:60px 20px;color:var(--text-muted)">
-        <div style="font-size:40px;margin-bottom:12px">⚠️</div>
-        <div style="font-size:15px;font-weight:600;margin-bottom:6px">Gagal memuat dokumen</div>
-        <div style="font-size:13px">${err.message}</div>
-        <div style="font-size:12px;margin-top:8px;opacity:0.6">Path: <code>${path}</code></div>
-      </div>`;
+    area.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--text-muted)"><div style="font-size:40px;margin-bottom:12px">⚠️</div><div style="font-size:15px;font-weight:600;margin-bottom:6px">Gagal memuat dokumen</div><div style="font-size:13px">${err.message}</div><div style="font-size:12px;margin-top:8px;opacity:0.6">Path: <code>${path}</code></div></div>`;
   }
 }
 
-// ── LOAD INDEX ───────────────────────────────────────────────
+// ── LOAD INDEX ────────────────────────────────────────────────
 function loadIndex() {
-  navHistory = [];
-  currentPath = null;
-  if (activeBtn) activeBtn.classList.remove('active');
-  activeBtn = null;
+  navHistory = []; currentPath = null;
+  if (activeBtn) { activeBtn.classList.remove('active'); activeBtn = null; }
   history.replaceState(null, '', location.pathname);
   document.getElementById('breadcrumb').innerHTML = '<span>Master Index</span>';
   document.getElementById('status-badge').innerHTML = '';
   document.getElementById('toc-panel').classList.remove('visible');
   document.getElementById('back-btn').classList.remove('visible');
   document.getElementById('content-scroll').scrollTop = 0;
-
   const total = navData.reduce((sum, c) => sum + c.files.length, 0);
   const area = document.getElementById('content-area');
   area.innerHTML = `
     <div class="welcome">
       <div class="welcome-icon">🌭</div>
       <h2>SOP Aldies — Master Index</h2>
-      <p>Standard Operating Procedure untuk seluruh outlet Aldies. Pilih dokumen dari sidebar atau klik kategori di bawah.</p>
+      <p>Standard Operating Procedure untuk seluruh outlet Aldies. Pilih dokumen dari sidebar atau klik tabel di bawah.</p>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-num">${total}</div><div class="stat-label">Total Dokumen SOP</div></div>
+        <div class="stat-card"><div class="stat-num">${total}</div><div class="stat-label">Total SOP</div></div>
         <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Outlet Aktif</div></div>
         <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">Kategori</div></div>
       </div>
     </div>
     <div class="md-body" style="max-width:820px">
-      ${navData.map(cat => `
-        <h2>${cat.id} — ${cat.label}</h2>
-        <table>
-          <thead><tr><th>#</th><th>Dokumen</th><th>Prioritas</th></tr></thead>
-          <tbody>
-            ${cat.files.map(f => `
-              <tr style="cursor:pointer" onclick="loadMd('${f.path.replace(/'/g,"\\'")}','${f.name.replace(/'/g,"\\'")}','${cat.label}')">
-                <td><span class="item-num" style="display:inline-flex">${f.num}</span></td>
-                <td style="color:var(--accent);font-weight:500">${f.name}</td>
-                <td><span style="font-size:11px;background:#f3f4f6;padding:2px 8px;border-radius:20px;color:#6b7280">${f.priority}</span></td>
-              </tr>`).join('')}
-          </tbody>
-        </table>`).join('')}
+      ${navData.map(cat => `<h2>${cat.id} — ${cat.label}</h2><table><thead><tr><th>#</th><th>Dokumen</th><th>Prioritas</th></tr></thead><tbody>${cat.files.map(f=>`<tr style="cursor:pointer" onclick="loadMd('${f.path.replace(/'/g,"\\'")}','${f.name.replace(/'/g,"\\'")}','${cat.label}')"><td><span class="item-num" style="display:inline-flex">${f.num}</span></td><td style="color:var(--accent);font-weight:500">${f.name}</td><td><span style="font-size:11px;background:#f3f4f6;padding:2px 8px;border-radius:20px;color:#6b7280">${f.priority}</span></td></tr>`).join('')}</tbody></table>`).join('')}
     </div>`;
 }
 
-// ── MOBILE ───────────────────────────────────────────────────
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('overlay').classList.toggle('open');
-}
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('overlay').classList.remove('open');
-}
+// ── MOBILE ────────────────────────────────────────────────────
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('open'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
 
-// ── KEYBOARD SHORTCUTS ────────────────────────────────────────
+// ── KEYBOARD ──────────────────────────────────────────────────
 document.addEventListener('keydown', e => {
-  if (e.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
-    e.preventDefault();
-    document.getElementById('search').focus();
-  }
+  if (e.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) { e.preventDefault(); document.getElementById('search').focus(); }
   if (e.altKey && e.key === 'ArrowLeft') goBack();
   if (e.key === 'Escape') document.getElementById('search').blur();
 });
 
 // ── BACKGROUND INDEXER ────────────────────────────────────────
 async function backgroundIndex() {
-  const allFiles = navData.flatMap(c => c.files);
-  for (const f of allFiles) {
-    if (contentIndex[f.path]) continue;
-    try {
-      await new Promise(r => setTimeout(r, 80)); // throttle
-      const encoded = f.path.split('/').map(s => encodeURIComponent(s)).join('/');
-      const res = await fetch(encoded);
-      if (res.ok) contentIndex[f.path] = await res.text();
-    } catch {}
+  for (const cat of navData) {
+    for (const f of cat.files) {
+      if (contentIndex[f.path]) continue;
+      try {
+        await new Promise(r => setTimeout(r, 80));
+        const res = await fetch(f.path.split('/').map(s => encodeURIComponent(s)).join('/'));
+        if (res.ok) contentIndex[f.path] = await res.text();
+      } catch {}
+    }
   }
 }
 
-// ── INIT ─────────────────────────────────────────────────────
-applyDark();
-applyFontSize();
-buildNav();
-renderRecent();
-
-// Hash routing on load
+// ── INIT ──────────────────────────────────────────────────────
+applyDark(); applyFontSize(); buildNav(); renderRecent();
 const hashPath = readHash();
-if (hashPath) {
-  const f = findFileByPath(hashPath);
-  if (f) { loadMd(hashPath, f.name, f.catLabel); }
-  else loadIndex();
-} else {
-  loadIndex();
-}
-
-// Start background indexer after 2s
+if (hashPath === '__impl') { showPage('implementasi'); }
+else if (hashPath === '__panduan') { showPage('panduan'); }
+else if (hashPath) { const f = findFileByPath(hashPath); if (f) loadMd(hashPath, f.name, f.catLabel); else loadIndex(); }
+else { loadIndex(); }
 setTimeout(backgroundIndex, 2000);
 </script>
 </body>
