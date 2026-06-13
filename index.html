@@ -767,11 +767,111 @@ function changeFontSize(dir) {
 function printDoc() { window.print(); }
 
 function printForm() {
-  document.body.classList.add('print-form-only');
-  window.print();
-  window.addEventListener('afterprint', () => {
-    document.body.classList.remove('print-form-only');
-  }, { once: true });
+  const mdBody = document.querySelector('.md-body');
+  if (!mdBody) return;
+
+  const sopName = mdBody.querySelector('h1')?.textContent?.trim() || 'Form SOP';
+  const days = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
+  const sections = [];
+
+  mdBody.querySelectorAll('[data-form]').forEach(el => {
+    let sectionTitle = '';
+    let prev = el.previousElementSibling;
+    while (prev) {
+      if (['H2','H3'].includes(prev.tagName)) { sectionTitle = prev.textContent.trim(); break; }
+      if (prev.dataset && prev.dataset.form) break;
+      prev = prev.previousElementSibling;
+    }
+    if (el.tagName === 'UL' && el.querySelector('input[type="checkbox"]')) {
+      const items = [...el.querySelectorAll('li')].map(li =>
+        (li.innerText || li.textContent).replace(/^\s*/, '').replace(/^[☐✓✅]\s*/, '').trim()
+      ).filter(Boolean);
+      if (items.length) sections.push({ type: 'checklist', title: sectionTitle, items });
+    } else if (el.tagName === 'TABLE') {
+      sections.push({ type: 'table', title: sectionTitle, html: el.outerHTML });
+    }
+  });
+
+  if (!sections.length) { window.print(); return; }
+
+  let content = '';
+  sections.forEach(sec => {
+    if (sec.title) content += `<h2>${sec.title}</h2>`;
+    if (sec.type === 'checklist') {
+      content += `
+        <table class="wk">
+          <thead><tr>
+            <th class="col-item">Item Checklist</th>
+            ${days.map(d => `<th class="col-day">${d}</th>`).join('')}
+          </tr></thead>
+          <tbody>
+            ${sec.items.map((item, i) => `
+              <tr class="${i % 2 === 1 ? 'alt' : ''}">
+                <td class="cell-item">${item}</td>
+                ${days.map(() => '<td class="cell-chk"><div class="box"></div></td>').join('')}
+              </tr>`).join('')}
+          </tbody>
+        </table>
+        <div class="sig-row">
+          <span>PIC: ________________________________</span>
+          <span>Tanda tangan: ________________________________</span>
+        </div>`;
+    } else {
+      content += `<div class="tbl-wrap">${sec.html}</div>
+        <p class="copy-note">* Fotokopi form ini × 7 untuk penggunaan harian selama seminggu</p>`;
+    }
+  });
+
+  const html = `<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8">
+<title>${sopName} — Form 7 Hari</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', Arial, sans-serif; font-size: 11pt; color: #111; background: #fff; padding: 14mm 12mm; }
+  .ph { margin-bottom: 12px; padding-bottom: 10px; border-bottom: 2.5px solid #e85d04; }
+  .ph h1 { font-size: 15pt; font-weight: 700; margin-bottom: 8px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 9.5pt; color: #444; }
+  .meta span { display: flex; align-items: center; gap: 4px; }
+  .field { display: inline-block; min-width: 110px; border-bottom: 1px solid #999; }
+  h2 { font-size: 11.5pt; font-weight: 700; margin: 14px 0 6px; border-left: 3px solid #e85d04; padding-left: 8px; }
+  table.wk { width: 100%; border-collapse: collapse; margin-bottom: 6px; }
+  table.wk th { background: #1f2937; color: #fff; font-size: 8pt; font-weight: 700; padding: 6px 3px; text-align: center; border: 1px solid #374151; }
+  table.wk th.col-item { text-align: left; padding-left: 8px; width: 34%; }
+  table.wk th.col-day { width: calc(66% / 7); }
+  table.wk td { border: 1px solid #d1d5db; padding: 4px 3px; vertical-align: middle; }
+  table.wk tr.alt td { background: #f8f8f8; }
+  table.wk td.cell-item { font-size: 9pt; padding-left: 8px; line-height: 1.4; }
+  table.wk td.cell-chk { text-align: center; }
+  table.wk .box { width: 17px; height: 17px; border: 1.5px solid #374151; border-radius: 2px; margin: 0 auto; }
+  .tbl-wrap table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 6px 0; }
+  .tbl-wrap th { background: #f3f4f6; font-size: 8pt; font-weight: 700; padding: 6px 8px; border: 1px solid #d1d5db; }
+  .tbl-wrap td { padding: 5px 8px; border: 1px solid #d1d5db; min-height: 20px; }
+  .copy-note { font-size: 8.5pt; color: #888; font-style: italic; margin: 4px 0 12px; }
+  .sig-row { display: flex; gap: 32px; margin: 8px 0 14px; font-size: 9.5pt; color: #444; }
+  @media print {
+    body { padding: 8mm 8mm; }
+    h2 { break-after: avoid; }
+    table.wk { break-inside: avoid; }
+  }
+</style>
+</head><body>
+  <div class="ph">
+    <h1>${sopName}</h1>
+    <div class="meta">
+      <span>Outlet: <span class="field">&nbsp;</span></span>
+      <span>Minggu ke-: <span class="field" style="min-width:30px">&nbsp;</span></span>
+      <span>Periode: <span class="field">&nbsp;</span> s/d <span class="field">&nbsp;</span></span>
+    </div>
+  </div>
+  ${content}
+  <script>window.onload=function(){setTimeout(function(){window.print();},250);}<\/script>
+</body></html>`;
+
+  const win = window.open('', '_blank', 'width=980,height=740');
+  if (!win) { alert('Pop-up diblokir browser. Izinkan pop-up lalu coba lagi.'); return; }
+  win.document.write(html);
+  win.document.close();
 }
 
 // ── DETECT & INJECT FORM PRINT BUTTON ────────────────────────
