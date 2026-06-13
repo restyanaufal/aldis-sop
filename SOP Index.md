@@ -60,10 +60,15 @@
 |---|---------|-----|--------|-----------|
 | 23 | [[23 - Petty Cash]] | Store Leader & Finance Staff | Draft v2.0 | Fase 4 ⬆️ |
 
+## 06 - SDM & Disiplin
+| # | Dokumen | PIC | Status | Prioritas |
+|---|---------|-----|--------|-----------|
+| 30 | [[30 - Rules Operasional Store & Code of Conduct]] | Manager, Store Leader, HR | Draft | Fase 1 🆕 |
+
 ---
 
 ## Progress
-- **Total SOP:** 33 dokumen (4 SOP Induk + 29 Work Instructions)
+- **Total SOP:** 34 dokumen (4 SOP Induk + 30 Work Instructions)
 - **Aktif:** 5 ✅ (F1–F4 + #13 Standard Recipe Book)
 - **Draft:** 28 (semua Work Instructions lainnya)
 - **Review (uji coba lapangan):** 0
