@@ -38,6 +38,7 @@
 | 22 | [[22 - Next Day Preparation List]] | Store Leader | Draft | Fase 2 |
 | 26 | [[26 - Kalibrasi & Pemeliharaan Alat]] | Leader, Store Leader | Draft | Fase 1 🆕 |
 | 32 | [[32 - Minuman Jadi CK — QC & Shelf Life]] | CK · Store Leader penerima | Draft | Fase 2 🆕 |
+| 33 | [[33 - Thawing Procedure]] | Store Leader · Crew Closing | Draft | Fase 1 🆕 |
 
 ## 03 - Supply Chain
 | # | Dokumen | PIC | Status | Prioritas |
@@ -46,6 +47,7 @@
 | 4 | [[04 - FIFO Monitoring Sheet]] | SCM & Store Leader | Draft v2.0 | Fase 3 ⬆️ |
 | 19 | [[19 - Inventory Usage Report]] | SCM & Store Leader | Draft v2.0 | Fase 3 ⬆️ |
 | 24 | [[24 - Blok M Ponpin Integration SOP]] | Manager Blok M, Leader Ponpin | Draft | Fase 1 |
+| 34 | [[34 - Kartu Stok — Storage Besar & Kecil]] | Store Leader · SCM / Gudang | Draft | Fase 2 🆕 |
 
 ## 04 - Penjualan & Pelanggan
 | # | Dokumen | PIC | Status | Prioritas |
@@ -70,7 +72,7 @@
 ---
 
 ## Progress
-- **Total SOP:** 36 dokumen (4 SOP Induk + 32 Work Instructions)
+- **Total SOP:** 38 dokumen (4 SOP Induk + 34 Work Instructions)
 - **Aktif:** 5 ✅ (F1–F4 + #13 Standard Recipe Book)
 - **Draft:** 28 (semua Work Instructions lainnya)
 - **Review (uji coba lapangan):** 0
