@@ -5,56 +5,54 @@ pic: Owner / Bisnis Development
 frekuensi: Referensi tetap — digunakan setiap produksi
 waktu_pengerjaan: Referensi (bukan checklist berkala)
 status: Draft
-versi: 1.0
+versi: 2.0
 terakhir_diperbarui: 2026-08-13
 ---
 
 # Standard Recipe Book — Tegalega
 
-> Dokumen induk: [[SOP-TGL-03 - Operasional Dapur]] · Sumber data: [[Tegalega BOM & Costing]]
+> Dokumen induk: [[SOP-TGL-03 - Operasional Dapur]] · Sumber: SOP Operasional Tegalega resmi (PDF, diterima 2026-08-13) — menggantikan estimasi di versi 1.0. Biaya/COGS ada di [[Tegalega BOM & Costing]].
 
-Menjamin setiap lauk punya rasa, tekstur, dan porsi yang konsisten setiap hari. Komposisi di bawah diambil dari BOM SOP 1x — kalikan sesuai kebutuhan batch harian.
+Dibagi 3 bagian mengikuti dokumen resmi: **Central Kitchen (CK)** — resep bumbu rahasia yang diproduksi di dapur pusat, **Outlet** — sambal & nasi yang disiapkan harian di outlet, dan **Plating** — standar penyajian ke pelanggan.
 
----
-
-## Panduan Baca
-
-Setiap resep mencakup:
-1. **Komposisi** — bahan dan gramasi per SOP 1x
-2. **Yield** — hasil jadi per batch
-3. **Standar Quality** — kondisi bahan
-4. **Quality Control** — checklist sebelum masuk paket
+> 🔒 Gramasi resep di Bagian 1 (Central Kitchen) disembunyikan di viewer web untuk orang awam — hanya PIC dapur dengan PIN yang bisa lihat angka pastinya. Bagian 2 & 3 terbuka untuk semua crew karena dibutuhkan operasional harian.
 
 ---
+
+## BAGIAN 1: CENTRAL KITCHEN (CK)
+
+Standar proses produksi dan pengolahan bahan baku utama di Central Kitchen.
 
 ## A. Ayam Goreng Basah
 
-**Yield:** 3 ekor ayam pejantan = 12 potong
+**Batch produksi:** 60 potong (15 ekor ayam pejantan)
 
-### Komposisi (per SOP 1x)
+### Bahan-Bahan
 
-| Bahan | Qty | Satuan |
-|-------|-----|--------|
-| Ayam Pejantan | 3 | ekor |
-| Bawang Merah | 70 | gram |
-| Bawang Putih | 35 | gram |
-| Kunyit | 40 | gram |
-| Lengkuas | 35 | gram |
-| Kemiri | 25 | gram |
-| Daun Salam | 10 | gram |
-| Sereh | 80 | gram |
-| Air Kelapa | 1200 | ml |
-| Gula Pasir | 80 | gram |
-| Garam | 45 | gram |
-| Mecin | 45 | gram |
+| Kategori | Bahan | Qty | Satuan |
+|---|---|---|---|
+| Bahan 1 | Bawang Merah | 350 | gram |
+| Bahan 1 | Bawang Putih | 175 | gram |
+| Bahan 1 | Kunyit | 200 | gram |
+| Bahan 1 | Lengkuas | 175 | gram |
+| Bahan 1 | Kemiri | 125 | gram |
+| Bahan 2 | Daun Salam | 50 | gram |
+| Bahan 2 | Sereh | 400 | gram |
+| Bahan 2 | Air Kelapa | 6000 | ml |
+| Bahan 3 | Gula Pasir | 400 | gram |
+| Bahan 3 | Garam | 225 | gram |
+| Bahan 3 | Mecin | 225 | gram |
+| Bahan Utama | Ayam Pejantan | 60 | Potong |
 
-### Standar Quality
-- Ayam diungkep dengan bumbu + air kelapa hingga meresap sebelum digoreng
-- Warna kulit setelah goreng: kuning keemasan merata, tidak gosong
-- Rasa gurih-manis khas ungkepan air kelapa, tidak asin berlebihan
+### Cara Pembuatan
+1. Bakar Kunyit dan sangrai Kemiri.
+2. Giling halus semua **Bahan 1** menggunakan Air Kelapa sebanyak 1000 ml.
+3. Simpan sebagian Daun Salam di bawah permukaan panci, lalu masukkan **Bahan Utama**, **Bahan 2**, dan **Bahan 1**.
+4. Masukkan **Bahan 3** lalu siram menggunakan Air Kelapa sebanyak 5000 ml.
+5. Masak menggunakan Api Besar selama 30 menit, lalu kecilkan menjadi Api Sedang dan masak kembali selama 20 menit.
 
 ### Quality Control *(sebelum masuk paket)*
-- [ ] Warna kulit kuning keemasan merata
+- [ ] Warna kulit kuning keemasan merata setelah digoreng
 - [ ] Tidak gosong / tidak pucat (kurang matang)
 - [ ] Daging empuk, tidak alot
 - [ ] Aroma khas bumbu ungkep tercium, tidak amis
@@ -63,31 +61,32 @@ Setiap resep mencakup:
 
 ## B. Ayam Goreng Lengkuas
 
-**Yield:** 3 ekor ayam pejantan = 12 potong
+**Batch produksi:** 60 potong (15 ekor ayam pejantan)
 
-### Komposisi (per SOP 1x)
+### Bahan-Bahan
 
-| Bahan | Qty | Satuan |
-|-------|-----|--------|
-| Ayam Pejantan | 3 | ekor |
-| Bawang Merah | 70 | gram |
-| Bawang Putih | 70 | gram |
-| Kemiri | 35 | gram |
-| Ketumbar | 10 | gram |
-| Minyak | 100 | ml |
-| Serai | 75 | gram |
-| Daun Salam | 10 | gram |
-| Terasi | 8 | ml |
-| Lengkuas | 350 | gram |
-| Air | 1500 | ml |
-| Garam | 15 | gram |
-| Mecin | 13 | gram |
-| Merica | 4 | gram |
+| Kategori | Bahan | Qty | Satuan |
+|---|---|---|---|
+| Bahan 1 | Bawang Merah | 350 | gram |
+| Bahan 1 | Bawang Putih | 350 | gram |
+| Bahan 1 | Kemiri | 175 | gram |
+| Bahan 1 | Ketumbar | 50 | gram |
+| Bahan 1 | Minyak | 500 | ml |
+| Bahan 2 | Serai | 375 | gram |
+| Bahan 2 | Daun Salam | 50 | gram |
+| Bahan 2 | Terasi | 40 | ml |
+| Bahan 3 | Lengkuas | 1750 | gram |
+| Bahan 3 | Air | 6000 | ml |
+| Bahan 4 | Garam | 200 | gram |
+| Bahan 4 | Mecin | 225 | gram |
+| Bahan 4 | Merica | 40 | gram |
+| Bahan Utama | Ayam Pejantan | 60 | Potong |
 
-### Standar Quality
-- Lengkuas dipakai dalam jumlah besar (350g) — aroma lengkuas harus terasa dominan tapi tidak pahit
-- Warna kulit setelah goreng: kecoklatan keemasan
-- Rasa gurih dengan aroma lengkuas & rempah yang kuat
+### Cara Pembuatan
+1. Giling semua **Bahan 1** sampai halus, lalu tumis hingga keluar minyak dan wangi.
+2. Giling semua **Bahan 3** menggunakan Air 2500 ml (jangan terlalu halus).
+3. Masukkan ke dalam panci: Air 3500 ml, **Bahan Utama**, **Bahan 2**, **Bahan 3**, dan **Bahan 4**.
+4. Masak menggunakan Api Besar selama 30 menit, lalu kecilkan menjadi Api Sedang dan masak kembali selama 20 menit.
 
 ### Quality Control *(sebelum masuk paket)*
 - [ ] Aroma lengkuas tercium jelas, tidak pahit/gosong
@@ -98,64 +97,81 @@ Setiap resep mencakup:
 
 ## C. Paru Goreng
 
-**Yield:** 500 gram paru = 15 pcs
+**Batch produksi:** 2500 gram paru mentah
 
-### Komposisi (per SOP 1x)
+### Bahan-Bahan
 
-| Bahan | Qty | Satuan |
-|-------|-----|--------|
-| Paru | 500 | gram |
-| Bawang Putih | 70 | gram |
-| Bawang Merah | 35 | gram |
-| Kemiri | 10 | gram |
-| Jahe | 30 | gram |
-| Ketumbar Powder | 8 | gram |
-| Jinten Powder | 8 | gram |
-| Kunyit Powder | 3 | gram |
-| Pala Powder | 6 | gram |
-| Gula Merah | 80 | gram |
-| Daun Salam | 8 | gram |
-| Daun Jeruk | 4 | gram |
-| Serai | 80 | gram |
-| Lengkuas | 80 | gram |
-| Asem Jawa | 15 | gram |
-| Garam | 15 | gram |
-| Mecin | 10 | gram |
-| Air | 1500 | ml |
+| Kategori | Bahan | Qty | Satuan |
+|---|---|---|---|
+| Bahan Utama | Paru | 2500 | gram |
+| Bahan Presto | Garam | 100 | gram |
+| Bahan Presto | Jahe | 130 | gram |
+| Bahan Presto | Lengkuas | 100 | gram |
+| Bahan Presto | Salam | 20 | gram |
+| Bahan Presto | Sereh | 120 | gram |
+| Bahan 1 | Bawang Merah | 150 | gram |
+| Bahan 1 | Bawang Putih | 100 | gram |
+| Bahan 1 | Kemiri | 100 | gram |
+| Bahan 1 | Ketumbar | 25 | gram |
+| Bahan 1 | Air | 2500 | ml |
+| Bahan 2 | Gula Merah | 300 | gram |
+| Bahan 2 | Daun Salam | 25 | gram |
+| Bahan 2 | Lengkuas | 125 | gram |
+| Bahan 2 | Royco Sapi | 75 | gram |
+| Bahan 2 | Asem Jawa | 50 | gram |
+| Bahan 2 | Garam | 25 | gram |
 
-### Standar Quality
-- Paru direbus dengan bumbu hingga empuk sebelum digoreng
-- Setelah digoreng: tekstur crispy di luar, empuk di dalam
-- Warna coklat keemasan, tidak gosong
+### Cara Pembuatan
+1. Bersihkan Paru, lalu presto selama 40 menit menggunakan **Bahan Presto** (air sampai paru tenggelam), bersihkan bagian yang masih kotor.
+2. Tiriskan lalu potong-potong dengan ketebalan sekitar 0,5 cm.
+3. Giling semua **Bahan 1** sampai halus dengan Air 2500 ml.
+4. Masak Paru menggunakan wajan, masukkan **Bahan 1** dan **Bahan 2**.
+5. Masak hingga air menyusut.
 
 ### Quality Control *(sebelum masuk paket)*
 - [ ] Tekstur crispy di luar, tidak alot
 - [ ] Warna coklat keemasan merata
-- [ ] Tidak berbau amis / anyir
+- [ ] Tidak berbau amis/anyir
 
 ---
 
 ## D. Babat Goreng
 
-**Yield:** 500 gram babat = 15 pcs
+**Batch produksi:** 2500 gram babat mentah
 
-### Komposisi (per SOP 1x)
-Bumbu identik dengan Paru Goreng, kecuali:
+### Bahan-Bahan
 
-| Bahan | Qty | Satuan |
-|-------|-----|--------|
-| Babat | 500 | gram |
-| Gula Merah | 100 | gram |
-| *(bumbu lain sama dengan Paru Goreng)* | | |
+| Kategori | Bahan | Qty | Satuan |
+|---|---|---|---|
+| Bahan Utama | Babat | 2500 | gram |
+| Bahan Presto | Garam | 100 | gram |
+| Bahan Presto | Jahe | 150 | gram |
+| Bahan Presto | Lengkuas | 100 | gram |
+| Bahan Presto | Salam | 20 | gram |
+| Bahan Presto | Sereh | 150 | gram |
+| Bahan 1 | Bawang Merah | 150 | gram |
+| Bahan 1 | Bawang Putih | 100 | gram |
+| Bahan 1 | Kemiri | 100 | gram |
+| Bahan 1 | Ketumbar | 25 | gram |
+| Bahan 1 | Air | 2500 | ml |
+| Bahan 2 | Gula Merah | 300 | gram |
+| Bahan 2 | Daun Salam | 25 | gram |
+| Bahan 2 | Lengkuas | 125 | gram |
+| Bahan 2 | Royco Sapi | 75 | gram |
+| Bahan 2 | Asem Jawa | 50 | gram |
+| Bahan 2 | Garam | 25 | gram |
 
-> Pilihan babat: putih (bersih, lebih mahal) atau lokal (lebih murah, cek kebersihan lebih teliti sebelum masak).
+> Pilihan babat: putih (bersih, lebih mahal) atau lokal (lebih murah, cek kebersihan lebih teliti sebelum masak) — lihat [[Tegalega BOM & Costing]].
 
-### Standar Quality
-- Babat dicuci & direbus dengan bumbu hingga bau khasnya berkurang dan empuk
-- Setelah digoreng: crispy di luar, kenyal-empuk di dalam
+### Cara Pembuatan
+1. Bersihkan Babat lalu presto selama 50 menit menggunakan **Bahan Presto** (air sampai tenggelam). *Bersihkan hingga benar-benar bersih.*
+2. Tiriskan lalu potong-potong dengan ukuran sekitar 0,5 cm.
+3. Giling semua **Bahan 1** sampai halus dengan Air 2500 ml.
+4. Masak Babat menggunakan wajan, masukkan **Bahan 1** dan **Bahan 2**.
+5. Masak hingga air menyusut.
 
 ### Quality Control *(sebelum masuk paket)*
-- [ ] Tidak berbau menyengat (bau khas babat harus sudah jauh berkurang setelah diolah)
+- [ ] Tidak berbau menyengat (bau khas babat sudah jauh berkurang)
 - [ ] Tekstur crispy di luar, empuk di dalam
 - [ ] Warna coklat keemasan
 
@@ -163,28 +179,32 @@ Bumbu identik dengan Paru Goreng, kecuali:
 
 ## E. Koyor Goreng
 
-**Yield:** 500 gram koyor = 15 pcs
+**Batch produksi:** 2500 gram koyor mentah
 
-### Komposisi (per SOP 1x)
+### Bahan-Bahan
 
-| Bahan | Qty | Satuan |
-|-------|-----|--------|
-| Koyor | 500 | gram |
-| Bawang Merah | 30 | gram |
-| Bawang Putih | 20 | gram |
-| Kemiri | 20 | gram |
-| Ketumbar | 5 | gram |
-| Gula Merah | 80 | gram |
-| Daun Salam | 5 | gram |
-| Lengkuas | 25 | gram |
-| Royco Sapi | 15 | gram |
-| Asem Jawa | 10 | gram |
-| Garam | 5 | gram |
-| Air | 600 | ml |
+| Kategori | Bahan | Qty | Satuan |
+|---|---|---|---|
+| Bahan Utama | Koyor | 2500 | gram |
+| Bahan 1 | Bawang Merah | 150 | gram |
+| Bahan 1 | Bawang Putih | 100 | gram |
+| Bahan 1 | Kemiri | 100 | gram |
+| Bahan 1 | Ketumbar | 25 | gram |
+| Bahan 1 | Air | 2000 | ml |
+| Bahan 2 | Gula Merah | 400 | gram |
+| Bahan 2 | Daun Salam | 25 | gram |
+| Bahan 2 | Lengkuas | 125 | gram |
+| Bahan 2 | Royco Sapi | 75 | gram |
+| Bahan 2 | Asem Jawa | 50 | gram |
+| Bahan 2 | Garam | 25 | gram |
 
-### Standar Quality
-- Koyor direbus hingga empuk sebelum digoreng
-- Tekstur setelah goreng: kenyal, tidak keras
+> Koyor di-presto langsung (tanpa bumbu presto terpisah seperti Paru/Babat) — sesuai SOP resmi.
+
+### Cara Pembuatan
+1. Presto Koyor selama 40 menit dan bersihkan bagian yang masih kotor.
+2. Giling semua **Bahan 1** dengan Air 2000 ml sampai halus.
+3. Setelah di-presto, masak Koyor menggunakan wajan dan masukkan **Bahan 1** dan **Bahan 2**.
+4. Masak hingga air menyusut.
 
 ### Quality Control *(sebelum masuk paket)*
 - [ ] Tekstur kenyal, tidak keras/alot
@@ -192,97 +212,109 @@ Bumbu identik dengan Paru Goreng, kecuali:
 
 ---
 
-## F. Sambal Dadak
+## F. Ati Ampela / Kepala / Ceker
 
-**Yield:** 3 porsi
+**Batch produksi:** 2500 gram
 
-### Komposisi (per SOP 1x)
+### Bahan-Bahan
 
-| Bahan | Qty | Satuan |
-|-------|-----|--------|
-| Cabe Rawit Merah | 15 | gram |
-| Cabe Tanjung | 65 | gram |
-| Tomat | 50 | gram |
-| Terasi | 5 | gram |
-| Asam Jawa | 5 | gram |
-| Gula Merah | 15 | gram |
-| Garam | 5 | gram |
-| Mecin | 5 | gram |
+| Kategori | Bahan | Qty | Satuan |
+|---|---|---|---|
+| Bahan Utama | Ati Ampela / Kepala / Ceker | 2500 | gram |
 
-### Standar Quality
-- Sambal diulek kasar (bukan halus mulus) — tekstur khas sambal dadak
-- Rasa pedas-segar-gurih seimbang, terasa asam tomat & terasi
+### Cara Pembuatan
+1. Ungkep Ati Ampela / Kepala / Ceker menggunakan **air sisa ungkepan Ayam Goreng Basah** selama 20 menit.
+
+> Notes resmi: Thawing di suhu ruang atau thawing dengan air mengalir.
 
 ### Quality Control *(sebelum masuk paket)*
-- [ ] Tekstur kasar, tidak terlalu halus
-- [ ] Rasa pedas seimbang, tidak hambar
-- [ ] Warna merah segar, tidak menghitam (tanda sudah lama dibuat)
+- [ ] Tidak berbau amis, bumbu ungkepan meresap
+- [ ] Tekstur empuk setelah diungkep
 
 ---
 
-## G. Sambal Bawang
+## BAGIAN 2: OUTLET (SOP Sambal & Nasi)
 
-**Yield:** belum ada data — perlu ditetapkan saat produksi rutin dimulai
+Standar persiapan sambal, nasi, dan penggorengan harian di outlet — **tidak dikunci PIN**, karena dibutuhkan setiap crew untuk kerja harian.
 
-### Komposisi (per SOP 1x)
+### 1. SOP Pembuatan Sambal
 
-| Bahan | Qty | Satuan |
-|-------|-----|--------|
-| Cabe Rawit | 15 | gram |
-| Bawang Putih | 65 | gram |
-| Garam | ~5–15 | gram *(perlu konfirmasi — kemungkinan tertukar dengan gula, lihat [[Tegalega BOM & Costing]])* |
-| Gula Pasir | ~5 | gram |
+#### A. Sambal Dadak
+**Bahan (1x resep):** Cabe Rawit Merah 100g, Tomat 40g, Terasi 25g, Gula Merah 15g, Garam 5g, Mecin 5g.
+- Masukkan semua bahan lalu ulek hingga halus tapi agak kasar.
 
-> ⚠️ Komposisi garam/gula perlu dikonfirmasi ulang — lihat catatan di BOM & Costing sebelum dijadikan standar final.
+#### B. Sambal Ijo
+**Bahan 1:** Cabe Rawit Hijau 100g, Bawang Putih 15g, Minyak 150ml
+**Bahan 2:** Garam 5g, Mecin 5g
+- Masak semua Bahan 1 sampai sedikit layu, lalu ulek sampai halus.
+- Tambahkan Bahan 2 lalu aduk hingga tercampur rata.
 
-### Quality Control *(sebelum masuk paket)*
-- [ ] Rasa gurih bawang dominan, tidak keasinan
-- [ ] Warna kuning keemasan (dari bawang putih goreng)
+#### C. Sambal Kecap
+**Bahan 1:** Cabe Rawit Merah 60g, Tomat 40g
+**Bahan 2:** Garam 1g, Kecap 100g
+- Iris tipis cabe rawit merah dan potong dadu kecil tomat, masukkan ke mangkuk stainless.
+- Tambahkan garam dan kecap lalu aduk hingga tercampur rata.
+- Diamkan terlebih dahulu agar pedas cabe rawit dan kecap menyatu.
+
+> **Sambal 1 porsi = 1 sendok makan / 1 cup sambal.**
+> ⚠️ Sambal Bawang (versi lama) sudah digantikan oleh Sambal Ijo & Sambal Kecap per SOP resmi ini — tidak dipakai lagi.
+
+### 2. SOP Persiapan Nasi
+
+#### A. Nasi Putih
+**Bahan:** Beras 1000g, Air 1500g.
+- Bersihkan beras lalu masak hingga matang. Aduk nasi merata, pastikan tidak benyek/lembek.
+
+#### B. Nasi Jeruk
+**Bahan:** Bawang Putih 50g, Daun Jeruk 30g, Minyak 150ml.
+- Buang batang daun jeruk. Chopper Bawang Putih lalu Daun Jeruk.
+- Tumis menggunakan Minyak hingga Bawang Putih kecoklatan, masukkan daun jeruk hingga kering. Simpan untuk stok.
+- **Penyajian:** Campur 1 porsi nasi (200g) dengan stok daun jeruk, aduk rata.
+
+#### C. Nasi Kecombrang
+**Bahan:** Bawang Putih 50g, Kecombrang 60g, Minyak 150ml.
+- Chopper Bawang Putih dan Kecombrang. Tumis hingga Bawang Putih kecoklatan, masukkan kecombrang. Simpan untuk stok.
+- **Penyajian:** Campur 1 porsi nasi (200g) dengan stok kecombrang, aduk rata.
+
+### 3. SOP Penggorengan
+
+| Item | Suhu Minyak | Instruksi |
+|---|---|---|
+| Ayam Basah | 80°C | Goreng 30 detik – 1 menit lalu tiriskan. *(Portioning: 1 pcs)* |
+| Ayam Lengkuas | 120°C | Goreng ayam dan serundeng 3 menit hingga kecoklatan lalu tiriskan. *(Portioning: 1 pcs)* |
+| Babat, Paru, Koyor | 100°C | Goreng babat & paru 5 menit hingga kecoklatan. Goreng Koyor 1 menit, jangan sampai kering. Paru mendekati kering; babat dan koyor jangan terlalu kering. *(Portioning: 75 gram)* |
+| Ati Ampela | 100°C | Goreng 5 menit hingga kecoklatan dan kering. *(Portioning: 100g / 3 pcs per porsi)* |
 
 ---
 
-## H. Ati Ampela
+## BAGIAN 3: SOP Menu & Penyajian (Plating)
 
-**Status:** ⚠️ Resep belum lengkap — berat per pcs dan bumbu belum ditetapkan (lihat [[Tegalega BOM & Costing]]). Isi bagian ini setelah data BOM Ati Ampela lengkap.
+Standar penataan dan penyajian hidangan ke pelanggan.
 
----
+### Standar Plating Umum (Paket Nasi)
+1. Siapkan piring AGG Tegalega.
+2. Simpan Nasi (200gr) di bagian tengah bawah sablon.
+3. Simpan Lauk Utama di bagian tengah atas sablon (potongan ayam/sambal random kecuali ada request).
+4. Simpan Sambal (1 cup) di sebelah kiri Lauk Utama & Nasi.
+5. Simpan Jukut (15gr) di sebelah kanan Lauk Utama & Nasi.
 
-## I. Nasi Putih
+### Daftar Menu / Paket
 
-**Yield:** 1 kg beras = 13 porsi
+| Nama Menu / Paket | Bahan-Bahan / Komposisi | Detail Tambahan |
+|---|---|---|
+| Paket Nasi Ayam Goreng Gurih | Ayam Goreng Gurih 1 potong, Nasi 200gr, Sambal 1cup, Jukut 15gr | Sesuai standar plating umum |
+| Paket Nasi Ayam Goreng Lengkuas | Ayam Lengkuas 1 potong, Nasi 200gr, Sambal 1cup, Jukut 15gr, Serundeng Lengkuas 1 SDM | Tambahkan serundeng di atas ayam |
+| Paket Nasi Paru / Babat / Koyor | Paru/Babat/Koyor 75gr, Nasi 200gr, Sambal 1cup, Jukut 15gr | Sesuai standar plating umum |
+| Paket Nasi Ati Ampela | Ati Ampela 3pcs/100gr, Nasi 200gr, Sambal 1cup, Jukut 15gr | Sesuai standar plating umum |
+| Paket Nasi Sate Maranggi | Sate Maranggi 7 tusuk, Nasi 200gr, Sambal Kecap 1cup, Jukut 15gr | Sambal pakai Sambal Kecap |
+| Ayam Goreng Gurih (4 Potong) | Dada 2pcs, Paha 2pcs, Sambal Ijo 1 cup, Sambal Dadak 1 cup | Susun ayam per bagian, sambal di samping |
+| Ayam Goreng Lengkuas (4 Potong) | Dada 2pcs, Paha 2pcs, Sambal Ijo 1 cup, Sambal Dadak 1 cup, Serundeng 4 SDM | Susun per bagian, tambah serundeng 4 SDM di atas, sambal di samping |
+| Ayam Goreng (2 Potong) | Dada 1pcs, Paha 1pcs, Sambal (Ijo & Dadak) 1 cup, + Serundeng 2 SDM (u/ Lengkuas) | Susun per bagian, tambah serundeng sesuai takaran jika Lengkuas |
 
-- Masak nasi seperti standar rumah tangga — pulen, tidak lembek/keras
-- Sajikan hangat setiap penyajian, jangan biarkan nasi dingin > 2 jam sebelum disajikan
-
-### Quality Control
-- [ ] Nasi pulen, tidak lembek atau keras
-- [ ] Disajikan hangat
-
----
-
-## J. Jukut (Selada Air)
-
-**Yield:** 1 kg selada air = 15 porsi
-
-- Cuci bersih sebelum disajikan — selada air rawan kotoran/tanah dari tangkai
-- Sajikan segar, tidak layu
-
-### Quality Control
-- [ ] Segar, tidak layu, warna hijau cerah
-- [ ] Sudah dicuci bersih (tidak ada tanah/pasir tersisa)
-
----
-
-## BOM Paket Jadi
-
-| Paket | Komposisi |
-|---|---|
-| **Paket Ayam Basah Tegalega** | 1 potong Ayam Goreng Basah + Nasi + Sambal Dadak + Jukut |
-| **Paket Ayam Goreng Gurih Tegalega** | 1 potong Ayam Goreng Lengkuas + Nasi + Sambal Dadak + Jukut |
-
-> Referensi harga & COGS lengkap per resep dan per paket ada di [[Tegalega BOM & Costing]] — dokumen ini fokus ke standar rasa/proses, bukan biaya.
+> ⚠️ **Sate Maranggi** disebut sebagai komponen paket tapi resep produksinya sendiri belum ada di SOP ini — perlu dilengkapi terpisah (kemungkinan dibeli jadi dari pihak ketiga, perlu konfirmasi).
 
 ---
 
 ## Catatan / Versi
-- v1.0 (2026-08-13): Draft awal — disusun langsung dari data BOM Tegalega batch pertama (2026-07-17). Resep Sambal Bawang & Ati Ampela masih perlu dilengkapi setelah data BOM final.
+- v1.0 (2026-08-13): Draft awal — disusun dari data BOM Tegalega batch pertama (estimasi/research), sebagian resep (Paru/Babat/Koyor) belum akurat.
+- v2.0 (2026-08-13): **Diganti total** dengan SOP Operasional Tegalega resmi (PDF). Perubahan utama: resep C/D/E (Paru/Babat/Koyor) berubah total prosesnya (presto 2 tahap, bumbu beda); F. Ati Ampela dilengkapi (dulu kosong); ditambah Sambal Ijo & Sambal Kecap (Sambal Bawang dihapus); ditambah Nasi Jeruk & Nasi Kecombrang; ditambah SOP Penggorengan & standar plating lengkap. Harga/COGS tetap mengacu ke [[Tegalega BOM & Costing]] (dihitung ulang untuk resep yang berubah).
