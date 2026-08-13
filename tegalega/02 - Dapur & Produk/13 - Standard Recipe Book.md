@@ -289,32 +289,118 @@ Standar persiapan sambal, nasi, dan penggorengan harian di outlet — **tidak di
 
 ## BAGIAN 3: SOP Menu & Penyajian (Plating)
 
-Standar penataan dan penyajian hidangan ke pelanggan.
+Standar penataan dan penyajian hidangan ke pelanggan — per paket menu, sesuai SOP Menu resmi.
 
-### Standar Plating Umum (Paket Nasi)
+### Paket Nasi Ayam Goreng Gurih
+**Bahan:** Ayam Goreng Gurih 1 potong · Nasi 200gr · Sambal 1 cup · Jukut 15gr
+
+**Cara Penyajian:**
 1. Siapkan piring AGG Tegalega.
-2. Simpan Nasi (200gr) di bagian tengah bawah sablon.
-3. Simpan Lauk Utama di bagian tengah atas sablon (potongan ayam/sambal random kecuali ada request).
-4. Simpan Sambal (1 cup) di sebelah kiri Lauk Utama & Nasi.
-5. Simpan Jukut (15gr) di sebelah kanan Lauk Utama & Nasi.
+2. Simpan nasi di bagian tengah bawah sablon.
+3. Simpan ayam di bagian tengah atas sablon. *(Potongan ayam random, kecuali ada request)*
+4. Simpan sambal di sebelah kiri ayam dan nasi. *(Sambal random, kecuali ada request)*
+5. Simpan jukut di sebelah kanan ayam dan nasi.
 
-### Daftar Menu / Paket
+### Paket Nasi Ayam Goreng Lengkuas
+**Bahan:** Ayam Goreng Lengkuas 1 potong · Nasi 200gr · Sambal 1 cup · Jukut 15gr · Serundeng Lengkuas 1 SDM
 
-| Nama Menu / Paket | Bahan-Bahan / Komposisi | Detail Tambahan |
-|---|---|---|
-| Paket Nasi Ayam Goreng Gurih | Ayam Goreng Gurih 1 potong, Nasi 200gr, Sambal 1cup, Jukut 15gr | Sesuai standar plating umum |
-| Paket Nasi Ayam Goreng Lengkuas | Ayam Lengkuas 1 potong, Nasi 200gr, Sambal 1cup, Jukut 15gr, Serundeng Lengkuas 1 SDM | Tambahkan serundeng di atas ayam |
-| Paket Nasi Paru / Babat / Koyor | Paru/Babat/Koyor 75gr, Nasi 200gr, Sambal 1cup, Jukut 15gr | Sesuai standar plating umum |
-| Paket Nasi Ati Ampela | Ati Ampela 3pcs/100gr, Nasi 200gr, Sambal 1cup, Jukut 15gr | Sesuai standar plating umum |
-| Paket Nasi Sate Maranggi | Sate Maranggi 7 tusuk, Nasi 200gr, Sambal Kecap 1cup, Jukut 15gr | Sambal pakai Sambal Kecap |
-| Ayam Goreng Gurih (4 Potong) | Dada 2pcs, Paha 2pcs, Sambal Ijo 1 cup, Sambal Dadak 1 cup | Susun ayam per bagian, sambal di samping |
-| Ayam Goreng Lengkuas (4 Potong) | Dada 2pcs, Paha 2pcs, Sambal Ijo 1 cup, Sambal Dadak 1 cup, Serundeng 4 SDM | Susun per bagian, tambah serundeng 4 SDM di atas, sambal di samping |
-| Ayam Goreng (2 Potong) | Dada 1pcs, Paha 1pcs, Sambal (Ijo & Dadak) 1 cup, + Serundeng 2 SDM (u/ Lengkuas) | Susun per bagian, tambah serundeng sesuai takaran jika Lengkuas |
+**Cara Penyajian:**
+1. Siapkan piring AGG Tegalega.
+2. Simpan nasi di bagian tengah bawah sablon.
+3. Simpan ayam di bagian tengah atas sablon. *(Potongan ayam random, kecuali ada request)*
+4. Tambahkan serundeng di atas ayam.
+5. Simpan sambal di sebelah kiri ayam dan nasi. *(Sambal random, kecuali ada request)*
+6. Simpan jukut di sebelah kanan ayam dan nasi.
+
+### Paket Nasi Paru
+**Bahan:** Paru 75gr · Nasi 200gr · Sambal 1 cup · Jukut 15gr
+
+**Cara Penyajian:**
+1. Siapkan piring AGG Tegalega.
+2. Simpan nasi di bagian tengah bawah sablon.
+3. Simpan paru di bagian tengah atas sablon.
+4. Simpan sambal di sebelah kiri paru dan nasi. *(Sambal random, kecuali ada request)*
+5. Simpan jukut di sebelah kanan paru dan nasi.
+
+### Paket Nasi Koyor
+**Bahan:** Koyor 75gr · Nasi 200gr · Sambal 1 cup · Jukut 15gr
+
+**Cara Penyajian:**
+1. Siapkan piring AGG Tegalega.
+2. Simpan nasi di bagian tengah bawah sablon.
+3. Simpan koyor di bagian tengah atas sablon.
+4. Simpan sambal di sebelah kiri koyor dan nasi. *(Sambal random, kecuali ada request)*
+5. Simpan jukut di sebelah kanan koyor dan nasi.
+
+### Paket Nasi Babat
+**Bahan:** Babat 75gr · Nasi 200gr · Sambal 1 cup · Jukut 15gr
+
+**Cara Penyajian:**
+1. Siapkan piring AGG Tegalega.
+2. Simpan nasi di bagian tengah bawah sablon.
+3. Simpan babat di bagian tengah atas sablon.
+4. Simpan sambal di sebelah kiri babat dan nasi. *(Sambal random, kecuali ada request)*
+5. Simpan jukut di sebelah kanan babat dan nasi.
+
+### Paket Nasi Ati Ampela
+**Bahan:** Ati Ampela 3pcs/100gr · Nasi 200gr · Sambal 1 cup · Jukut 15gr
+
+**Cara Penyajian:**
+1. Siapkan piring AGG Tegalega.
+2. Simpan nasi di bagian tengah bawah sablon.
+3. Simpan ati ampela di bagian tengah atas sablon.
+4. Simpan sambal di sebelah kiri ati ampela dan nasi. *(Sambal random, kecuali ada request)*
+5. Simpan jukut di sebelah kanan ati ampela dan nasi.
+
+### Paket Nasi Sate Maranggi
+**Bahan:** Sate Maranggi 7 tusuk · Nasi 200gr · Sambal Kecap 1 cup · Jukut 15gr
+
+**Cara Penyajian:**
+1. Siapkan piring AGG Tegalega.
+2. Simpan nasi di bagian tengah bawah sablon.
+3. Simpan sate maranggi di bagian tengah atas sablon.
+4. Simpan sambal kecap di sebelah kiri sate maranggi dan nasi.
+5. Simpan jukut di sebelah kanan sate maranggi dan nasi.
 
 > ⚠️ **Sate Maranggi** disebut sebagai komponen paket tapi resep produksinya sendiri belum ada di SOP ini — perlu dilengkapi terpisah (kemungkinan dibeli jadi dari pihak ketiga, perlu konfirmasi).
+
+### Ayam Goreng Gurih (4 Potong)
+**Bahan:** Dada Ayam 2pcs · Paha Ayam 2pcs · Sambal Ijo 1 cup · Sambal Dadak 1 cup
+
+**Cara Penyajian:**
+1. Siapkan piring AGG Tegalega.
+2. Simpan Ayam Goreng Gurih per bagian potongan.
+3. Simpan Sambal Ijo / Sambal Dadak di samping ayam.
+
+### Ayam Goreng Lengkuas (4 Potong)
+**Bahan:** Dada Ayam 2pcs · Paha Ayam 2pcs · Sambal Ijo 1 cup · Sambal Dadak 1 cup · Serundeng Lengkuas 4 SDM
+
+**Cara Penyajian:**
+1. Siapkan piring AGG Tegalega.
+2. Simpan Ayam Goreng Lengkuas per bagian potongan.
+3. Tambahkan Serundeng Lengkuas 4 SDM di atas ayam.
+4. Simpan Sambal Ijo / Sambal Dadak di samping ayam.
+
+### Ayam Goreng Gurih (2 Potong)
+**Bahan:** Dada Ayam 1pcs · Paha Ayam 1pcs · Sambal Ijo 1 cup · Sambal Dadak 1 cup
+
+**Cara Penyajian:**
+1. Siapkan piring AGG Tegalega.
+2. Simpan Ayam Goreng Gurih per bagian potongan.
+3. Simpan Sambal Ijo / Sambal Dadak di samping ayam.
+
+### Ayam Goreng Lengkuas (2 Potong)
+**Bahan:** Dada Ayam 1pcs · Paha Ayam 1pcs · Sambal Ijo 1 cup · Sambal Dadak 1 cup · Serundeng Lengkuas 2 SDM
+
+**Cara Penyajian:**
+1. Siapkan piring AGG Tegalega.
+2. Simpan Ayam Goreng Lengkuas per bagian potongan.
+3. Tambahkan Serundeng Lengkuas 2 SDM di atas ayam.
+4. Simpan Sambal Ijo / Sambal Dadak di samping ayam.
 
 ---
 
 ## Catatan / Versi
 - v1.0 (2026-08-13): Draft awal — disusun dari data BOM Tegalega batch pertama (estimasi/research), sebagian resep (Paru/Babat/Koyor) belum akurat.
 - v2.0 (2026-08-13): **Diganti total** dengan SOP Operasional Tegalega resmi (PDF). Perubahan utama: resep C/D/E (Paru/Babat/Koyor) berubah total prosesnya (presto 2 tahap, bumbu beda); F. Ati Ampela dilengkapi (dulu kosong); ditambah Sambal Ijo & Sambal Kecap (Sambal Bawang dihapus); ditambah Nasi Jeruk & Nasi Kecombrang; ditambah SOP Penggorengan & standar plating lengkap. Harga/COGS tetap mengacu ke [[Tegalega BOM & Costing]] (dihitung ulang untuk resep yang berubah).
+- v2.1 (2026-08-13): Bagian 3 (Plating) diperinci per paket berdasarkan SOP Menu resmi (CSV terpisah) — tiap paket (termasuk Paru/Koyor/Babat yang tadinya digabung, dan Ayam Goreng Gurih/Lengkuas versi 2 & 4 potong yang tadinya digabung) sekarang punya langkah penyajian sendiri-sendiri, bukan cuma "standar plating umum".
