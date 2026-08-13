@@ -559,6 +559,14 @@
       body.print-form-only .md-body table:not([data-form]) { display: none !important; }
     }
 
+    /* ── GRAMASI GATE ── */
+    .gramasi-gate { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; font-size: 12.5px; color: #991b1b; }
+    [data-theme="dark"] .gramasi-gate { background: #450a0a44; border-color: #7f1d1d; color: #fca5a5; }
+    .gramasi-unlock-btn { flex-shrink: 0; padding: 6px 14px; background: #dc2626; color: #fff; border: none; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: var(--font); transition: opacity 0.15s; }
+    .gramasi-unlock-btn:hover { opacity: 0.85; }
+    .md-body td.gramasi-masked { color: var(--text-muted); letter-spacing: 2px; user-select: none; }
+    .md-body td.gramasi-revealed { color: var(--accent); font-weight: 700; }
+
     /* ── BRAND CHOOSER ── */
     #brand-chooser-screen { display: none; }
     body.brand-chooser #brand-chooser-screen { display: flex; }
@@ -1847,6 +1855,60 @@ function tagPrecedingHeading(el) {
 }
 
 // ── LOAD MD ───────────────────────────────────────────────────
+// ── GRAMASI GATE (resep Central Kitchen — Tegalega) ────────────
+const CK_RECIPE_PREFIX = /^[A-G]\.\s/;
+function maskCentralKitchenRecipes(area) {
+  const h2s = Array.from(area.querySelectorAll('h2'));
+  let masked = false;
+  h2s.forEach(h2 => {
+    if (!CK_RECIPE_PREFIX.test(h2.textContent.trim())) return;
+    let el = h2.nextElementSibling;
+    while (el && el.tagName !== 'H2') {
+      if (el.tagName === 'TABLE' && maskQtyColumn(el)) masked = true;
+      el = el.nextElementSibling;
+    }
+  });
+  if (masked) insertGramasiGate(area);
+}
+function maskQtyColumn(table) {
+  const headerCells = Array.from(table.querySelectorAll('thead th'));
+  const qtyIdx = headerCells.findIndex(th => th.textContent.trim().toLowerCase() === 'qty');
+  if (qtyIdx === -1) return false;
+  let any = false;
+  table.querySelectorAll('tbody tr').forEach(tr => {
+    const td = tr.children[qtyIdx];
+    if (!td || !td.textContent.trim()) return;
+    td.dataset.real = td.textContent;
+    td.textContent = '•••';
+    td.classList.add('gramasi-masked');
+    any = true;
+  });
+  return any;
+}
+function insertGramasiGate(area) {
+  const banner = document.createElement('div');
+  banner.className = 'gramasi-gate';
+  banner.id = 'gramasi-gate';
+  banner.innerHTML = `<span>🔒 Gramasi resep dapur (bumbu ayam, paru, babat, koyor, sambal) disembunyikan — hanya nama bahan yang tampil untuk orang awam.</span><button class="gramasi-unlock-btn" onclick="unlockGramasi()">🔑 Buka dengan PIN</button>`;
+  const h1 = area.querySelector('h1');
+  if (h1) h1.insertAdjacentElement('afterend', banner); else area.prepend(banner);
+}
+function unlockGramasi() {
+  const pin = prompt('Masukkan PIN untuk menampilkan gramasi resep:');
+  if (pin === null) return;
+  if (pin.trim() === '999999') {
+    document.querySelectorAll('.gramasi-masked').forEach(td => {
+      td.textContent = td.dataset.real;
+      td.classList.remove('gramasi-masked');
+      td.classList.add('gramasi-revealed');
+    });
+    const gate = document.getElementById('gramasi-gate');
+    if (gate) gate.innerHTML = '<span>🔓 Gramasi resep ditampilkan.</span>';
+  } else {
+    showToast('⚠️ PIN salah');
+  }
+}
+
 async function loadMd(path, name, category) {
   document.body.className = 'page-sop';
   document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
@@ -1886,6 +1948,7 @@ async function loadMd(path, name, category) {
     });
     area.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.removeAttribute('disabled'));
     detectAndInjectFormBtn(area);
+    if (path === 'tegalega/02 - Dapur & Produk/13 - Standard Recipe Book.md') maskCentralKitchenRecipes(area);
     buildToC(area);
   } catch (err) {
     area.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--text-muted)"><div style="font-size:40px;margin-bottom:12px">⚠️</div><div style="font-size:15px;font-weight:600;margin-bottom:6px">Gagal memuat dokumen</div><div style="font-size:13px">${err.message}</div><div style="font-size:12px;margin-top:8px;opacity:0.6">Path: <code>${path}</code></div></div>`;
